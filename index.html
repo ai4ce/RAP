@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="FusionSense: Bridging Common Sense, Vision, and Touch for Robust Sparse-View Reconstruction">
+  <meta name="keywords" content="Tactile Sensing, 3D Gaussian, Sparse-View Reconstruction">     
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FusionSense</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/copy2clipboard.js"></script>
+  <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+  
+  <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+</head>
+
+
+<body>
+
+<!-- Navigation bar. -->
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+  <div class="container is-max-desktop">
+
+    <!-- Lab logo. Will stay here even if view from mobile -->
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://ai4ce.github.io/" target="_blank" rel="noopener noreferrer">
+        <img src="./static/images/ai4ce_new_linear_notext.svg" alt="AI4CE Lab" style="height: 2.0rem;">
+      </a>
+      <a role="button" onclick="this.classList.toggle('is-active');document.querySelector('#'+this.dataset.target).classList.toggle('is-active');" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <!-- Will collapse into a "burger" menu on mobile. -->
+    <div id="navbarBasicExample" class="navbar-menu">
+
+      <div class="navbar-start">
+        <a class="navbar-item" href="https://www.nyu.edu/" target="_blank">
+          <img src="./static/images/NYU_Long_RGB_Color.png" alt="NYU Logo" style="height: 2.0rem;">
+        </a>
+      </div>
+      
+
+      <div class="navbar-end">
+        <!-- After accepted, add conference logo here -->
+        <!-- <a class="navbar-item" href="https://cvpr.thecvf.com/Conferences/2024" target="_blank" rel="noopener noreferrer">
+            <img src="img/logo/logo-cvpr.png" alt="CVPR 2024" style="height: 2.0rem;">
+        </a> -->
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://ai4ce.github.io/DeepExplorer/">
+              DeepExplorer
+            </a>
+            <a class="navbar-item" href="https://ai4ce.github.io/EgoPAT3Dv2/">
+              EgoPAT3Dv2
+            </a>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+
+  </div>
+</nav>
+
+<!-- Title and authors. -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            FusionSense
+          </h1>
+          <h1 class="title is-2 publication-title">Bridging Common Sense, Vision, and Touch for Robust Sparse-View Reconstruction</h1>
+          <!-- <div class="column is-full_width">
+            <h2 class="title is-4"><a href="https://2025.ieee-icra.org">ICRA 2025 (Under Review)</a></h2>
+          </div> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://irvingf7.github.io/">Irving Fang*</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://kairui-shi.github.io/">Kairui Shi*</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/kim-he-064a36258/">Xujin He*</a><sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https:">Siqi Tan</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https:">Yifan Wang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/hanwen-zhao-2523a4104/">Hanwen Zhao</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://joehjhuang.github.io">Hung-Jui Huang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=SNqm6doAAAAJ&hl=en">Wenzhen Yuan</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=YeG8ZM0AAAAJ">Chen Feng</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://jingz6676.github.io">Jing Zhang</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup> New York University, </span>
+            <span class="author-block"><sup>2</sup> Carnegie Mellon University, </span>
+            <span class="author-block"><sup>3</sup> University of Illinois, Urbana-Champaign </span>
+            <br>
+            <span class="author-block"><sup>*</sup> Equal Contribution </span>
+          </div>
+
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                 <!-- add here later. -->
+                <a href="https://arxiv.org/abs/2410.08282"                
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- <span class="link-block"> -->
+                <!-- add here later. -->
+               <!-- <a href=""                    
+                  class="external-link button is-normal is-rounded is-dark">
+                 <span class="icon">
+                     <i class="fas fa-camera"></i>
+                 </span>
+                 <span>Appendix</span>
+               </a> -->
+             <!-- </span> -->
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/thC0PeAQxe0"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/ai4ce/FusionSense"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/ai4ce/FusionSense/tree/main"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser. -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width teaser no-margin">
+        
+        <h2 class="title is-3">Snapshot</h2>
+        <p style="font-size: 20px; background-color: #8b00e13b;">
+          <b>TLDR:</b> Robot reconstructing <b>visually</b> and <b>geometrically</b> accurate surroundings with <b>sparse</b> visual and tactile data
+        </p>
+        <br>
+        <div class="sliders-container">
+          <div class="slider-wrapper">
+            <h2>Novel View Synthesis (RGB) </h2>
+            <div id="trans_rgb"></div>
+          </div>
+          <div class="slider-wrapper">
+            <h2>Object Reconstruction (RGB)</h2>
+            <div id="trans_object"></div>
+          </div>
+        </div>
+        <br>
+        <!-- depth and normal sliders -->
+        <div class="sliders-container">
+          <div class="slider-wrapper">
+            <h2>Novel View Synthesis (Depth) </h2>
+            <div id="trans_depth"></div>
+          </div>
+          <div class="slider-wrapper">
+            <h2>Novel View Synthesis (Normal)</h2>
+            <div id="trans_normal"></div>
+          </div>
+        </div>
+
+        <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+        <script src="./static/js/juxtapose-slider.js"></script> <!-- Include your slider.js file -->
+        <script>
+          // Slider configurations
+          const sliders = [
+            {
+              elementId: '#trans_rgb',
+              images: [
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_RGB_22.png',
+                  label: 'FusionSense',
+                },
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_RGB_22.png',
+                  label: 'DN-Splatter',
+                }
+              ],
+              options: sliderOptions // You can reference the options defined in slider.js if needed
+            },
+            {
+              elementId: '#trans_object',
+              images: [
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_obj_7.jpg',
+                  label: 'FusionSense',
+                },
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/GO_trans_obj_7.png',
+                  label: 'GaussianObject',
+                }
+              ],
+              options: sliderOptions // Reference the same or a different options object
+            },
+            {
+              elementId: '#trans_depth',
+              images: [
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_depth_0.png',
+                  label: 'FusionSense',
+                },
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_depth_0.png',
+                  label: 'DN-Splatter',
+                }
+              ],
+              options: sliderOptions // You can reference the options defined in slider.js if needed
+            },
+            {
+              elementId: '#trans_normal',
+              images: [
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_normal_22.png',
+                  label: 'FusionSense',
+                },
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_normal_22.png',
+                  label: 'DN-Splatter',
+                }
+              ],
+              options: sliderOptions // Reference the same or a different options object
+            }
+          ];
+    
+          // Initialize sliders
+          initializeSliders(sliders);
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- How it works -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">How It Works</h2>
+        <div class="content has-text-justified">
+          <p>
+          1. <b>Robust Global Shape Representation:</b> Visual hull and depth estimated from foundation models initiates 3D Gaussians. RGB-D images and foundation-model-estimated normals are used to supervise subsequent training.
+          </p>
+          <p>
+          2. <b>Active Touch Selection:</b> Geometric properties and common-sense from VLM guide the robot to touch the most informative regions.
+          </p>
+          <p>
+          3. <b>Local Geometric Optimization:</b> Add tactile readings as new anchor Gaussian points to improve the original 3D Gaussians.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Video Comparison -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Video Comparison</h2>
+        <div class="content has-text-justified">
+          <center>
+            <!-- Here, the switchVideo's argument should be the name of the video -->
+            <button class="btn" id="rgb_button" onclick="switchVideo('rgb')">RGB</button>
+            <button class="btn" id="depth_button" onclick="switchVideo('depth')">Depth</button>
+            <button class="btn" id="normal_button" onclick="switchVideo('normal')">Normal</button>
+            <button class="btn" id="touch_button" onclick="switchVideo('touch')">Touch Integration</button>
+            <br>
+            <br>
+            <video muted autoplay loop width="700px" height="400px" controls controls id="videoPlayer">
+              <source src="./static/videos/rgb.mp4" type="video/mp4">
+            </video>
+          </center>
+            <script>
+                document.getElementById('rgb_button').classList.add('active');
+                function switchVideo(videoSrc) {
+                    document.getElementById('rgb_button').classList.remove('active');
+                    document.getElementById('depth_button').classList.remove('active');
+                    document.getElementById('normal_button').classList.remove('active');
+                    document.getElementById('touch_button').classList.remove('active');
+
+                    document.getElementById(videoSrc+'_button').classList.add('active');
+                    const videoPlayer = document.getElementById('videoPlayer');
+                    videoPlayer.src = './static/videos/' + videoSrc + '.mp4';
+                    videoPlayer.play();  // Play automatically when the video is switched
+                }
+            </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- Method Overview -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Method</h2>
+        <center>
+          <!-- This image is always visible  -->
+          <div id="overview">
+            <img src="./static/images/Overview.png" style="width: 45vw; min-width: 330px;" alt="Overview Image"> 
+          </div>
+
+          <!-- Here, the changeContent's parameter is just the number of the button. Has no intrinsic association with the content -->
+          <button id="method_button1" class="btn" onclick="changeContent(1)">1. Robust Global Shape Representation</button>
+          <button id="method_button2" class="btn" onclick="changeContent(2)">2. Active Touch Selection</button>
+          <button id="method_button3" class="btn" onclick="changeContent(3)">3. Local Geometric Optimization</button>
+
+          <div class="content has-text-justified">
+            <p id="text-content"> <b>1.1 Hybrid Structure Priors:</b> 
+              <br><b>(1) Visual Hull:</b> After taking sparse view images, we use GPT-4o to classify the centric object. The classification label is fed to <a href=\"https://github.com/IDEA-Research/Grounded-SAM-2\">Grounded SAM 2</a> to acquire the masks of the object. The masks along with the camera poses recorded by the robot are used to estimate the <b>visual hull</b>. This method is robust against traditionally challenging surfaces and materials
+              <br><b>(2) Metric Depth Estimator:</b> For every sparse view RGB image, we use <a href=\"https://jugghm.github.io/Metric3Dv2/\">Metric3D v2</a> to estimate the depth. We do not use the more accurate depth captured by our <a href=\"https://www.intelrealsense.com/depth-camera-d405/\">RealSense</a> camera because we found estimated depth smoother and less noisy. 
+              <br><b>(3) Gaussians Initialization:</b> The visual hull and estimated depth are combined to initialize the 3D Gaussian Primitives.  
+              <br><br><b>1.2 Hull Pruning:</b> 
+              <br><b>(4) Visual Hull Pruning:</b> During training, we design a "shell" around the visual hull to remove floaters around it. Empircally, we notice that those floaters around objects, while small at first, often snowball to very large negative impact on the overall reconstruction quality. 
+              <br><b>(5) Supervision:</b> We then use RGB-D images captured by our RealSense camera and normals estimated from <a href=\"https://baegwangbin.github.io/DSINE/\">DSINE</a> to supervise the subsequent training. 
+            </p>
+            <center>
+              <img id="image-content" src="./static/images/Method_1.png" style="width: 45vw; min-width: 330px;" />
+            </center>
+          </div>
+        </center>
+
+        <script>
+          document.getElementById('method_button1').classList.add('active');
+          function changeContent(buttonNumber) {
+              const textElement = document.getElementById('text-content');
+              const imageElement = document.getElementById('image-content');
+              
+              document.getElementById('method_button1').classList.remove('active');
+              document.getElementById('method_button2').classList.remove('active');
+              document.getElementById('method_button3').classList.remove('active');
+
+              // Add 'active' class to the clicked button so that it will have a different color when its content is present
+              document.getElementById('method_button' + buttonNumber).classList.add('active');
+
+              if (buttonNumber === 1) {
+                  textElement.innerHTML = "<b>1.1 Hybrid Structure Priors:</b> \
+                                           <br><b>(1) Visual Hull:</b> After taking sparse view images, we use GPT-4o to classify the centric object. The classification label is fed to <a href=\"https://github.com/IDEA-Research/Grounded-SAM-2\">Grounded SAM 2</a> to acquire the masks of the object. The masks along with the camera poses recorded by the robot are used to estimate the <b>visual hull</b>. This method is robust against traditionally challenging surfaces and materials \
+                                           <br><b>(2) Metric Depth Estimator:</b> For every sparse view RGB image, we use <a href=\"https://jugghm.github.io/Metric3Dv2/\">Metric3D v2</a> to estimate the depth. We do not use the more accurate depth captured by our <a href=\"https://www.intelrealsense.com/depth-camera-d405/\">RealSense</a> camera because we found estimated depth smoother and less noisy \
+                                           <br><b>(3) Gaussians Initialization:</b> The visual hull and estimated depth are combined to initialize the 3D Gaussian Primitives.  \
+                                           <br><br><b>1.2 Hull Pruning:</b> \
+                                           <br><b>(4) Visual Hull Pruning:</b> During training, we design a \"shell\" around the visual hull to remove floaters around it. Empircally, we notice that those floaters around objects, while small at first, often snowball to very large negative impact on the overall reconstruction quality. \
+                                           <br><b>(5) Supervision:</b> We then use RGB-D images captured by our RealSense camera and normals estimated from <a href=\"https://baegwangbin.github.io/DSINE/\">DSINE</a> to supervise the subsequent training. \
+                                           ";
+                  imageElement.classList.remove('hidden');
+                  imageElement.src = "./static/images/Method_1.png";
+                  // imageElement.alt = "Image 1";
+              } else if (buttonNumber === 2) {
+                  textElement.innerHTML = "<b>2.1 Geometry Ranking:</b> \
+                                           <br><b>(1) High Gradient Points:</b> By design, in 3D Gaussian Splatting training, points with high gradient indicate rapid changes in spatial/geometric features and larger discrepancies between the rendering and the ground truth image, which means a need for further optimization. \
+                                           Therefore, we select a few clusters of points with high gradients as seen in <i>Rabbit 3</i>.\
+                                           <br><br><b>2.2 Common-Sense Reranking:</b> \
+                                           <br><b>(2) Semantic Grounding:</b> In the first step, along with classification, we also asked GPT-4o to give us a list of parts of this object. Using zero-shot open-vocabulary part segmentation model such as <a href=\"https://arxiv.org/abs/2212.01558\">PartSLIP</a>, we can ground such semantic information to our reconstruction, as can be seen in <i>Rabbit 2</i>.\
+                                           <br><b>(3) Commen-Sense Ranking:</b> We then ask GPT-4o which part should have priority when it comes to touching.  \
+                                           Then, without violating the geometric ranking, we rank the points within the same cluster based on their part priority. This ensures that even if the part segmentation fails, the robot will still have points to touch, as seen in <i>Rabbit 4</i>";
+                  imageElement.classList.remove('hidden');
+                  imageElement.src = "./static/images/Method_2.png";
+                  // imageElement.alt = "Image 2";
+              } else if (buttonNumber === 3) {
+                  textElement.innerHTML = "<b>3.1 Touch Transform:</b> \
+                                           <br><b>(1) Touch Patch Transformation:</b> Based on photometric stereo, we can acquire depth and normal of the touch spot, which gives us a dense point cloud. \
+                                           <br><br><b>3.2 Anchor Gaussian Optimization:</b> \
+                                           <br><b>(2) Anchor Gaussian Points:</b> The dense point cloud are added as anchor Gaussian points.\
+                                           <br><b>(3) Optimization:</b> We then apply Gaussian normal supervision to further optimize the 3D Gaussians.";
+                  imageElement.classList.add('hidden');
+                                           // imageElement.src = "image3.jpg";
+                  // imageElement.alt = "Image 3";
+              }
+          }
+        </script>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- More Visualization -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        
+        <h2 class="title is-3">More Visualizations</h2>
+        <center>
+          <!-- Here, the argument of the switchSlider function should be the name of the slider block, just without the "_block" part. -->
+          <button class="btn" id="black_9_button" onclick="switchSlider('black_9')">Black Bunny (9 Views)</button>
+          <button class="btn" id="black_5_button" onclick="switchSlider('black_5')">Black Bunny (5 Views)</button>
+          <button class="btn" id="reflective_9_button" onclick="switchSlider('reflective_9')">Reflective Bunny (9 Views)</button>
+          <button class="btn" id="reflective_5_button" onclick="switchSlider('reflective_5')">Reflective Bunny (5 Views)</button>
+          <button class="btn" id="transparent_9_button" onclick="switchSlider('transparent_9')">Transparent Bunny (9 Views)</button>
+          <button class="btn" id="transparent_5_button" onclick="switchSlider('transparent_5')">Transparent Bunny (5 Views)</button>
+          <button class="btn" id="coke_9_button" onclick="switchSlider('coke_9')">Coke Bottle (9 Views)</button>
+          <button class="btn" id="coke_5_button" onclick="switchSlider('coke_5')">Coke Bottle (5 Views)</button>
+          <br>
+          <br>
+        </center>
+
+        <div class="slider-block" id="black_9_block">
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (RGB) </h2>
+              <div id="black_9_rgb"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Ground Truth Comparison (RGB)</h2>
+              <div id="black_9_gt"></div>
+            </div>
+          </div>
+          <br>
+          <!-- depth and normal sliders -->
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Depth) </h2>
+              <div id="black_9_depth"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Normal)</h2>
+              <div id="black_9_normal"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-block" id="black_5_block">
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (RGB) </h2>
+              <div id="black_5_rgb"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Ground Truth Comparison (RGB)</h2>
+              <div id="black_5_gt"></div>
+            </div>
+          </div>
+          <br>
+          <!-- depth and normal sliders -->
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Depth) </h2>
+              <div id="black_5_depth"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Normal)</h2>
+              <div id="black_5_normal"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-block" id="transparent_9_block">
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (RGB) </h2>
+              <div id="transparent_9_rgb"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Ground Truth Comparison (RGB)</h2>
+              <div id="transparent_9_gt"></div>
+            </div>
+          </div>
+          <br>
+          <!-- depth and normal sliders -->
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Depth) </h2>
+              <div id="transparent_9_depth"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Normal)</h2>
+              <div id="transparent_9_normal"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-block" id="transparent_5_block">
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (RGB) </h2>
+              <div id="transparent_5_rgb"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Ground Truth Comparison (RGB)</h2>
+              <div id="transparent_5_gt"></div>
+            </div>
+          </div>
+          <br>
+          <!-- depth and normal sliders -->
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Depth) </h2>
+              <div id="transparent_5_depth"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Normal)</h2>
+              <div id="transparent_5_normal"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-block" id="reflective_9_block">
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (RGB) </h2>
+              <div id="reflective_9_rgb"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Ground Truth Comparison (RGB)</h2>
+              <div id="reflective_9_gt"></div>
+            </div>
+          </div>
+          <br>
+          <!-- depth and normal sliders -->
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Depth) </h2>
+              <div id="reflective_9_depth"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Normal)</h2>
+              <div id="reflective_9_normal"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-block" id="reflective_5_block">
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (RGB) </h2>
+              <div id="reflective_5_rgb"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Ground Truth Comparison (RGB)</h2>
+              <div id="reflective_5_gt"></div>
+            </div>
+          </div>
+          <br>
+          <!-- depth and normal sliders -->
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Depth) </h2>
+              <div id="reflective_5_depth"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Normal)</h2>
+              <div id="reflective_5_normal"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-block" id="coke_9_block">
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (RGB) </h2>
+              <div id="coke_9_rgb"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Ground Truth Comparison (RGB)</h2>
+              <div id="coke_9_gt"></div>
+            </div>
+          </div>
+          <br>
+          <!-- depth and normal sliders -->
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Depth) </h2>
+              <div id="coke_9_depth"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Normal)</h2>
+              <div id="coke_9_normal"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="slider-block" id="coke_5_block">
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (RGB) </h2>
+              <div id="coke_5_rgb"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Ground Truth Comparison (RGB)</h2>
+              <div id="coke_5_gt"></div>
+            </div>
+          </div>
+          <br>
+          <!-- depth and normal sliders -->
+          <div class="sliders-container">
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Depth) </h2>
+              <div id="coke_5_depth"></div>
+            </div>
+            <div class="slider-wrapper">
+              <h2>Novel View Synthesis (Normal)</h2>
+              <div id="coke_5_normal"></div>
+            </div>
+          </div>
+        </div>
+
+        <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+        <script src="./static/js/juxtapose-slider.js"></script> <!-- Include your slider.js file
+         
+        <!-- script for the sliders -->
+        <script>
+          // Slider configurations
+          let slider_dict = {
+            black_9: 
+            [
+              {
+                elementId: '#black_9_rgb',
+                images: [
+                  {
+                    src: './static/images/sliders/black_bunny/9_view/FS_black_RGB_13.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/black_bunny/9_view/DN_black_RGB_13.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions // You can reference the options defined in slider.js if needed
+              },
+              {
+                elementId: '#black_9_gt',
+                images: [
+                  {
+                    src: './static/images/sliders/black_bunny/9_view/FS_black_RGB_13.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/black_bunny/9_view/GT_black_RGB_13.png',
+                    label: 'Ground Truth',
+                  }
+                ],
+                options: sliderOptions // Reference the same or a different options object
+              },
+              {
+                elementId: '#black_9_depth',
+                images: [
+                  {
+                    src: './static/images/sliders/black_bunny/9_view/FS_black_depth_13.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/black_bunny/9_view/DN_black_depth_13.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions // You can reference the options defined in slider.js if needed
+              },
+              {
+                elementId: '#black_9_normal',
+                images: [
+                  {
+                    src: './static/images/sliders/black_bunny/9_view/FS_black_normal_13.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/black_bunny/9_view/DN_black_normal_13.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions // Reference the same or a different options object
+              }
+            ],
+            black_5: 
+            [
+              {
+                elementId: '#black_5_rgb',
+                images: [
+                  {
+                    src: './static/images/sliders/black_bunny/5_view/FS_black_RGB_3.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/black_bunny/5_view/DN_black_RGB_3.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions // You can reference the options defined in slider.js if needed
+              },
+              {
+                elementId: '#black_5_gt',
+                images: [
+                  {
+                    src: './static/images/sliders/black_bunny/5_view/FS_black_RGB_2.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/black_bunny/5_view/GT_black_RGB_2.png',
+                    label: 'Ground Truth',
+                  }
+                ],
+                options: sliderOptions // Reference the same or a different options object
+              },
+              {
+                elementId: '#black_5_depth',
+                images: [
+                  {
+                    src: './static/images/sliders/black_bunny/5_view/FS_black_depth_3.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/black_bunny/5_view/DN_black_depth_3.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions // You can reference the options defined in slider.js if needed
+              },
+              {
+                elementId: '#black_5_normal',
+                images: [
+                  {
+                    src: './static/images/sliders/black_bunny/5_view/FS_black_normal_3.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/black_bunny/5_view/DN_black_normal_3.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions // Reference the same or a different options object
+              }
+            ],
+            transparent_9: 
+            [
+              {
+                elementId: '#transparent_9_rgb',
+                images: [
+                  {
+                    src: './static/images/sliders/transparent_bunny/9_view/FS_trans_RGB_22.png',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/transparent_bunny/9_view/DN_trans_RGB_22.png',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions // You can reference the options defined in slider.js if needed
+              },
+              {
+                elementId: '#transparent_9_gt',
+                images: [
+                  {
+                    src: './static/images/sliders/transparent_bunny/9_view/FS_trans_RGB_22.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/transparent_bunny/9_view/GT_trans_RGB_22.png',
+                    label: 'Ground Truth',
+                  }
+                ],
+                options: sliderOptions // Reference the same or a different options object
+              },
+              {
+                elementId: '#transparent_9_depth',
+                images: [
+                  {
+                    src: './static/images/sliders/transparent_bunny/9_view/FS_trans_depth_0.png',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/transparent_bunny/9_view/DN_trans_depth_0.png',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions // You can reference the options defined in slider.js if needed
+              },
+              {
+                elementId: '#transparent_9_normal',
+                images: [
+                  {
+                    src: './static/images/sliders/transparent_bunny/9_view/FS_trans_normal_22.png',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/transparent_bunny/9_view/DN_trans_normal_22.png',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions // Reference the same or a different options object
+              }
+            ],
+            transparent_5: 
+            [
+              {
+                elementId: '#transparent_5_rgb',
+                images: [
+                  {
+                    src: './static/images/sliders/transparent_bunny/5_view/FS_trans_RGB_22.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/transparent_bunny/5_view/DN_trans_RGB_22.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#transparent_5_gt',
+                images: [
+                  {
+                    src: './static/images/sliders/transparent_bunny/5_view/FS_trans_RGB_22.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/transparent_bunny/5_view/GT_trans_RGB_22.png',
+                    label: 'Ground Truth',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#transparent_5_depth',
+                images: [
+                  {
+                    src: './static/images/sliders/transparent_bunny/5_view/FS_trans_depth_22.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/transparent_bunny/5_view/DN_trans_depth_22.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#transparent_5_normal',
+                images: [
+                  {
+                    src: './static/images/sliders/transparent_bunny/5_view/FS_trans_normal_22.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/transparent_bunny/5_view/DN_trans_normal_22.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              }
+            ],
+            reflective_9: 
+            [
+              {
+                elementId: '#reflective_9_rgb',
+                images: [
+                  {
+                    src: './static/images/sliders/reflective_bunny/9_view/FS_reflective_RGB_8.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/reflective_bunny/9_view/DN_reflective_RGB_8.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#reflective_9_gt',
+                images: [
+                  {
+                    src: './static/images/sliders/reflective_bunny/9_view/FS_reflective_RGB_8.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/reflective_bunny/9_view/GT_reflective_RGB_8.png',
+                    label: 'Ground Truth',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#reflective_9_depth',
+                images: [
+                  {
+                    src: './static/images/sliders/reflective_bunny/9_view/FS_reflective_depth_8.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/reflective_bunny/9_view/DN_reflective_depth_8.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#reflective_9_normal',
+                images: [
+                  {
+                    src: './static/images/sliders/reflective_bunny/9_view/FS_reflective_normal_8.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/reflective_bunny/9_view/DN_reflective_normal_8.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              }
+            ],
+            reflective_5: 
+            [
+              {
+                elementId: '#reflective_5_rgb',
+                images: [
+                  {
+                    src: './static/images/sliders/reflective_bunny/5_view/FS_reflective_RGB_8.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/reflective_bunny/5_view/DN_reflective_RGB_8.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#reflective_5_gt',
+                images: [
+                  {
+                    src: './static/images/sliders/reflective_bunny/5_view/FS_reflective_RGB_8.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/reflective_bunny/5_view/GT_reflective_RGB_8.png',
+                    label: 'Ground Truth',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#reflective_5_depth',
+                images: [
+                  {
+                    src: './static/images/sliders/reflective_bunny/5_view/FS_reflective_depth_8.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/reflective_bunny/5_view/DN_reflective_depth_8.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#reflective_5_normal',
+                images: [
+                  {
+                    src: './static/images/sliders/reflective_bunny/5_view/FS_reflective_normal_8.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/reflective_bunny/5_view/DN_reflective_normal_8.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              }
+            ],
+            coke_9: 
+            [
+              {
+                elementId: '#coke_9_rgb',
+                images: [
+                  {
+                    src: './static/images/sliders/coke/9_view/FS_coke_RGB_1.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/coke/9_view/DN_coke_RGB_1.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#coke_9_gt',
+                images: [
+                  {
+                    src: './static/images/sliders/coke/9_view/FS_coke_RGB_1.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/coke/9_view/GT_coke_RGB_1.png',
+                    label: 'Ground Truth',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#coke_9_depth',
+                images: [
+                  {
+                    src: './static/images/sliders/coke/9_view/FS_coke_depth_1.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/coke/9_view/DN_coke_depth_1.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#coke_9_normal',
+                images: [
+                  {
+                    src: './static/images/sliders/coke/9_view/FS_coke_normal_1.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/coke/9_view/DN_coke_normal_1.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              }
+            ],
+            coke_5: 
+            [
+              {
+                elementId: '#coke_5_rgb',
+                images: [
+                  {
+                    src: './static/images/sliders/coke/5_view/FS_coke_RGB_1.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/coke/5_view/DN_coke_RGB_1.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#coke_5_gt',
+                images: [
+                  {
+                    src: './static/images/sliders/coke/5_view/FS_coke_RGB_1.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/coke/5_view/GT_coke_RGB_1.png',
+                    label: 'Ground Truth',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#coke_5_depth',
+                images: [
+                  {
+                    src: './static/images/sliders/coke/5_view/FS_coke_depth_1.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/coke/5_view/DN_coke_depth_1.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              },
+              {
+                elementId: '#coke_5_normal',
+                images: [
+                  {
+                    src: './static/images/sliders/coke/5_view/FS_coke_normal_1.jpg',
+                    label: 'FusionSense',
+                  },
+                  {
+                    src: './static/images/sliders/coke/5_view/DN_coke_normal_1.jpg',
+                    label: 'DN-Splatter',
+                  }
+                ],
+                options: sliderOptions
+              }
+            ]
+          };
+          
+          // Show black_9_block by default
+          document.addEventListener('DOMContentLoaded', () => {
+            switchSlider('black_9'); 
+          });
+
+          // Function to show the specific div based on button click
+          function switchSlider(block_id) {
+              // Remove 'active' class from all buttons to reset color
+              document.getElementById('black_9_button').classList.remove('active');
+              document.getElementById('black_5_button').classList.remove('active');
+              document.getElementById('reflective_9_button').classList.remove('active');
+              document.getElementById('reflective_5_button').classList.remove('active');
+              document.getElementById('transparent_9_button').classList.remove('active');
+              document.getElementById('transparent_5_button').classList.remove('active');
+              document.getElementById('coke_9_button').classList.remove('active');
+              document.getElementById('coke_5_button').classList.remove('active');
+
+              // Add 'active' class to the clicked button so that it will have a different color when its content is present
+              document.getElementById(block_id+'_button').classList.add('active');
+
+              // Select all content divs and hide them
+              contentDivs = document.querySelectorAll('.slider-block');
+              contentDivs.forEach(div => {
+                  div.classList.remove('show'); // Hide all divs
+              });
+  
+              // Show the selected div with a fade effect
+              selectedDiv = document.getElementById(block_id+'_block');
+              selectedDiv.classList.add('show');
+
+              if (!selectedDiv.initialized) {
+                initializeSliders(slider_dict[block_id]);
+                selectedDiv.initialized = true;
+              }
+          }
+
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX"> 
+  <div class="container is-max-desktop content">
+    <center>
+    <h2 id="bibtexTitle" class="title">BibTeX</h2>
+    <button id="copyButton" onclick="copyToClipboard()">
+      <i class="fas fa-copy"></i>
+    </button>
+    <br>
+    <pre style="text-align: left";><code id="bibtexInfo">@misc{fang2024fusionsense,
+  title={FusionSense: Bridging Common Sense, Vision, and Touch for Robust Sparse-View Reconstruction}, 
+  author={Irving Fang and Kairui Shi and Xujin He and Siqi Tan and Yifan Wang and Hanwen Zhao and Hung-Jui Huang and Wenzhen Yuan and Chen Feng and Jing Zhang},
+  year={2024},
+  eprint={2410.08282},
+  archivePrefix={arXiv},
+  primaryClass={cs.RO},
+  url={https://arxiv.org/abs/2410.08282}, 
+}</code></pre>
+  </center>
+  </div>
+</section>
+          
+<!-- Acknowledgements   -->
+<section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+    Jing Zhang and Chen Feng are the corresponding authors. The work was supported in part through NSF grants 2024882, 2152565, and 2238968.
+  </div>
+</section>
+          
+<!-- Footer -->       
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.<br>
+            This AI4CE template is created by <a href="https://irvingf7.github.io/">Irving Fang</a>.<br>
+            This webpage template is originally from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template.
+            This website is then inspired by the project page of <a href="https://cat3d.github.io/">CAT3D</a>, <a href="https://armlabstanford.github.io/touch-gs">Touch-GS</a> and <a href="https://baegwangbin.github.io/DSINE/">DSINE</a>.
+          </p>
+        </div>
+      </div>
+          </p>
+        </div>
+      </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
