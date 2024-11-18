@@ -1,158 +1,164 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="description"
-        content="Unleashing the Power of Data Synthesis in Visual Localization">
-  <meta name="keywords" content="Visual Localization, 3D Gaussian, Data Synthesis, Adversarial Training">     
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>😎RAP</title>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="Unleashing the Power of Data Synthesis in Visual Localization">
+    <meta name="keywords" content="Visual Localization, 3D Gaussian, Data Synthesis, Adversarial Training">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RAP</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>😎</text></svg>">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+      gtag('js', new Date());
 
-    gtag('js', new Date());
+      gtag('config', 'G-PYVRSFMDRL');
+    </script> -->
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
 
-    gtag('config', 'G-PYVRSFMDRL');
-  </script> -->
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
 
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-  <script src="./static/js/copy2clipboard.js"></script>
-  <script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/copy2clipboard.js"></script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
-  
-  <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+
+    <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BM5C13X75"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-8BM5C13X75');
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-8BM5C13X75');
 </script>
 
 <body>
 
 <!-- Navigation bar. -->
 <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-  <div class="container is-max-desktop">
+    <div class="container is-max-desktop">
 
-    <!-- Lab logo. Will stay here even if view from mobile -->
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://ai4ce.github.io/" target="_blank" rel="noopener noreferrer">
-        <img src="./static/images/ai4ce_new_linear_notext.svg" alt="AI4CE Lab" style="height: 2.0rem;">
-      </a>
-      <a role="button" onclick="this.classList.toggle('is-active');document.querySelector('#'+this.dataset.target).classList.toggle('is-active');" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <!-- Will collapse into a "burger" menu on mobile. -->
-    <div id="navbarBasicExample" class="navbar-menu">
-
-      <div class="navbar-start">
-        <a class="navbar-item" href="https://www.nyu.edu/" target="_blank">
-          <img src="./static/images/NYU_Long_RGB_Color.png" alt="NYU Logo" style="height: 2.0rem;">
-        </a>
-      </div>
-      
-
-      <div class="navbar-end">
-        <!-- After accepted, add conference logo here -->
-        <!-- <a class="navbar-item" href="https://cvpr.thecvf.com/Conferences/2024" target="_blank" rel="noopener noreferrer">
-            <img src="img/logo/logo-cvpr.png" alt="CVPR 2024" style="height: 2.0rem;">
-        </a> -->
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            More Research
-          </a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="https://ai4ce.github.io/DeepExplorer/">
-              DeepExplorer
+        <!-- Lab logo. Will stay here even if view from mobile -->
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://ai4ce.github.io/" target="_blank" rel="noopener noreferrer">
+                <img src="./static/images/ai4ce_new_linear_notext.svg" alt="AI4CE Lab" style="height: 2.0rem;">
             </a>
-            <a class="navbar-item" href="https://ai4ce.github.io/EgoPAT3Dv2/">
-              EgoPAT3Dv2
+            <a role="button"
+               onclick="this.classList.toggle('is-active');document.querySelector('#'+this.dataset.target).classList.toggle('is-active');"
+               class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
             </a>
-          </div>
         </div>
 
-      </div>
-      
-    </div>
+        <!-- Will collapse into a "burger" menu on mobile. -->
+        <div id="navbarBasicExample" class="navbar-menu">
 
-  </div>
+            <div class="navbar-start">
+                <a class="navbar-item" href="https://www.nyu.edu/" target="_blank">
+                    <img src="./static/images/NYU_Long_RGB_Color.png" alt="NYU Logo" style="height: 2.0rem;">
+                </a>
+            </div>
+
+
+            <div class="navbar-end">
+                <!-- After accepted, add conference logo here -->
+                <!-- <a class="navbar-item" href="https://cvpr.thecvf.com/Conferences/2024" target="_blank" rel="noopener noreferrer">
+                    <img src="img/logo/logo-cvpr.png" alt="CVPR 2024" style="height: 2.0rem;">
+                </a> -->
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More Research
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="https://ai4ce.github.io/DeepExplorer/">
+                            DeepExplorer
+                        </a>
+                        <a class="navbar-item" href="https://ai4ce.github.io/EgoPAT3Dv2/">
+                            EgoPAT3Dv2
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 </nav>
 
 <!-- Title and authors. -->
 <section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">
-            😎RAP
-          </h1>
-          <h1 class="title is-2 publication-title">Unleashing the Power of Data Synthesis<br>in Visual Localization</h1>
-          <!-- <div class="column is-full_width">
-            <h2 class="title is-4"><a href="https://2025.ieee-icra.org">ICRA 2025 (Under Review)</a></h2>
-          </div> -->
-          <div class="is-size-5 publication-authors">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">
+                        😎RAP
+                    </h1>
+                    <h1 class="title is-2 publication-title">Unleashing the Power of Data Synthesis<br>in Visual
+                        Localization</h1>
+                    <!-- <div class="column is-full_width">
+                      <h2 class="title is-4"><a href="https://2025.ieee-icra.org">ICRA 2025 (Under Review)</a></h2>
+                    </div> -->
+                    <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://Louis-Leee.github.io/">Sihang Li*</a>,</span>
-            <span class="author-block">
+                        <span class="author-block">
               <a href="https:">Siqi Tan*</a>,</span>
-            <span class="author-block">
+                        <span class="author-block">
               <a href="https:">Bowen Chang</a>
             </span>
-            <span class="author-block">
+                        <span class="author-block">
               <a href="https://jingz6676.github.io">Jing Zhang</a>,
             </span>
-            <span class="author-block">
+                        <span class="author-block">
               <a href="https://scholar.google.com/citations?user=YeG8ZM0AAAAJ">Chen Feng</a>,
             </span>
-            <span class="author-block">
+                        <span class="author-block">
               <a href="https://yimingli-page.github.io/">Yiming Li</a>
             </span>
-          </div>
+                    </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"> New York University</span>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"> New York University</span>
 
-            <br>
-            <span class="author-block"><sup>*</sup> Equal Contribution </span>
-          </div>
+                        <br>
+                        <span class="author-block"><sup>*</sup> Equal Contribution </span>
+                    </div>
 
 
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
               <span class="link-block">
                  <!-- add here later. -->
                 <a href="static/RAP_Paper.pdf"
@@ -163,18 +169,18 @@
                   <span>arXiv</span>
                 </a>
               </span>
-              <!-- <span class="link-block"> -->
-                <!-- add here later. -->
-               <!-- <a href=""                    
-                  class="external-link button is-normal is-rounded is-dark">
-                 <span class="icon">
-                     <i class="fas fa-camera"></i>
-                 </span>
-                 <span>Appendix</span>
-               </a> -->
-             <!-- </span> -->
-              <!-- Video Link. -->
-              <span class="link-block">
+                            <!-- <span class="link-block"> -->
+                            <!-- add here later. -->
+                            <!-- <a href=""
+                               class="external-link button is-normal is-rounded is-dark">
+                              <span class="icon">
+                                  <i class="fas fa-camera"></i>
+                              </span>
+                              <span>Appendix</span>
+                            </a> -->
+                            <!-- </span> -->
+                            <!-- Video Link. -->
+                            <span class="link-block">
                 <a href="https:"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -183,8 +189,8 @@
                   <span>Video</span>
                 </a>
               </span>
-              <!-- Code Link. -->
-              <span class="link-block">
+                            <!-- Code Link. -->
+                            <span class="link-block">
                 <a href="https://github.com/ai4ce/RAP"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -193,8 +199,8 @@
                   <span>Code</span>
                   </a>
               </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
+                            <!-- Dataset Link. -->
+                            <span class="link-block">
                 <a href="https:"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -203,119 +209,121 @@
                   <span>Data</span>
                 </a>
               </span>
-            </div>
+                        </div>
 
-          </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <!-- Teaser. -->
 <section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width teaser no-margin">
-        
-        <h2 class="title is-3">Snapshot</h2>
-        <p style="font-size: 20px; background-color: #8b00e13b;">
-          <b>TLDR:</b> We make camera localization more generalizable by addressing the <b>data gap</b> via 3DGS and <b>learning gap</b> via a two-branch joint learning of transformer-based APR with adversarial loss for reducing syn-to-real gap, achieving SOTA in visual localization.
-        </p>
-<!--        <br>-->
-<!--        <div class="sliders-container">-->
-<!--          <div class="slider-wrapper">-->
-<!--            <h2>Novel View Synthesis (RGB) </h2>-->
-<!--            <div id="trans_rgb"></div>-->
-<!--          </div>-->
-<!--          <div class="slider-wrapper">-->
-<!--            <h2>Object Reconstruction (RGB)</h2>-->
-<!--            <div id="trans_object"></div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <br>-->
-<!--        &lt;!&ndash; depth and normal sliders &ndash;&gt;-->
-<!--        <div class="sliders-container">-->
-<!--          <div class="slider-wrapper">-->
-<!--            <h2>Novel View Synthesis (Depth) </h2>-->
-<!--            <div id="trans_depth"></div>-->
-<!--          </div>-->
-<!--          <div class="slider-wrapper">-->
-<!--            <h2>Novel View Synthesis (Normal)</h2>-->
-<!--            <div id="trans_normal"></div>-->
-<!--          </div>-->
-<!--        </div>-->
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-full-width teaser no-margin">
 
-<!--        <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>-->
-<!--        <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">-->
-<!--        <script src="./static/js/juxtapose-slider.js"></script> &lt;!&ndash; Include your slider.js file &ndash;&gt;-->
-<!--        <script>-->
-<!--          // Slider configurations-->
-<!--          const sliders = [-->
-<!--            {-->
-<!--              elementId: '#trans_rgb',-->
-<!--              images: [-->
-<!--                {-->
-<!--                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_RGB_22.png',-->
-<!--                  label: 'FusionSense',-->
-<!--                },-->
-<!--                {-->
-<!--                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_RGB_22.png',-->
-<!--                  label: 'DN-Splatter',-->
-<!--                }-->
-<!--              ],-->
-<!--              options: sliderOptions // You can reference the options defined in slider.js if needed-->
-<!--            },-->
-<!--            {-->
-<!--              elementId: '#trans_object',-->
-<!--              images: [-->
-<!--                {-->
-<!--                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_obj_7.jpg',-->
-<!--                  label: 'FusionSense',-->
-<!--                },-->
-<!--                {-->
-<!--                  src: './static/images/sliders/transparent_bunny/9_view/GO_trans_obj_7.png',-->
-<!--                  label: 'GaussianObject',-->
-<!--                }-->
-<!--              ],-->
-<!--              options: sliderOptions // Reference the same or a different options object-->
-<!--            },-->
-<!--            {-->
-<!--              elementId: '#trans_depth',-->
-<!--              images: [-->
-<!--                {-->
-<!--                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_depth_0.png',-->
-<!--                  label: 'FusionSense',-->
-<!--                },-->
-<!--                {-->
-<!--                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_depth_0.png',-->
-<!--                  label: 'DN-Splatter',-->
-<!--                }-->
-<!--              ],-->
-<!--              options: sliderOptions // You can reference the options defined in slider.js if needed-->
-<!--            },-->
-<!--            {-->
-<!--              elementId: '#trans_normal',-->
-<!--              images: [-->
-<!--                {-->
-<!--                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_normal_22.png',-->
-<!--                  label: 'FusionSense',-->
-<!--                },-->
-<!--                {-->
-<!--                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_normal_22.png',-->
-<!--                  label: 'DN-Splatter',-->
-<!--                }-->
-<!--              ],-->
-<!--              options: sliderOptions // Reference the same or a different options object-->
-<!--            }-->
-<!--          ];-->
-<!--    -->
-<!--          // Initialize sliders-->
-<!--          initializeSliders(sliders);-->
-<!--        </script>-->
-      </div>
+                <h2 class="title is-3">Snapshot</h2>
+                <p style="font-size: 20px; background-color: #8b00e13b;">
+                    <b>TLDR:</b> We make camera localization more generalizable by addressing the <b>data gap</b> via
+                    3DGS and <b>learning gap</b> via a two-branch joint learning of transformer-based APR with
+                    adversarial loss for reducing syn-to-real gap, achieving SOTA in visual localization.
+                </p>
+                <!--        <br>-->
+                <!--        <div class="sliders-container">-->
+                <!--          <div class="slider-wrapper">-->
+                <!--            <h2>Novel View Synthesis (RGB) </h2>-->
+                <!--            <div id="trans_rgb"></div>-->
+                <!--          </div>-->
+                <!--          <div class="slider-wrapper">-->
+                <!--            <h2>Object Reconstruction (RGB)</h2>-->
+                <!--            <div id="trans_object"></div>-->
+                <!--          </div>-->
+                <!--        </div>-->
+                <!--        <br>-->
+                <!--        &lt;!&ndash; depth and normal sliders &ndash;&gt;-->
+                <!--        <div class="sliders-container">-->
+                <!--          <div class="slider-wrapper">-->
+                <!--            <h2>Novel View Synthesis (Depth) </h2>-->
+                <!--            <div id="trans_depth"></div>-->
+                <!--          </div>-->
+                <!--          <div class="slider-wrapper">-->
+                <!--            <h2>Novel View Synthesis (Normal)</h2>-->
+                <!--            <div id="trans_normal"></div>-->
+                <!--          </div>-->
+                <!--        </div>-->
+
+                <!--        <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>-->
+                <!--        <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">-->
+                <!--        <script src="./static/js/juxtapose-slider.js"></script> &lt;!&ndash; Include your slider.js file &ndash;&gt;-->
+                <!--        <script>-->
+                <!--          // Slider configurations-->
+                <!--          const sliders = [-->
+                <!--            {-->
+                <!--              elementId: '#trans_rgb',-->
+                <!--              images: [-->
+                <!--                {-->
+                <!--                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_RGB_22.png',-->
+                <!--                  label: 'FusionSense',-->
+                <!--                },-->
+                <!--                {-->
+                <!--                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_RGB_22.png',-->
+                <!--                  label: 'DN-Splatter',-->
+                <!--                }-->
+                <!--              ],-->
+                <!--              options: sliderOptions // You can reference the options defined in slider.js if needed-->
+                <!--            },-->
+                <!--            {-->
+                <!--              elementId: '#trans_object',-->
+                <!--              images: [-->
+                <!--                {-->
+                <!--                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_obj_7.jpg',-->
+                <!--                  label: 'FusionSense',-->
+                <!--                },-->
+                <!--                {-->
+                <!--                  src: './static/images/sliders/transparent_bunny/9_view/GO_trans_obj_7.png',-->
+                <!--                  label: 'GaussianObject',-->
+                <!--                }-->
+                <!--              ],-->
+                <!--              options: sliderOptions // Reference the same or a different options object-->
+                <!--            },-->
+                <!--            {-->
+                <!--              elementId: '#trans_depth',-->
+                <!--              images: [-->
+                <!--                {-->
+                <!--                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_depth_0.png',-->
+                <!--                  label: 'FusionSense',-->
+                <!--                },-->
+                <!--                {-->
+                <!--                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_depth_0.png',-->
+                <!--                  label: 'DN-Splatter',-->
+                <!--                }-->
+                <!--              ],-->
+                <!--              options: sliderOptions // You can reference the options defined in slider.js if needed-->
+                <!--            },-->
+                <!--            {-->
+                <!--              elementId: '#trans_normal',-->
+                <!--              images: [-->
+                <!--                {-->
+                <!--                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_normal_22.png',-->
+                <!--                  label: 'FusionSense',-->
+                <!--                },-->
+                <!--                {-->
+                <!--                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_normal_22.png',-->
+                <!--                  label: 'DN-Splatter',-->
+                <!--                }-->
+                <!--              ],-->
+                <!--              options: sliderOptions // Reference the same or a different options object-->
+                <!--            }-->
+                <!--          ];-->
+                <!--    -->
+                <!--          // Initialize sliders-->
+                <!--          initializeSliders(sliders);-->
+                <!--        </script>-->
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <hr>
@@ -1238,38 +1246,43 @@
 <!--  </center>-->
 <!--  </div>-->
 <!--</section>-->
-          
+
 <!-- Acknowledgements   -->
 <section class="section" id="Acknowledgements">
-  <div class="container is-max-desktop content">
-    <h2 class="title">Acknowledgements</h2>
-    Yiming Li and Chen Feng are the corresponding authors. This work was supported in part through the NYU IT High Performance Computing resources, services, and staff expertise.
-  </div>
-</section>
-          
-<!-- Footer -->       
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
+    <div class="container is-max-desktop content">
+        <h2 class="title">Acknowledgements</h2>
+        Yiming Li and Chen Feng are the corresponding authors. This work was supported in part through the NYU IT High
+        Performance Computing resources, services, and staff expertise.
     </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.<br>
-            This AI4CE template is created by <a href="https://irvingf7.github.io/">Irving Fang</a>.<br>
-            This webpage template is originally from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
-            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template.
-            This website is then inspired by the project page of <a href="https://cat3d.github.io/">CAT3D</a>, <a href="https://armlabstanford.github.io/touch-gs">Touch-GS</a> and <a href="https://baegwangbin.github.io/DSINE/">DSINE</a>.
-          </p>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
         </div>
-      </div>
-          </p>
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This website is licensed under a <a rel="license"
+                                                            href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License</a>.<br>
+                        This AI4CE template is created by <a href="https://irvingf7.github.io/">Irving Fang</a>.<br>
+                        This webpage template is originally from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+                        We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and
+                        open-sourcing this template.
+                        This website is then inspired by the project page of <a
+                            href="https://cat3d.github.io/">CAT3D</a>, <a
+                            href="https://armlabstanford.github.io/touch-gs">Touch-GS</a> and <a
+                            href="https://baegwangbin.github.io/DSINE/">DSINE</a>.
+                    </p>
+                </div>
+            </div>
+            </p>
         </div>
-      </div>
-  </div>
+    </div>
+    </div>
 </footer>
 
 </body>
