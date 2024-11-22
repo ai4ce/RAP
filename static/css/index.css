@@ -2,6 +2,24 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+.image-grid {
+  display: none;
+  opacity: 0;
+}
+
+.image-grid.show {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 10px;
+    opacity: 1;
+}
+
+.image-grid img {
+  width: 236px; /* Make images responsive */
+  height: auto;
+  border-radius: 8px; /* Optional: Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow */
+}
 
 #copyButton{
 

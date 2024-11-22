@@ -33,20 +33,6 @@
 
   <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
   <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
-  <style>
-      .image-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-          grid-gap: 10px;
-      }
-
-      .image-grid img {
-          width: 236px; /* Make images responsive */
-          height: auto;
-          border-radius: 8px; /* Optional: Rounded corners */
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow */
-      }
-  </style>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BM5C13X75"></script>
@@ -182,15 +168,15 @@
               </a> -->
               <!-- </span> -->
               <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https:"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
+<!--              <span class="link-block">-->
+<!--                <a href="https:"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="fab fa-youtube"></i>-->
+<!--                  </span>-->
+<!--                  <span>Video</span>-->
+<!--                </a>-->
+<!--              </span>-->
               <!-- Code Link. -->
               <span class="link-block">
                 <a href="https://github.com/ai4ce/RAP"
@@ -232,6 +218,13 @@
           3DGS and <b>learning gap</b> via a two-branch joint learning with adversarial loss, achieving SOTA in visual
           localization.
         </p>
+        <!-- insert video here -->
+        <video muted autoplay loop controls id="videoPlayer">
+          <source src="static/videos/RAP.mp4" type="video/mp4">
+        </video>
+        <video muted autoplay loop controls id="videoPlayer2">
+          <source src="static/videos/RAP_ref_Post_Refinement.mp4" type="video/mp4">
+        </video>
         <!--        <br>-->
         <!--        <div class="sliders-container">-->
         <!--          <div class="slider-wrapper">-->
@@ -464,7 +457,7 @@
         <div style="text-align: center;">
           <!-- Here, the argument of the switchSlider function should be the name of the slider block, just without the "_block" part. -->
           <button class="btn" id="black_9_button" onclick="switchSlider('black_9')">Appearance Variations</button>
-          <!--          <button class="btn" id="black_5_button" onclick="switchSlider('black_5')">Black Bunny (5 Views)</button>-->
+          <button class="btn" id="black_5_button" onclick="switchSlider('black_5')">Appearance-Varying 3DGS</button>
           <!--          <button class="btn" id="reflective_9_button" onclick="switchSlider('reflective_9')">Reflective Bunny (9 Views)</button>-->
           <!--          <button class="btn" id="reflective_5_button" onclick="switchSlider('reflective_5')">Reflective Bunny (5 Views)</button>-->
           <!--          <button class="btn" id="transparent_9_button" onclick="switchSlider('transparent_9')">Transparent Bunny (9 Views)</button>-->
@@ -492,28 +485,9 @@
         </div>
 
         <div class="slider-block" id="black_5_block">
-          <div class="sliders-container">
-            <div class="slider-wrapper">
-              <h2>Novel View Synthesis (RGB) </h2>
-              <div id="black_5_rgb"></div>
-            </div>
-            <div class="slider-wrapper">
-              <h2>Ground Truth Comparison (RGB)</h2>
-              <div id="black_5_gt"></div>
-            </div>
-          </div>
-          <br>
-          <!-- depth and normal sliders -->
-          <div class="sliders-container">
-            <div class="slider-wrapper">
-              <h2>Novel View Synthesis (Depth) </h2>
-              <div id="black_5_depth"></div>
-            </div>
-            <div class="slider-wrapper">
-              <h2>Novel View Synthesis (Normal)</h2>
-              <div id="black_5_normal"></div>
-            </div>
-          </div>
+          <video muted autoplay loop controls id="videoPlayer3">
+          <source src="static/videos/Appearance-Varying%203DGS.mp4" type="video/mp4">
+        </video>
         </div>
 
         <div class="slider-block" id="transparent_9_block">
@@ -1157,7 +1131,7 @@
             function switchSlider(block_id) {
                 // Remove 'active' class from all buttons to reset color
                 document.getElementById('black_9_button').classList.remove('active');
-                // document.getElementById('black_5_button').classList.remove('active');
+                document.getElementById('black_5_button').classList.remove('active');
                 // document.getElementById('reflective_9_button').classList.remove('active');
                 // document.getElementById('reflective_5_button').classList.remove('active');
                 // document.getElementById('transparent_9_button').classList.remove('active');
