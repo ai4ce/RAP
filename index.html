@@ -1187,7 +1187,7 @@
           <script>
             function changeVideo(buttonNumber) {
               const videoPlayer = document.getElementById('videoPlayer');
-              const videoSource = document.getElementById('videoSource');
+              // const videoSource = document.getElementById('videoSource');
         
               // Map button numbers to video file paths
               const videoMap = {
@@ -1198,7 +1198,8 @@
               };
         
               // Update video source
-              videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
+              // videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
+              videoPlayer.src = videoMap[buttonNumber] + '?t=' + new Date().getTime();
               videoPlayer.load(); // Reload video
               videoPlayer.play(); // Play new video
             }
