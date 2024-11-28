@@ -1,7 +1,0 @@
-paths-ignore:
-  - "docs/prettify/**/*.*"
-  - "editor/js/libs/**/*.*"
-  - "examples/jsm/libs/**/*.*"
-  - "examples/jsm/loaders/ifc/**/*.*"
-  - "build/*.*"
-  - "manual/3rdparty/**/*.*"
