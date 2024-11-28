@@ -1184,31 +1184,31 @@
             <source id="videoSource" src="./static/videos/mars11.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
+          <script>
+            function changeVideo(buttonNumber) {
+                const videoPlayer = document.getElementById('videoPlayer');
+                const videoSource = document.getElementById('videoSource');
+          
+                // Map button numbers to video file paths
+                const videoMap = {
+                    1: "./static/videos/mars11.mp4",
+                    2: "./static/videos/mars15.mp4",
+                    3: "./static/videos/mars37.mp4",
+                    4: "./static/videos/mars41.mp4"
+                };
+          
+                // Update video source
+                videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
+                videoPlayer.load(); // Reload video
+                videoPlayer.play(); // Play new video
+            }
+          </script>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<script>
-  function changeVideo(buttonNumber) {
-      const videoPlayer = document.getElementById('videoPlayer');
-      const videoSource = document.getElementById('videoSource');
-
-      // Map button numbers to video file paths
-      const videoMap = {
-          1: "./static/videos/mars11.mp4",
-          2: "./static/videos/mars15.mp4",
-          3: "./static/videos/mars37.mp4",
-          4: "./static/videos/mars41.mp4"
-      };
-
-      // Update video source
-      videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
-      videoPlayer.load(); // Reload video
-      videoPlayer.play(); // Play new video
-  }
-</script>
 
 <!--&lt;!&ndash; BibTeX &ndash;&gt;-->
 <!--<section class="section" id="BibTeX"> -->
