@@ -1173,15 +1173,15 @@
         <h2 class="title is-3 has-text-centered"></h2>
         <div style="text-align: center;">
           <!-- Buttons positioned over the video -->
-          <div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 10;">
+          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
             <button id="video_button1" class="btn" onclick="changeVideo(1)">MARS_11</button>
             <button id="video_button2" class="btn" onclick="changeVideo(2)">MARS_15</button>
             <button id="video_button3" class="btn" onclick="changeVideo(3)">MARS_37</button>
             <button id="video_button4" class="btn" onclick="changeVideo(4)">MARS_41</button>
           </div>
           <!-- Video Player -->
-          <video id="videoPlayer" controls style="width: 100%; max-width: 600px;">
-            <source id="videoSource" src="static/videos/video1.mp4" type="video/mp4">
+          <video id="videoPlayer" controls style="width: 100%; max-width: 800px;">
+            <source id="videoSource" src="./static/videos/mars11.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -1205,13 +1205,13 @@
 
                 // Change video source based on button number
                 if (buttonNumber === 1) {
-                    videoSource.src = "./static/videos/mars_11.mp4";
+                    videoSource.src = "./static/videos/mars11.mp4";
                 } else if (buttonNumber === 2) {
-                    videoSource.src = "./static/videos/mars_15.mp4";
+                    videoSource.src = "./static/videos/mars15.mp4";
                 } else if (buttonNumber === 3) {
-                    videoSource.src = "./static/videos/mars_37.mp4";
+                    videoSource.src = "./static/videos/mars37.mp4";
                 } else if (buttonNumber === 4) {
-                    videoSource.src = "./static/videos/mars_41.mp4";
+                    videoSource.src = "./static/videos/mars41.mp4";
                 }
 
                 // Reload and play the new video
