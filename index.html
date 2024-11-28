@@ -1199,8 +1199,8 @@
         
               // Update video source
               // videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
-              videoPlayer.src = videoMap[buttonNumber] + '?t=' + new Date().getTime();
-              videoPlayer.load(); // Reload video
+              videoPlayer.src = videoMap[buttonNumber];
+              //videoPlayer.load(); // Reload video
               videoPlayer.play(); // Play new video
             }
           </script>
