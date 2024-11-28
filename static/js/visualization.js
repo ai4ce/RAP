@@ -1,4 +1,4 @@
-import * as THREE from './three.module.js';
+import * as THREE from '../models/three/build/three.module.js';
 console.log(THREE);
 // 初始化场景
 const scene = new THREE.Scene();
