@@ -1165,6 +1165,64 @@
   </div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered"></h2>
+        <div style="text-align: center;">
+          <!-- Video Player -->
+          <div id="video-container">
+            <video id="videoPlayer" controls style="width: 100%; max-width: 600px;">
+              <source id="videoSource" src="static/videos/video1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <br>
+          <!-- Buttons to switch videos -->
+          <button id="video_button1" class="btn" onclick="changeVideo(1)">MARS_11</button>
+          <button id="video_button2" class="btn" onclick="changeVideo(2)">MARS_15</button>
+          <button id="video_button3" class="btn" onclick="changeVideo(3)">MARS_37</button>
+          <button id="video_button4" class="btn" onclick="changeVideo(4)">MARS_41</button>
+        </div>
+
+        <script>
+            // Set the first button as active on page load
+            document.getElementById('video_button1').classList.add('active');
+
+            function changeVideo(buttonNumber) {
+                const videoPlayer = document.getElementById('videoPlayer');
+                const videoSource = document.getElementById('videoSource');
+
+                // Remove active class from all buttons
+                document.getElementById('video_button1').classList.remove('active');
+                document.getElementById('video_button2').classList.remove('active');
+                document.getElementById('video_button3').classList.remove('active');
+                document.getElementById('video_button4').classList.remove('active');
+
+                // Add 'active' class to the clicked button
+                document.getElementById('video_button' + buttonNumber).classList.add('active');
+
+                // Change video source based on button number
+                if (buttonNumber === 1) {
+                    videoSource.src = "./static/videos/mars_11.mp4";
+                } else if (buttonNumber === 2) {
+                    videoSource.src = "./static/videos/mars_15.mp4";
+                } else if (buttonNumber === 3) {
+                    videoSource.src = "./static/videos/mars_37.mp4";
+                } else if (buttonNumber === 4) {
+                    videoSource.src = "./static/videos/mars_41.mp4";
+                }
+
+                // Reload and play the new video
+                videoPlayer.load();
+                videoPlayer.play();
+            }
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!--&lt;!&ndash; BibTeX &ndash;&gt;-->
 <!--<section class="section" id="BibTeX"> -->
