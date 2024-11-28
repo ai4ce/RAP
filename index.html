@@ -1186,21 +1186,21 @@
           <!-- Change Function -->
           <script>
             function changeVideo(buttonNumber) {
-                const videoPlayer = document.getElementById('videoPlayer');
-                const videoSource = document.getElementById('videoSource');
-          
-                // Map button numbers to video file paths
-                const videoMap = {
-                    1: "./static/videos/mars11.mp4",
-                    2: "./static/videos/mars15.mp4",
-                    3: "./static/videos/mars37.mp4",
-                    4: "./static/videos/mars41.mp4"
-                };
-          
-                // Update video source
-                videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
-                videoPlayer.load(); // Reload video
-                videoPlayer.play(); // Play new video
+              const videoPlayer = document.getElementById('videoPlayer');
+              const videoSource = document.getElementById('videoSource');
+        
+              // Map button numbers to video file paths
+              const videoMap = {
+                  1: "./static/videos/mars11.mp4",
+                  2: "./static/videos/mars15.mp4",
+                  3: "./static/videos/mars37.mp4",
+                  4: "./static/videos/mars41.mp4"
+              };
+        
+              // Update video source
+              videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
+              videoPlayer.load(); // Reload video
+              videoPlayer.play(); // Play new video
             }
           </script>
         </div>
