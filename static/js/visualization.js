@@ -1,3 +1,5 @@
+import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.module.js';
+
 // 初始化场景
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 600, 0.1, 1000);
