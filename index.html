@@ -1181,7 +1181,7 @@
           </div>
           <!-- Video Player -->
           <video id="videoPlayer" controls style="width: 100%; max-width: 900px;">
-            <source id="videoSource" src="./static/videos/mars11.mp4" type="video/mp4">
+            <source src="./static/videos/mars11.mp4" type="video/mp4">
           </video>
           <!-- Change Function -->
           <script>
@@ -1200,8 +1200,8 @@
               // Update video source
               // videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
               videoPlayer.src = videoMap[buttonNumber];
-              //videoPlayer.load(); // Reload video
-              videoPlayer.play(); // Play new video
+              //videoPlayer.load();
+              videoPlayer.play();
             }
           </script>
         </div>
