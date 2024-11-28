@@ -1,4 +1,4 @@
-import * as THREE from 'three.module.js';
+import * as THREE from './three.module.js';
 console.log(THREE);
 // 初始化场景
 const scene = new THREE.Scene();
@@ -8,7 +8,7 @@ renderer.setSize(window.innerWidth, 600);
 document.getElementById('visualization-container').appendChild(renderer.domElement);
 
 // 添加点云
-import { PLYLoader } from 'PLYLoader.js';
+import { PLYLoader } from './PLYLoader.js';
 const loader = new PLYLoader();
 //const loader = new THREE.PLYLoader();
 loader.load('./static/models/pcd/mars_11/point_cloud.ply', function (geometry) {
