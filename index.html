@@ -1174,55 +1174,41 @@
         <div style="text-align: center;">
           <!-- Buttons positioned over the video -->
           <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
-            <button id="video_button1" class="btn" onclick="changeVideo(1)">MARS_11</button>
-            <button id="video_button2" class="btn" onclick="changeVideo(2)">MARS_15</button>
-            <button id="video_button3" class="btn" onclick="changeVideo(3)">MARS_37</button>
-            <button id="video_button4" class="btn" onclick="changeVideo(4)">MARS_41</button>
+            <button id="video_button1" class="btn" onclick="changeVideo(1)">MARS 11</button>
+            <button id="video_button2" class="btn" onclick="changeVideo(2)">MARS 15</button>
+            <button id="video_button3" class="btn" onclick="changeVideo(3)">MARS 37</button>
+            <button id="video_button4" class="btn" onclick="changeVideo(4)">MARS 41</button>
           </div>
           <!-- Video Player -->
-          <video id="videoPlayer" controls style="width: 100%; max-width: 800px;">
+          <video id="videoPlayer" controls style="width: 100%; max-width: 900px;">
             <source id="videoSource" src="./static/videos/mars11.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
-
-        <script>
-            // Set the first button as active on page load
-            document.getElementById('video_button1').classList.add('active');
-
-            function changeVideo(buttonNumber) {
-                const videoPlayer = document.getElementById('videoPlayer');
-                const videoSource = document.getElementById('videoSource');
-
-                // Remove active class from all buttons
-                document.getElementById('video_button1').classList.remove('active');
-                document.getElementById('video_button2').classList.remove('active');
-                document.getElementById('video_button3').classList.remove('active');
-                document.getElementById('video_button4').classList.remove('active');
-
-                // Add 'active' class to the clicked button
-                document.getElementById('video_button' + buttonNumber).classList.add('active');
-
-                // Change video source based on button number
-                if (buttonNumber === 1) {
-                    videoSource.src = "./static/videos/mars11.mp4";
-                } else if (buttonNumber === 2) {
-                    videoSource.src = "./static/videos/mars15.mp4";
-                } else if (buttonNumber === 3) {
-                    videoSource.src = "./static/videos/mars37.mp4";
-                } else if (buttonNumber === 4) {
-                    videoSource.src = "./static/videos/mars41.mp4";
-                }
-
-                // Reload and play the new video
-                videoPlayer.load();
-                videoPlayer.play();
-            }
-        </script>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  function changeVideo(buttonNumber) {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const videoSource = document.getElementById('videoSource');
+
+      // Map button numbers to video file paths
+      const videoMap = {
+          1: "./static/videos/mars11.mp4",
+          2: "./static/videos/mars15.mp4",
+          3: "./static/videos/mars37.mp4",
+          4: "./static/videos/mars41.mp4"
+      };
+
+      // Update video source
+      videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
+      videoPlayer.load(); // Reload video
+      videoPlayer.play(); // Play new video
+  }
+</script>
 
 <!--&lt;!&ndash; BibTeX &ndash;&gt;-->
 <!--<section class="section" id="BibTeX"> -->
