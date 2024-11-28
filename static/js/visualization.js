@@ -6,7 +6,9 @@ renderer.setSize(window.innerWidth, 600);
 document.getElementById('visualization-container').appendChild(renderer.domElement);
 
 // 添加点云
-const loader = new THREE.PLYLoader();
+import { PLYLoader } from './static/js/PLYLoader.js';
+const loader = new PLYLoader();
+//const loader = new THREE.PLYLoader();
 loader.load('./static/models/pcd/mars_11/point_cloud.ply', function (geometry) {
     const material = new THREE.PointsMaterial({ size: 0.05, color: 0xffffff });
     const pointCloud = new THREE.Points(geometry, material);
