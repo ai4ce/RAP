@@ -169,15 +169,15 @@
               </a> 
               </span>
               <!-- Video Link. -->
-<!--              <span class="link-block">-->
-<!--                <a href="https:"-->
-<!--                   class="external-link button is-normal is-rounded is-dark">-->
-<!--                  <span class="icon">-->
-<!--                      <i class="fab fa-youtube"></i>-->
-<!--                  </span>-->
-<!--                  <span>Video</span>-->
-<!--                </a>-->
-<!--              </span>-->
+              <!--              <span class="link-block">-->
+              <!--                <a href="https:"-->
+              <!--                   class="external-link button is-normal is-rounded is-dark">-->
+              <!--                  <span class="icon">-->
+              <!--                      <i class="fab fa-youtube"></i>-->
+              <!--                  </span>-->
+              <!--                  <span>Video</span>-->
+              <!--                </a>-->
+              <!--              </span>-->
               <!-- Code Link. -->
               <span class="link-block">
                 <a href="https://github.com/ai4ce/RAP"
@@ -322,24 +322,34 @@
       </div>
     </div>
   </div>
-</section> 
+</section>
 <hr>
 
 <!-- How it works -->
 <section class="section">
- <div class="container is-max-desktop">
-   <div class="columns is-centered ">
-     <div class="column is-full-width">
-       <h2 class="title is-3 has-text-centered">Abstract</h2>
-       <div class="content has-text-justified">
-         <p>
-            Visual localization, which estimates a camera's pose within a known scene, is a long-standing challenge in vision and robotics. Recent end-to-end methods that directly regress camera poses from query images have gained attention for fast inference. However, existing methods often struggle to generalize to unseen views.
-            In this work, we aim to unleash the power of data synthesis to promote the generalizability of pose regression. Specifically, we lift real 2D images into 3D Gaussian Splats with varying appearance and deblurring abilities, which are then used as a data engine to synthesize more posed images. To fully leverage the synthetic data, we build a two-branch joint training pipeline, with an adversarial discriminator to bridge the syn-to-real gap. Experiments on established benchmarks show that our method outperforms state-of-the-art end-to-end approaches, reducing translation and rotation errors by 50% and 21.6% on indoor datasets, and 35.56% and 38.7% on outdoor datasets. We also validate the effectiveness of our method in dynamic driving scenarios under varying weather conditions. Notably, as data synthesis scales up, the ability to interpolate and extrapolate training data for localizing unseen views emerges.
-         </p>
-       </div>
-     </div>
-   </div>
- </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Visual localization, which estimates a camera's pose within a known scene, is a long-standing challenge in
+            vision and robotics. Recent end-to-end methods that directly regress camera poses from query images have
+            gained attention for fast inference. However, existing methods often struggle to generalize to unseen views.
+            In this work, we aim to unleash the power of data synthesis to promote the generalizability of pose
+            regression. Specifically, we lift real 2D images into 3D Gaussian Splats with varying appearance and
+            deblurring abilities, which are then used as a data engine to synthesize more posed images. To fully
+            leverage the synthetic data, we build a two-branch joint training pipeline, with an adversarial
+            discriminator to bridge the syn-to-real gap. Experiments on established benchmarks show that our method
+            outperforms state-of-the-art end-to-end approaches, reducing translation and rotation errors by 50% and
+            21.6% on indoor datasets, and 35.56% and 38.7% on outdoor datasets. We also validate the effectiveness of
+            our method in dynamic driving scenarios under varying weather conditions. Notably, as data synthesis scales
+            up, the ability to interpolate and extrapolate training data for localizing unseen views emerges.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!--&lt;!&ndash; Video Comparison &ndash;&gt;-->
@@ -386,7 +396,7 @@
 <!-- Method Overview -->
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered ">
+    <div class="columns is-centered">
       <div class="column is-full-width">
         <!-- <h2 class="title is-3 has-text-centered">Overview</h2> -->
         <div style="text-align: center;">
@@ -404,7 +414,10 @@
           <div class="content has-text-justified">
             <img id="image-content" src="static/images/3DGS.png" alt="3DGS"/>
             <p id="text-content">
-                <b>Overall illustration of appearance-varying 3DGS</b>. The framework models varying appearances using 3D Gaussians enhanced with appearance colors. It initializes 3D Gaussians from SfM data, refines their appearance by learnable sampling and blending weights computed via an encoder and MLP, and renders images by a differentiable rasterizer with edge refinement to minimize the rendering loss.
+              <b>Overall illustration of appearance-varying 3DGS</b>. The framework models varying appearances using 3D
+              Gaussians enhanced with appearance colors. It initializes 3D Gaussians from SfM data, refines their
+              appearance by learnable sampling and blending weights computed via an encoder and MLP, and renders images
+              by a differentiable rasterizer with edge refinement to minimize the rendering loss.
             </p>
 
           </div>
@@ -451,29 +464,30 @@
 <!--<hr>-->
 
 <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3 has-text-centered">Post-refinement</h2>
-          <div class="content has-text-justified">
-            <p>
-                At test time, RAP's initial predicted pose will be used to render an RGB-D image via 3DGS. Together with 
-                <a href="https://github.com/naver/mast3r?tab=readme-ov-file" target="_blank" style="color: #007bff; text-decoration: none;">
-                    MASt3R
-                </a>, we can obtain 2D-3D correspondences to perform RANSAC-PnP, resulting in a refined pose.
-            </p>
-          </div>
-  
-          <!-- 添加视频居中部分 -->
-          <div class="has-text-centered" style="margin-top: 20px;">
-            <video muted autoplay loop controls style="max-width: 100%; height: auto;">
-              <source src="static/videos/post-refinement.mp4" type="video/mp4">
-            </video>
-          </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Post-refinement</h2>
+        <div class="content has-text-justified">
+          <p>
+            At test time, RAP's initial predicted pose will be used to render an RGB-D image via 3DGS. Together with
+            <a href="https://github.com/naver/mast3r?tab=readme-ov-file" target="_blank"
+               style="color: #007bff; text-decoration: none;">
+              MASt3R
+            </a>, we can obtain 2D-3D correspondences to perform RANSAC-PnP, resulting in a refined pose.
+          </p>
+        </div>
+
+        <!-- 添加视频居中部分 -->
+        <div class="has-text-centered" style="margin-top: 20px;">
+          <video muted autoplay loop controls>
+            <source src="static/videos/post-refinement.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
 <!-- More Visualization -->
@@ -482,11 +496,11 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
 
-        <h2 class="title is-3">More Visualizations of Appearance-varying 3DGS</h2>
+        <h2 class="title is-3">More Visualizations of Appearance-Varying 3DGS</h2>
         <div style="text-align: center;">
           <!-- Here, the argument of the switchSlider function should be the name of the slider block, just without the "_block" part. -->
-          <button class="btn" id="black_9_button" onclick="switchSlider('black_9')">Appearance Variations</button>
-          <button class="btn" id="black_5_button" onclick="switchSlider('black_5')">Appearance-Varying 3DGS</button>
+          <button class="btn" id="black_5_button" onclick="switchSlider('black_5')">Video</button>
+          <button class="btn" id="black_9_button" onclick="switchSlider('black_9')">Cambridge</button>
           <!--          <button class="btn" id="reflective_9_button" onclick="switchSlider('reflective_9')">Reflective Bunny (9 Views)</button>-->
           <!--          <button class="btn" id="reflective_5_button" onclick="switchSlider('reflective_5')">Reflective Bunny (5 Views)</button>-->
           <!--          <button class="btn" id="transparent_9_button" onclick="switchSlider('transparent_9')">Transparent Bunny (9 Views)</button>-->
@@ -515,8 +529,8 @@
 
         <div class="slider-block" id="black_5_block">
           <video muted autoplay loop controls id="videoPlayer3">
-          <source src="static/videos/Appearance-Varying%203DGS.mp4" type="video/mp4">
-        </video>
+            <source src="static/videos/Appearance-Varying%203DGS.mp4" type="video/mp4">
+          </video>
         </div>
 
         <div class="slider-block" id="transparent_9_block">
@@ -1201,22 +1215,16 @@
         <h2 class="title is-3 has-text-centered">RAP Results on MARS</h2>
         <div style="text-align: center;">
           <!-- Buttons positioned over the video -->
-          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
-            <button id="video_button1" class="btn" onclick="changeVideo(1)">0011</button>
-            <button id="video_button2" class="btn" onclick="changeVideo(2)">0015</button>
-            <button id="video_button3" class="btn" onclick="changeVideo(3)">0037</button>
-            <button id="video_button4" class="btn" onclick="changeVideo(4)">0041</button>
-          </div>
+          <button id="video_button1" class="btn" onclick="changeVideo(1)">0011</button>
+          <button id="video_button2" class="btn" onclick="changeVideo(2)">0015</button>
+          <button id="video_button3" class="btn" onclick="changeVideo(3)">0037</button>
+          <button id="video_button4" class="btn" onclick="changeVideo(4)">0041</button>
           <!-- Video Player -->
-          <video id="videoPlayer4" controls style="width: 100%; max-width: 900px;">
+          <video muted autoplay loop controls id="videoPlayer4">
             <source src="./static/videos/mars11.mp4" type="video/mp4">
           </video>
           <!-- Change Function -->
           <script>
-            function changeVideo(buttonNumber) {
-              const videoPlayer = document.getElementById('videoPlayer4');
-              // const videoSource = document.getElementById('videoSource');
-        
               // Map button numbers to video file paths
               const videoMap = {
                   1: "./static/videos/mars11.mp4",
@@ -1224,13 +1232,28 @@
                   3: "./static/videos/mars37.mp4",
                   4: "./static/videos/mars41.mp4"
               };
-        
-              // Update video source
-              // videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
-              videoPlayer.src = videoMap[buttonNumber];
-              //videoPlayer.load();
-              videoPlayer.play();
-            }
+
+              document.addEventListener('DOMContentLoaded', () => {
+                  changeVideo(1);
+              });
+
+              function changeVideo(buttonNumber) {
+                  const videoPlayer = document.getElementById('videoPlayer4');
+                  // const videoSource = document.getElementById('videoSource');
+
+                  // Update video source
+                  // videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
+                  videoPlayer.src = videoMap[buttonNumber];
+                  //videoPlayer.load();
+                  videoPlayer.play();
+
+                  // Add 'active' class to the clicked button so that it will have a different color when its content is present
+                  document.getElementById('video_button1').classList.remove('active');
+                  document.getElementById('video_button2').classList.remove('active');
+                  document.getElementById('video_button3').classList.remove('active');
+                  document.getElementById('video_button4').classList.remove('active');
+                  document.getElementById('video_button' + buttonNumber).classList.add('active');
+              }
           </script>
         </div>
       </div>
@@ -1265,7 +1288,9 @@
 <section class="section" id="Acknowledgements">
   <div class="container is-max-desktop content">
     <h2 class="title">Acknowledgements</h2>
-    Yiming Li and Chen Feng are the corresponding authors. This work was supported in part through NSF grants 2238968, 2121391, and 2024882, and the NYU IT High Performance Computing resources, services, and staff expertise. Yiming Li is supported by NVIDIA Graduate Fellowship.
+    Yiming Li and Chen Feng are the corresponding authors. This work was supported in part through NSF grants 2238968,
+    2121391, and 2024882, and the NYU IT High Performance Computing resources, services, and staff expertise. Yiming Li
+    is supported by NVIDIA Graduate Fellowship.
   </div>
 </section>
 
