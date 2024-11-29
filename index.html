@@ -208,7 +208,7 @@
 </section>
 
 <!-- Teaser. -->
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width teaser no-margin">
@@ -220,12 +220,14 @@
           localization.
         </p>
         <!-- insert video here -->
-        <video muted autoplay loop controls id="videoPlayer">
+        <!-- <video muted autoplay loop controls id="videoPlayer">
           <source src="static/videos/RAP.mp4" type="video/mp4">
         </video>
         <video muted autoplay loop controls id="videoPlayer2">
           <source src="static/videos/RAP_ref_Post_Refinement.mp4" type="video/mp4">
-        </video>
+        </video> -->
+
+
         <!--        <br>-->
         <!--        <div class="sliders-container">-->
         <!--          <div class="slider-wrapper">-->
@@ -317,10 +319,76 @@
         <!--          // Initialize sliders-->
         <!--          initializeSliders(sliders);-->
         <!--        </script>-->
-      </div>
+      <!-- </div>
     </div>
   </div>
-</section>
+</section> --> -->
+
+
+<section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width teaser no-margin">
+  
+          <h2 class="title is-3">Snapshot</h2>
+          <p style="font-size: 20px; background-color: #8b00e13b;">
+            <b>TLDR:</b> We make camera localization more generalizable by addressing the <b>data gap</b> via
+            3DGS and <b>learning gap</b> via a two-branch joint learning with adversarial loss, achieving SOTA in visual
+            localization.
+          </p>
+          
+          <!-- Video container -->
+          <div id="videoContainer" style="position: relative; max-width: 640px; margin: 0 auto;">
+            <video muted autoplay loop controls id="teaser_1">
+              <source src="static/videos/teaser_church.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls id="teaser_2" style="display: none;">
+              <source src="static/videos/teaser_college.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls id="teaser_2" style="display: none;">
+                <source src="static/videos/teaser_hopital.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls id="teaser_2" style="display: none;">
+                <source src="static/videos/teaser_shop.mp4" type="video/mp4">
+            </video>
+            <!-- Left button -->
+            <button id="prevButton" style="position: absolute; top: 50%; left: -40px; transform: translateY(-50%); background-color: #8b00e1; color: white; border: none; padding: 10px; cursor: pointer;">&#8249;</button>
+            <!-- Right button -->
+            <button id="nextButton" style="position: absolute; top: 50%; right: -40px; transform: translateY(-50%); background-color: #8b00e1; color: white; border: none; padding: 10px; cursor: pointer;">&#8250;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    const videos = [document.getElementById('teaser_1'), document.getElementById('teaser_2'), document.getElementById('teaser_3'), document.getElementById('teaser_4')];
+    let currentVideoIndex = 0;
+  
+    document.getElementById('prevButton').addEventListener('click', () => {
+      videos[currentVideoIndex].style.display = 'none';
+      currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+      videos[currentVideoIndex].style.display = 'block';
+    });
+  
+    document.getElementById('nextButton').addEventListener('click', () => {
+      videos[currentVideoIndex].style.display = 'none';
+      currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+      videos[currentVideoIndex].style.display = 'block';
+    });
+  </script>
+  
+
+
+
+
+
+
+
+
+
+
+
 
 <hr>
 
