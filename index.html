@@ -425,9 +425,7 @@
                 document.getElementById('method_button' + buttonNumber).classList.add('active');
 
                 if (buttonNumber === 1) {
-                    textElement.innerHTML = `
-                    <b>Overall illustration of appearance-varying 3DGS</b>. The framework models varying appearances using 3D Gaussians enhanced with appearance colors. It initializes 3D Gaussians from SfM data, refines their appearance by learnable sampling and blending weights computed via an encoder and MLP, and renders images by a differentiable rasterizer with edge refinement to minimize the rendering loss.`
-                    ;
+                    textElement.innerHTML = "<b>Overall illustration of appearance-varying 3DGS</b>. The framework models varying appearances using 3D Gaussians enhanced with appearance colors. It initializes 3D Gaussians from SfM data, refines their appearance by learnable sampling and blending weights computed via an encoder and MLP, and renders images by a differentiable rasterizer with edge refinement to minimize the rendering loss.";
                     imageElement.classList.remove('hidden');
                     imageElement.src = "static/images/3DGS.png";
                     imageElement.alt = "3DGS";
