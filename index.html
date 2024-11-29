@@ -330,7 +330,7 @@
  <div class="container is-max-desktop">
    <div class="columns is-centered ">
      <div class="column is-full-width">
-       <h2 class="title is-3 has-text-centered">How It Works</h2>
+       <h2 class="title is-3 has-text-centered">Abstract</h2>
        <div class="content has-text-justified">
          <p>
             Visual localization, which estimates a camera's pose within a known scene, is a long-standing challenge in vision and robotics. Recent end-to-end methods that directly regress camera poses from query images have gained attention for fast inference. However, existing methods often struggle to generalize to unseen views.
@@ -425,9 +425,11 @@
                 document.getElementById('method_button' + buttonNumber).classList.add('active');
 
                 if (buttonNumber === 1) {
-                    textElement.innerHTML = "Under Construction";
+                    textElement.innerHTML = `
+                    <b>Overall illustration of appearance-varying 3DGS</b>. The framework models varying appearances using 3D Gaussians enhanced with appearance colors. It initializes 3D Gaussians from SfM data, refines their appearance by learnable sampling and blending weights computed via an encoder and MLP, and renders images by a differentiable rasterizer with edge refinement to minimize the rendering loss.";
+                    `
                     imageElement.classList.remove('hidden');
-                    imageElement.src = "static/images/3dgs.png";
+                    imageElement.src = "static/images/supp_3dgs.png";
                     imageElement.alt = "3DGS";
                 } else if (buttonNumber === 2) {
                     textElement.innerHTML = "Under Construction";
