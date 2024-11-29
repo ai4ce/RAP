@@ -223,9 +223,9 @@
         <video muted autoplay loop controls id="videoPlayer">
           <source src="static/videos/RAP.mp4" type="video/mp4">
         </video>
-        <video muted autoplay loop controls id="videoPlayer2">
+        <!-- <video muted autoplay loop controls id="videoPlayer2">
           <source src="static/videos/RAP_ref_Post_Refinement.mp4" type="video/mp4">
-        </video> 
+        </video>  -->
 
 
         <!--        <br>-->
@@ -449,6 +449,30 @@
 </section>
 
 <!--<hr>-->
+
+<section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3 has-text-centered">Post-refinement</h2>
+          <div class="content has-text-justified">
+            <p>
+              Visual localization, which estimates a camera's pose within a known scene, is a long-standing challenge in vision and robotics. Recent end-to-end methods that directly regress camera poses from query images have gained attention for fast inference. However, existing methods often struggle to generalize to unseen views.
+              In this work, we aim to unleash the power of data synthesis to promote the generalizability of pose regression. Specifically, we lift real 2D images into 3D Gaussian Splats with varying appearance and deblurring abilities, which are then used as a data engine to synthesize more posed images. To fully leverage the synthetic data, we build a two-branch joint training pipeline, with an adversarial discriminator to bridge the syn-to-real gap. Experiments on established benchmarks show that our method outperforms state-of-the-art end-to-end approaches, reducing translation and rotation errors by 50% and 21.6% on indoor datasets, and 35.56% and 38.7% on outdoor datasets. We also validate the effectiveness of our method in dynamic driving scenarios under varying weather conditions. Notably, as data synthesis scales up, our method exhibits a growing ability to interpolate and extrapolate training data for localizing unseen views.
+            </p>
+          </div>
+  
+          <!-- 添加视频居中部分 -->
+          <div class="has-text-centered" style="margin-top: 20px;">
+            <video muted autoplay loop controls style="max-width: 100%; height: auto;">
+              <source src="static/videos/post-refinement.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
 <!-- More Visualization -->
 <section class="section">
