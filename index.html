@@ -326,7 +326,7 @@
 
 
 <section class="hero teaser">
-    <div class="container is-max-desktop">
+    <div class="container">
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-width teaser no-margin">
   
@@ -336,52 +336,127 @@
             3DGS and <b>learning gap</b> via a two-branch joint learning with adversarial loss, achieving SOTA in visual
             localization.
           </p>
-          
+  
           <!-- Video container -->
-          <div id="videoContainer" style="position: relative; max-width: 640px; margin: 0 auto;">
-            <video muted autoplay loop controls id="teaser_1">
+          <div id="videoContainer" style="position: relative; max-width: 800px; margin: 20px auto;">
+            <video class="teaser-video" muted autoplay loop controls id="teaser_1">
               <source src="static/videos/teaser_church.mp4" type="video/mp4">
             </video>
-            <video muted autoplay loop controls id="teaser_2" style="display: none;">
+            <video class="teaser-video" muted autoplay loop controls id="teaser_2" style="display: none;">
               <source src="static/videos/teaser_college.mp4" type="video/mp4">
             </video>
-            <video muted autoplay loop controls id="teaser_2" style="display: none;">
-                <source src="static/videos/teaser_hopital.mp4" type="video/mp4">
+            <video class="teaser-video" muted autoplay loop controls id="teaser_3" style="display: none;">
+              <source src="static/videos/teaser_hopital.mp4" type="video/mp4">
             </video>
-            <video muted autoplay loop controls id="teaser_2" style="display: none;">
-                <source src="static/videos/teaser_shop.mp4" type="video/mp4">
+            <video class="teaser-video" muted autoplay loop controls id="teaser_4" style="display: none;">
+              <source src="static/videos/teaser_shop.mp4" type="video/mp4">
             </video>
+  
             <!-- Left button -->
-            <button id="prevButton" style="position: absolute; top: 50%; left: -40px; transform: translateY(-50%); background-color: #8b00e1; color: white; border: none; padding: 10px; cursor: pointer;">&#8249;</button>
+            <button id="prevButton" class="nav-button left">
+              &#8249;
+            </button>
             <!-- Right button -->
-            <button id="nextButton" style="position: absolute; top: 50%; right: -40px; transform: translateY(-50%); background-color: #8b00e1; color: white; border: none; padding: 10px; cursor: pointer;">&#8250;</button>
+            <button id="nextButton" class="nav-button right">
+              &#8250;
+            </button>
           </div>
+  
         </div>
       </div>
     </div>
   </section>
   
+  <style>
+    /* Video Container */
+    #videoContainer {
+      position: relative;
+      max-width: 100%;
+      height: 500px; /* Adjust the height as needed */
+      overflow: hidden;
+    }
+  
+    /* Video Styling */
+    .teaser-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures video covers the container */
+      transition: opacity 0.5s ease-in-out;
+    }
+  
+    /* Navigation Buttons */
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+      transition: background-color 0.3s ease;
+    }
+  
+    .nav-button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  
+    .nav-button.left {
+      left: 20px;
+    }
+  
+    .nav-button.right {
+      right: 20px;
+    }
+  
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      #videoContainer {
+        height: 300px;
+      }
+      .nav-button {
+        font-size: 1.5rem;
+        padding: 5px 15px;
+      }
+    }
+  </style>
+  
   <script>
-    const videos = [document.getElementById('teaser_1'), document.getElementById('teaser_2'), document.getElementById('teaser_3'), document.getElementById('teaser_4')];
+    // JavaScript for Switching Videos
+    const videos = [
+      document.getElementById("teaser_1"),
+      document.getElementById("teaser_2"),
+      document.getElementById("teaser_3"),
+      document.getElementById("teaser_4")
+    ];
     let currentVideoIndex = 0;
   
-    document.getElementById('prevButton').addEventListener('click', () => {
-      videos[currentVideoIndex].style.display = 'none';
+    function updateVideos(index) {
+      videos.forEach((video, i) => {
+        if (i === index) {
+          video.style.display = "block";
+        } else {
+          video.style.display = "none";
+        }
+      });
+    }
+  
+    document.getElementById("prevButton").addEventListener("click", () => {
       currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
-      videos[currentVideoIndex].style.display = 'block';
+      updateVideos(currentVideoIndex);
     });
   
-    document.getElementById('nextButton').addEventListener('click', () => {
-      videos[currentVideoIndex].style.display = 'none';
+    document.getElementById("nextButton").addEventListener("click", () => {
       currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-      videos[currentVideoIndex].style.display = 'block';
+      updateVideos(currentVideoIndex);
     });
-  </script>
   
-
-
-
-
+    // Initialize the first video
+    updateVideos(currentVideoIndex);
+  </script>
 
 
 
