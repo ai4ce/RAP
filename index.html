@@ -85,7 +85,7 @@
             <img src="img/logo/logo-cvpr.png" alt="CVPR 2024" style="height: 2.0rem;">
         </a> -->
 
-        <div class="navbar-item has-dropdown is-hoverable">
+        <!-- <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             More Research
           </a>
@@ -97,7 +97,7 @@
               EgoPAT3Dv2
             </a>
           </div>
-        </div>
+        </div> -->
 
       </div>
 
@@ -122,19 +122,19 @@
           </div> -->
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://Louis-Leee.github.io">Sihang Li*</a>,</span>
+              <a href="https://Louis-Leee.github.io" target="_blank">Sihang Li*</a>,</span>
             <span class="author-block">
-              <a href="https://kevintsq.github.io">Siqi Tan*</a>,</span>
+              <a href="https://kevintsq.github.io" target="_blank">Siqi Tan*</a>,</span>
             <span class="author-block">
               <a href="https://karlcbw.github.io">Bowen Chang</a>,</span>
             <span class="author-block">
-              <a href="https://jingz6676.github.io">Jing Zhang</a>,
+              <a href="https://jingz6676.github.io" target="_blank">Jing Zhang</a>,
             </span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=YeG8ZM0AAAAJ">Chen Feng</a>,
+              <a href="https://scholar.google.com/citations?user=YeG8ZM0AAAAJ" target="_blank">Chen Feng</a>,
             </span>
             <span class="author-block">
-              <a href="https://yimingli-page.github.io/">Yiming Li</a>
+              <a href="https://yimingli-page.github.io/" target="_blank">Yiming Li</a>
             </span>
           </div>
 
@@ -150,42 +150,42 @@
             <div class="publication-links">
               <span class="link-block">
                  <!-- add here later. -->
-                <a href="static/RAP_Paper.pdf"
+                <a href="static/RAP_Paper.pdf" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="ai ai-arxiv"></i>
+                      <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>arXiv</span>
+                  <span>Paper</span>
                 </a>
               </span>
-              <!-- <span class="link-block"> -->
+              <span class="link-block">
               <!-- add here later. -->
-              <!-- <a href=""
+              <a href="static/RAP_Paper.pdf" target="_blank"
                  class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
-                    <i class="fas fa-camera"></i>
+                    <i class="ai ai-arxiv"></i>
                 </span>
-                <span>Appendix</span>
-              </a> -->
-              <!-- </span> -->
+                <span>arXiv</span>
+              </a> 
+              </span>
               <!-- Video Link. -->
-<!--              <span class="link-block">-->
-<!--                <a href="https:"-->
-<!--                   class="external-link button is-normal is-rounded is-dark">-->
-<!--                  <span class="icon">-->
-<!--                      <i class="fab fa-youtube"></i>-->
-<!--                  </span>-->
-<!--                  <span>Video</span>-->
-<!--                </a>-->
-<!--              </span>-->
+              <!--              <span class="link-block">-->
+              <!--                <a href="https:"-->
+              <!--                   class="external-link button is-normal is-rounded is-dark">-->
+              <!--                  <span class="icon">-->
+              <!--                      <i class="fab fa-youtube"></i>-->
+              <!--                  </span>-->
+              <!--                  <span>Video</span>-->
+              <!--                </a>-->
+              <!--              </span>-->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/ai4ce/RAP"
+                <a href="https://github.com/ai4ce/RAP" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code (Coming Soon)</span>
                   </a>
               </span>
               <!-- Dataset Link. -->
@@ -195,7 +195,7 @@
                   <span class="icon">
                       <i class="far fa-images"></i>
                   </span>
-                  <span>Data</span>
+                  <span>Data (Coming Soon)</span>
                 </a>
               </span>
             </div>
@@ -223,9 +223,11 @@
         <video muted autoplay loop controls id="videoPlayer">
           <source src="static/videos/RAP.mp4" type="video/mp4">
         </video>
-        <video muted autoplay loop controls id="videoPlayer2">
+        <!-- <video muted autoplay loop controls id="videoPlayer2">
           <source src="static/videos/RAP_ref_Post_Refinement.mp4" type="video/mp4">
-        </video>
+        </video>  -->
+
+
         <!--        <br>-->
         <!--        <div class="sliders-container">-->
         <!--          <div class="slider-wrapper">-->
@@ -321,24 +323,34 @@
     </div>
   </div>
 </section>
-
 <hr>
 
 <!-- How it works -->
-<!--<section class="section">-->
-<!--  <div class="container is-max-desktop">-->
-<!--    <div class="columns is-centered ">-->
-<!--      <div class="column is-full-width">-->
-<!--        <h2 class="title is-3 has-text-centered">How It Works</h2>-->
-<!--        <div class="content has-text-justified">-->
-<!--          <p>-->
-<!--          Under Construction-->
-<!--          </p>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Visual localization, which estimates a camera's pose within a known scene, is a long-standing challenge in
+            vision and robotics. Recent end-to-end methods that directly regress camera poses from query images have
+            gained attention for fast inference. However, existing methods often struggle to generalize to unseen views.
+            In this work, we aim to unleash the power of data synthesis to promote the generalizability of pose
+            regression. Specifically, we lift real 2D images into 3D Gaussian Splats with varying appearance and
+            deblurring abilities, which are then used as a data engine to synthesize more posed images. To fully
+            leverage the synthetic data, we build a two-branch joint training pipeline, with an adversarial
+            discriminator to bridge the syn-to-real gap. Experiments on established benchmarks show that our method
+            outperforms state-of-the-art end-to-end approaches, reducing translation and rotation errors by 50% and
+            21.6% on indoor datasets, and 35.56% and 38.7% on outdoor datasets. We also validate the effectiveness of
+            our method in dynamic driving scenarios under varying weather conditions. Notably, as data synthesis scales
+            up, the ability to interpolate and extrapolate training data for localizing unseen views emerges.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!--&lt;!&ndash; Video Comparison &ndash;&gt;-->
 <!--<section class="section">-->
@@ -384,9 +396,9 @@
 <!-- Method Overview -->
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered ">
+    <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">Overview</h2>
+        <!-- <h2 class="title is-3 has-text-centered">Overview</h2> -->
         <div style="text-align: center;">
           <!-- This image is always visible  -->
           <div id="overview">
@@ -395,14 +407,17 @@
           <br>
           <!-- Here, the changeContent's parameter is just the number of the button. Has no intrinsic association with the content -->
           <button id="method_button1" class="btn" onclick="changeContent(1)">1. Preprocessing Training Dataset</button>
-          <button id="method_button2" class="btn" onclick="changeContent(2)">2. Robust Training Paradigm</button>
+          <button id="method_button2" class="btn" onclick="changeContent(2)">2. Two-branch Joint Training</button>
           <!--          <button id="method_button3" class="btn" onclick="changeContent(3)">3. Local Geometric Optimization</button>-->
           <br>
           <br>
           <div class="content has-text-justified">
-            <img id="image-content" src="static/images/3dgs.png" alt="3DGS"/>
+            <img id="image-content" src="static/images/3DGS.png" alt="3DGS"/>
             <p id="text-content">
-              Under Construction
+              <b>Overall illustration of appearance-varying 3DGS</b>. The framework models varying appearances using 3D
+              Gaussians enhanced with appearance colors. It initializes 3D Gaussians from SfM data, refines their
+              appearance by learnable sampling and blending weights computed via an encoder and MLP, and renders images
+              by a differentiable rasterizer with edge refinement to minimize the rendering loss.
             </p>
 
           </div>
@@ -423,12 +438,12 @@
                 document.getElementById('method_button' + buttonNumber).classList.add('active');
 
                 if (buttonNumber === 1) {
-                    textElement.innerHTML = "Under Construction";
+                    textElement.innerHTML = "<b>Overall illustration of appearance-varying 3DGS</b>. The framework models varying appearances using 3D Gaussians enhanced with appearance colors. It initializes 3D Gaussians from SfM data, refines their appearance by learnable sampling and blending weights computed via an encoder and MLP, and renders images by a differentiable rasterizer with edge refinement to minimize the rendering loss.";
                     imageElement.classList.remove('hidden');
-                    imageElement.src = "static/images/3dgs.png";
+                    imageElement.src = "static/images/3DGS.png";
                     imageElement.alt = "3DGS";
                 } else if (buttonNumber === 2) {
-                    textElement.innerHTML = "Under Construction";
+                    textElement.innerHTML = "<b>Pipeline of the Two-branch Joint Training.</b> We lift multiple RGB video sequences into 3D Gaussian Splats, which serve as our data engine. The branch-1 inputs paired real and synthetic images to regress poses, with a discriminator to bridge the syn-to-real gap. The branch-2 generates views with novel poses and appearances, which are fed into the same pose regressor as additional supervision.";
                     imageElement.classList.remove('hidden');
                     imageElement.src = "static/images/main.png";
                     imageElement.alt = "Main";
@@ -448,17 +463,43 @@
 
 <!--<hr>-->
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Post-refinement</h2>
+        <div class="content has-text-justified">
+          <p>
+            At test time, RAP's initial predicted pose will be used to render an RGB-D image via 3DGS. Together with
+            <a href="https://github.com/naver/mast3r?tab=readme-ov-file" target="_blank" style="color: #007bff">
+              MASt3R
+            </a>, we can obtain 2D-3D correspondences to perform RANSAC-PnP, resulting in a refined pose.
+          </p>
+        </div>
+
+        <!-- 添加视频居中部分 -->
+        <div class="has-text-centered" style="margin-top: 20px;">
+          <video muted autoplay loop controls>
+            <source src="static/videos/post-refinement.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- More Visualization -->
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
 
-        <h2 class="title is-3">More Visualizations (Under Construction)</h2>
+        <h2 class="title is-3">More Visualizations of Appearance-Varying 3DGS</h2>
         <div style="text-align: center;">
           <!-- Here, the argument of the switchSlider function should be the name of the slider block, just without the "_block" part. -->
-          <button class="btn" id="black_9_button" onclick="switchSlider('black_9')">Appearance Variations</button>
-          <button class="btn" id="black_5_button" onclick="switchSlider('black_5')">Appearance-Varying 3DGS</button>
+          <button class="btn" id="black_5_button" onclick="switchSlider('black_5')">Video</button>
+          <button class="btn" id="black_9_button" onclick="switchSlider('black_9')">Cambridge</button>
           <!--          <button class="btn" id="reflective_9_button" onclick="switchSlider('reflective_9')">Reflective Bunny (9 Views)</button>-->
           <!--          <button class="btn" id="reflective_5_button" onclick="switchSlider('reflective_5')">Reflective Bunny (5 Views)</button>-->
           <!--          <button class="btn" id="transparent_9_button" onclick="switchSlider('transparent_9')">Transparent Bunny (9 Views)</button>-->
@@ -487,8 +528,8 @@
 
         <div class="slider-block" id="black_5_block">
           <video muted autoplay loop controls id="videoPlayer3">
-          <source src="static/videos/Appearance-Varying%203DGS.mp4" type="video/mp4">
-        </video>
+            <source src="static/videos/Appearance-Varying%203DGS.mp4" type="video/mp4">
+          </video>
         </div>
 
         <div class="slider-block" id="transparent_9_block">
@@ -1170,25 +1211,19 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered"></h2>
+        <h2 class="title is-3 has-text-centered">RAP Results on MARS</h2>
         <div style="text-align: center;">
           <!-- Buttons positioned over the video -->
-          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
-            <button id="video_button1" class="btn" onclick="changeVideo(1)">MARS 11</button>
-            <button id="video_button2" class="btn" onclick="changeVideo(2)">MARS 15</button>
-            <button id="video_button3" class="btn" onclick="changeVideo(3)">MARS 37</button>
-            <button id="video_button4" class="btn" onclick="changeVideo(4)">MARS 41</button>
-          </div>
+          <button id="video_button1" class="btn" onclick="changeVideo(1)">0011</button>
+          <button id="video_button2" class="btn" onclick="changeVideo(2)">0015</button>
+          <button id="video_button3" class="btn" onclick="changeVideo(3)">0037</button>
+          <button id="video_button4" class="btn" onclick="changeVideo(4)">0041</button>
           <!-- Video Player -->
-          <video id="videoPlayer" controls style="width: 100%; max-width: 900px;">
+          <video muted autoplay loop controls id="videoPlayer4">
             <source src="./static/videos/mars11.mp4" type="video/mp4">
           </video>
           <!-- Change Function -->
           <script>
-            function changeVideo(buttonNumber) {
-              const videoPlayer = document.getElementById('videoPlayer');
-              // const videoSource = document.getElementById('videoSource');
-        
               // Map button numbers to video file paths
               const videoMap = {
                   1: "./static/videos/mars11.mp4",
@@ -1196,13 +1231,28 @@
                   3: "./static/videos/mars37.mp4",
                   4: "./static/videos/mars41.mp4"
               };
-        
-              // Update video source
-              // videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
-              videoPlayer.src = videoMap[buttonNumber];
-              //videoPlayer.load();
-              videoPlayer.play();
-            }
+
+              document.addEventListener('DOMContentLoaded', () => {
+                  changeVideo(1);
+              });
+
+              function changeVideo(buttonNumber) {
+                  const videoPlayer = document.getElementById('videoPlayer4');
+                  // const videoSource = document.getElementById('videoSource');
+
+                  // Update video source
+                  // videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
+                  videoPlayer.src = videoMap[buttonNumber];
+                  //videoPlayer.load();
+                  videoPlayer.play();
+
+                  // Add 'active' class to the clicked button so that it will have a different color when its content is present
+                  document.getElementById('video_button1').classList.remove('active');
+                  document.getElementById('video_button2').classList.remove('active');
+                  document.getElementById('video_button3').classList.remove('active');
+                  document.getElementById('video_button4').classList.remove('active');
+                  document.getElementById('video_button' + buttonNumber).classList.add('active');
+              }
           </script>
         </div>
       </div>
@@ -1211,33 +1261,35 @@
 </section>
 
 
-<!--&lt;!&ndash; BibTeX &ndash;&gt;-->
-<!--<section class="section" id="BibTeX"> -->
-<!--  <div class="container is-max-desktop content">-->
-<!--    <center>-->
-<!--    <h2 id="bibtexTitle" class="title">BibTeX</h2>-->
-<!--    <button id="copyButton" onclick="copyToClipboard()">-->
-<!--      <i class="fas fa-copy"></i>-->
-<!--    </button>-->
-<!--    <br>-->
-<!--    <pre style="text-align: left";><code id="bibtexInfo">@misc{fang2024fusionsense,-->
-<!--  title={FusionSense: Bridging Common Sense, Vision, and Touch for Robust Sparse-View Reconstruction}, -->
-<!--  author={Irving Fang and Kairui Shi and Xujin He and Siqi Tan and Yifan Wang and Hanwen Zhao and Hung-Jui Huang and Wenzhen Yuan and Chen Feng and Jing Zhang},-->
-<!--  year={2024},-->
-<!--  eprint={2410.08282},-->
-<!--  archivePrefix={arXiv},-->
-<!--  primaryClass={cs.RO},-->
-<!--  url={https://arxiv.org/abs/2410.08282}, -->
-<!--}</code></pre>-->
-<!--  </center>-->
-<!--  </div>-->
-<!--</section>-->
+<!-- &lt;!&ndash; BibTeX &ndash;&gt; -->
+<!-- <section class="section" id="BibTeX">
+ <div class="container is-max-desktop content">
+   <center>
+   <h2 id="bibtexTitle" class="title">BibTeX</h2>
+   <button id="copyButton" onclick="copyToClipboard()">
+     <i class="fas fa-copy"></i>
+   </button>
+   <br>
+   <pre style="text-align: left";><code id="bibtexInfo">@misc{Li2024unleashing,
+ title={Unleashing the Power of Data Synthesis},
+ author={Sihang Li and Siqi Tan and Bowen Chang and Jing Zhang and Chen Feng and Yiming Li},
+ year={2024},
+ eprint={2410.08282},
+ archivePrefix={arXiv},
+ primaryClass={cs.RO},
+ url={https://arxiv.org/abs/2410.08282},
+}</code></pre>
+ </center>
+ </div>
+</section> -->
 
 <!-- Acknowledgements   -->
 <section class="section" id="Acknowledgements">
   <div class="container is-max-desktop content">
     <h2 class="title">Acknowledgements</h2>
-    Yiming Li and Chen Feng are the corresponding authors. This work was supported in part through NSF grants 2238968, 2121391, and 2024882, and the NYU IT High Performance Computing resources, services, and staff expertise. Yiming Li is supported by NVIDIA Graduate Fellowship.
+    Yiming Li and Chen Feng are the corresponding authors. This work was supported in part through NSF grants 2238968,
+    2121391, and 2024882, and the NYU IT High Performance Computing resources, services, and staff expertise. Yiming Li
+    is supported by NVIDIA Graduate Fellowship.
   </div>
 </section>
 
@@ -1251,16 +1303,16 @@
         <div class="content">
           <p>
             This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/"
+           target="_blank">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.<br>
-            This AI4CE template is created by <a href="https://irvingf7.github.io/">Irving Fang</a>.<br>
-            This webpage template is originally from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
-            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and
+            This AI4CE template is created by <a href="https://irvingf7.github.io/" target="_blank">Irving Fang</a>.<br>
+            This webpage template is originally from <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a>.
+            We sincerely thank <a href="https://keunhong.com/" target="_blank">Keunhong Park</a> for developing and
             open-sourcing this template.
             This website is then inspired by the project page of <a
-              href="https://cat3d.github.io/">CAT3D</a>, <a
-              href="https://armlabstanford.github.io/touch-gs">Touch-GS</a> and <a
-              href="https://baegwangbin.github.io/DSINE/">DSINE</a>.
+              href="https://cat3d.github.io/" target="_blank">CAT3D</a> and <a
+              href="https://baegwangbin.github.io/DSINE/" target="_blank">DSINE</a>.
           </p>
         </div>
       </div>
