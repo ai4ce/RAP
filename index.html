@@ -430,7 +430,7 @@
                     imageElement.src = "static/images/3DGS.png";
                     imageElement.alt = "3DGS";
                 } else if (buttonNumber === 2) {
-                    textElement.innerHTML = "<b>Pipeline of the Two-branch Joint Training.</b> We lift multiple RGB video sequences into 3D Gaussian Splats, which serve as our data engine. The \textbf{branch-1} (see Sec.~\ref{branch-1}) inputs paired real and synthetic images to regress poses, with a discriminator to bridge the syn-to-real gap. The \textbf{branch-2} (see Sec.~\ref{branch-2}) generates views with novel poses and appearances, which are fed into the same pose regressor as additional supervision.";
+                    textElement.innerHTML = "<b>Pipeline of the Two-branch Joint Training.</b> We lift multiple RGB video sequences into 3D Gaussian Splats, which serve as our data engine. The branch-1 inputs paired real and synthetic images to regress poses, with a discriminator to bridge the syn-to-real gap. The branch-2 generates views with novel poses and appearances, which are fed into the same pose regressor as additional supervision.";
                     imageElement.classList.remove('hidden');
                     imageElement.src = "static/images/main.png";
                     imageElement.alt = "Main";
