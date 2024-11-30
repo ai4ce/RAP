@@ -208,6 +208,28 @@
 </section>
 
 <!-- Teaser. -->
+<!-- <section class="hero teaser"> -->
+  <!-- <div class="container is-max-desktop"> -->
+    <!-- <div class="columns is-centered has-text-centered"> -->
+      <!-- <div class="column is-full-width teaser no-margin"> -->
+
+        <!-- <h2 class="title is-3">Snapshot</h2> -->
+        <!-- <p style="font-size: 20px; background-color: #8b00e13b;"> -->
+          <!-- <b>TLDR:</b> We make camera localization more generalizable by addressing the <b>data gap</b> via -->
+          <!-- 3DGS and <b>learning gap</b> via a two-branch joint learning with adversarial loss, achieving SOTA in visual -->
+          <!-- localization. -->
+        <!-- </p> -->
+        <!-- insert video here -->
+        <!-- <video muted autoplay loop controls id="videoPlayer"> -->
+          <!-- <source src="static/videos/RAP.mp4" type="video/mp4"> -->
+        <!-- </video> -->
+
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </section>  -->
+<!-- <hr> -->
+
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -219,111 +241,120 @@
           3DGS and <b>learning gap</b> via a two-branch joint learning with adversarial loss, achieving SOTA in visual
           localization.
         </p>
-        <!-- insert video here -->
-        <video muted autoplay loop controls id="videoPlayer">
-          <source src="static/videos/RAP.mp4" type="video/mp4">
-        </video>
-        <!-- <video muted autoplay loop controls id="videoPlayer2">
-          <source src="static/videos/RAP_ref_Post_Refinement.mp4" type="video/mp4">
-        </video>  -->
 
+        <!-- Video slider container -->
+        <div class="video-slider-container" style="position: relative; max-width: 1000px; margin: auto; overflow: hidden;">
+          <!-- Video slider wrapper -->
+          <div class="video-slider" style="display: flex; transition: transform 0.5s ease-in-out;">
+            <video muted autoplay loop controls style="width: 100%;">
+              <source src="static/videos/church.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls style="width: 100%;">
+              <source src="static/videos/college.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls style="width: 100%;">
+              <source src="static/videos/hospital.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls style="width: 100%;">
+              <source src="static/videos/shop.mp4" type="video/mp4">
+            </video>
+          </div>
 
-        <!--        <br>-->
-        <!--        <div class="sliders-container">-->
-        <!--          <div class="slider-wrapper">-->
-        <!--            <h2>Novel View Synthesis (RGB) </h2>-->
-        <!--            <div id="trans_rgb"></div>-->
-        <!--          </div>-->
-        <!--          <div class="slider-wrapper">-->
-        <!--            <h2>Object Reconstruction (RGB)</h2>-->
-        <!--            <div id="trans_object"></div>-->
-        <!--          </div>-->
-        <!--        </div>-->
-        <!--        <br>-->
-        <!--        &lt;!&ndash; depth and normal sliders &ndash;&gt;-->
-        <!--        <div class="sliders-container">-->
-        <!--          <div class="slider-wrapper">-->
-        <!--            <h2>Novel View Synthesis (Depth) </h2>-->
-        <!--            <div id="trans_depth"></div>-->
-        <!--          </div>-->
-        <!--          <div class="slider-wrapper">-->
-        <!--            <h2>Novel View Synthesis (Normal)</h2>-->
-        <!--            <div id="trans_normal"></div>-->
-        <!--          </div>-->
-        <!--        </div>-->
+          <!-- Navigation buttons -->
+          <button id="prevButton" class="nav-button" style="left: 10px;">&#9664;</button>
+          <button id="nextButton" class="nav-button" style="right: 10px;">&#9654;</button>
+        </div>
 
-        <!--        <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>-->
-        <!--        <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">-->
-        <!--        <script src="./static/js/juxtapose-slider.js"></script> &lt;!&ndash; Include your slider.js file &ndash;&gt;-->
-        <!--        <script>-->
-        <!--          // Slider configurations-->
-        <!--          const sliders = [-->
-        <!--            {-->
-        <!--              elementId: '#trans_rgb',-->
-        <!--              images: [-->
-        <!--                {-->
-        <!--                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_RGB_22.png',-->
-        <!--                  label: 'FusionSense',-->
-        <!--                },-->
-        <!--                {-->
-        <!--                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_RGB_22.png',-->
-        <!--                  label: 'DN-Splatter',-->
-        <!--                }-->
-        <!--              ],-->
-        <!--              options: sliderOptions // You can reference the options defined in slider.js if needed-->
-        <!--            },-->
-        <!--            {-->
-        <!--              elementId: '#trans_object',-->
-        <!--              images: [-->
-        <!--                {-->
-        <!--                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_obj_7.jpg',-->
-        <!--                  label: 'FusionSense',-->
-        <!--                },-->
-        <!--                {-->
-        <!--                  src: './static/images/sliders/transparent_bunny/9_view/GO_trans_obj_7.png',-->
-        <!--                  label: 'GaussianObject',-->
-        <!--                }-->
-        <!--              ],-->
-        <!--              options: sliderOptions // Reference the same or a different options object-->
-        <!--            },-->
-        <!--            {-->
-        <!--              elementId: '#trans_depth',-->
-        <!--              images: [-->
-        <!--                {-->
-        <!--                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_depth_0.png',-->
-        <!--                  label: 'FusionSense',-->
-        <!--                },-->
-        <!--                {-->
-        <!--                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_depth_0.png',-->
-        <!--                  label: 'DN-Splatter',-->
-        <!--                }-->
-        <!--              ],-->
-        <!--              options: sliderOptions // You can reference the options defined in slider.js if needed-->
-        <!--            },-->
-        <!--            {-->
-        <!--              elementId: '#trans_normal',-->
-        <!--              images: [-->
-        <!--                {-->
-        <!--                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_normal_22.png',-->
-        <!--                  label: 'FusionSense',-->
-        <!--                },-->
-        <!--                {-->
-        <!--                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_normal_22.png',-->
-        <!--                  label: 'DN-Splatter',-->
-        <!--                }-->
-        <!--              ],-->
-        <!--              options: sliderOptions // Reference the same or a different options object-->
-        <!--            }-->
-        <!--          ];-->
-        <!--    -->
-        <!--          // Initialize sliders-->
-        <!--          initializeSliders(sliders);-->
-        <!--        </script>-->
       </div>
     </div>
   </div>
-</section> 
+</section>
 <hr>
+
+<style>
+  /* 视频容器 */
+  .video-slider-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  /* 视频滑动区域 */
+  .video-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* 平滑滑动效果 */
+  }
+
+  /* 视频样式 */
+  .video-slider video {
+    width: 100%; /* 每个视频占满容器 */
+    flex-shrink: 0;
+  }
+
+  /* 半透明导航按钮 */
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    z-index: 10;
+    display: none; /* 默认隐藏 */
+  }
+
+  .nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* 鼠标悬停效果 */
+  }
+
+  /* 鼠标悬停到视频容器时显示按钮 */
+  .video-slider-container:hover .nav-button {
+    display: block;
+  }
+</style>
+
+
+<script>
+  // 当前视频索引
+  let currentIndex = 0;
+
+  // 获取 DOM 元素
+  const videoSlider = document.querySelector(".video-slider");
+  const prevButton = document.getElementById("prevButton");
+  const nextButton = document.getElementById("nextButton");
+
+  // 视频数量
+  const totalVideos = document.querySelectorAll(".video-slider video").length;
+
+  // 更新滑动位置
+  function updateSlider() {
+    const sliderWidth = document.querySelector(".video-slider-container").offsetWidth;
+    videoSlider.style.transform = `translateX(-${currentIndex * sliderWidth}px)`; // 左右滑动
+  }
+
+  // 上一个视频
+  prevButton.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + totalVideos) % totalVideos; // 循环到最后一个
+    updateSlider();
+  });
+
+  // 下一个视频
+  nextButton.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % totalVideos; // 循环到第一个
+    updateSlider();
+  });
+
+  // 窗口大小调整时更新滑动
+  window.addEventListener("resize", updateSlider);
+</script>
+
 
 <!-- How it works -->
 <section class="section">
