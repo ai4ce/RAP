@@ -238,8 +238,8 @@
         <h2 class="title is-3">Snapshot</h2>
         <p style="font-size: 20px; background-color: #8b00e13b;">
           <b>TLDR:</b> We make camera localization more generalizable by addressing the <b>data gap</b> via
-          3DGS and <b>learning gap</b> via a two-branch joint learning with adversarial loss, achieving SOTA in visual
-          localization.
+          3DGS and <b>learning gap</b> via a two-branch joint learning with adversarial loss, achieving localization accuracy surpassing 1cm/0.3° in indoor scenarios, 
+          20cm/0.5° in outdoor scenarios, and 10cm/0.2° in driving scenarios.
         </p>
 
         <!-- Video slider container -->
@@ -1274,16 +1274,16 @@
           <button id="video_button4" class="btn" onclick="changeVideo(4)">0041</button>
           <!-- Video Player -->
           <video muted autoplay loop controls id="videoPlayer4">
-            <source src="./static/videos/mars11.mp4" type="video/mp4">
+            <source src="./static/videos/0011.mp4" type="video/mp4">
           </video>
           <!-- Change Function -->
           <script>
               // Map button numbers to video file paths
               const videoMap = {
-                  1: "./static/videos/mars11.mp4",
-                  2: "./static/videos/mars15.mp4",
-                  3: "./static/videos/mars37.mp4",
-                  4: "./static/videos/mars41.mp4"
+                  1: "./static/videos/0011.mp4",
+                  2: "./static/videos/0015.mp4",
+                  3: "./static/videos/0037.mp4",
+                  4: "./static/videos/0041.mp4"
               };
 
               document.addEventListener('DOMContentLoaded', () => {
