@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="description"
@@ -209,24 +209,24 @@
 
 <!-- Teaser. -->
 <!-- <section class="hero teaser"> -->
-  <!-- <div class="container is-max-desktop"> -->
-    <!-- <div class="columns is-centered has-text-centered"> -->
-      <!-- <div class="column is-full-width teaser no-margin"> -->
+<!-- <div class="container is-max-desktop"> -->
+<!-- <div class="columns is-centered has-text-centered"> -->
+<!-- <div class="column is-full-width teaser no-margin"> -->
 
-        <!-- <h2 class="title is-3">Snapshot</h2> -->
-        <!-- <p style="font-size: 20px; background-color: #8b00e13b;"> -->
-          <!-- <b>TLDR:</b> We make camera localization more generalizable by addressing the <b>data gap</b> via -->
-          <!-- 3DGS and <b>learning gap</b> via a two-branch joint learning with adversarial loss, achieving SOTA in visual -->
-          <!-- localization. -->
-        <!-- </p> -->
-        <!-- insert video here -->
-        <!-- <video muted autoplay loop controls id="videoPlayer"> -->
-          <!-- <source src="static/videos/RAP.mp4" type="video/mp4"> -->
-        <!-- </video> -->
+<!-- <h2 class="title is-3">Snapshot</h2> -->
+<!-- <p style="font-size: 20px; background-color: #8b00e13b;"> -->
+<!-- <b>TLDR:</b> We make camera localization more generalizable by addressing the <b>data gap</b> via -->
+<!-- 3DGS and <b>learning gap</b> via a two-branch joint learning with adversarial loss, achieving SOTA in visual -->
+<!-- localization. -->
+<!-- </p> -->
+<!-- insert video here -->
+<!-- <video muted autoplay loop controls id="videoPlayer"> -->
+<!-- <source src="static/videos/RAP.mp4" type="video/mp4"> -->
+<!-- </video> -->
 
-      <!-- </div> -->
-    <!-- </div> -->
-  <!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
 <!-- </section>  -->
 <!-- <hr> -->
 
@@ -236,26 +236,27 @@
       <div class="column is-full-width teaser no-margin">
 
         <h2 class="title is-3">Snapshot</h2>
-        <p style="font-size: 20px; background-color: #8b00e13b;">
+        <p style="font-size: 20px; background-color: #8b00e13b; margin-top: 20px; margin-bottom: 20px">
           <b>TLDR:</b> We make camera localization more generalizable by addressing the <b>data gap</b> via
-          3DGS and <b>learning gap</b> via a two-branch joint learning with adversarial loss, achieving localization accuracy surpassing 1cm/0.3° in indoor scenarios, 
+          3DGS and <b>learning gap</b> via a two-branch joint learning with adversarial loss, achieving localization
+          accuracy surpassing 1cm/0.3° in indoor scenarios,
           20cm/0.5° in outdoor scenarios, and 10cm/0.2° in driving scenarios.
         </p>
 
         <!-- Video slider container -->
-        <div class="video-slider-container" style="position: relative; max-width: 1000px; margin: auto; overflow: hidden;">
+        <div class="video-slider-container">
           <!-- Video slider wrapper -->
-          <div class="video-slider" style="display: flex; transition: transform 0.5s ease-in-out;">
-            <video muted autoplay loop controls style="width: 100%;">
+          <div class="video-slider">
+            <video muted autoplay loop controls>
               <source src="static/videos/church.mp4" type="video/mp4">
             </video>
-            <video muted autoplay loop controls style="width: 100%;">
+            <video muted autoplay loop controls>
               <source src="static/videos/college.mp4" type="video/mp4">
             </video>
-            <video muted autoplay loop controls style="width: 100%;">
+            <video muted autoplay loop controls>
               <source src="static/videos/hospital.mp4" type="video/mp4">
             </video>
-            <video muted autoplay loop controls style="width: 100%;">
+            <video muted autoplay loop controls>
               <source src="static/videos/shop.mp4" type="video/mp4">
             </video>
           </div>
@@ -271,120 +272,71 @@
 </section>
 <hr>
 
-<style>
-  /* 视频容器 */
-  .video-slider-container {
-    position: relative;
-    overflow: hidden;
-    max-width: 800px;
-    margin: auto;
-  }
-
-  /* 视频滑动区域 */
-  .video-slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out; /* 平滑滑动效果 */
-  }
-
-  /* 视频样式 */
-  .video-slider video {
-    width: 100%; /* 每个视频占满容器 */
-    flex-shrink: 0;
-  }
-
-  /* 半透明导航按钮 */
-  .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-    cursor: pointer;
-    outline: none;
-    z-index: 10;
-    display: none; /* 默认隐藏 */
-  }
-
-  .nav-button:hover {
-    background-color: rgba(0, 0, 0, 0.8); /* 鼠标悬停效果 */
-  }
-
-  /* 鼠标悬停到视频容器时显示按钮 */
-  .video-slider-container:hover .nav-button {
-    display: block;
-  }
-</style>
-
 <script>
-  // 当前视频索引
-  let currentIndex = 0;
+    // 当前视频索引
+    let currentIndex = 0;
 
-  // 获取 DOM 元素
-  const videoSlider = document.querySelector(".video-slider");
-  const videoElements = document.querySelectorAll(".video-slider video");
-  const prevButton = document.getElementById("prevButton");
-  const nextButton = document.getElementById("nextButton");
+    // 获取 DOM 元素
+    const videoSlider = document.querySelector(".video-slider");
+    const videoElements = document.querySelectorAll(".video-slider video");
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
 
-  // 视频数量
-  const totalVideos = videoElements.length;
+    // 视频数量
+    const totalVideos = videoElements.length;
 
-  // 更新滑动位置
-  function updateSlider() {
-    const sliderWidth = document.querySelector(".video-slider-container").offsetWidth;
-    videoSlider.style.transform = `translateX(-${currentIndex * sliderWidth}px)`; // 左右滑动
-  }
+    // 更新滑动位置
+    function updateSlider() {
+        const sliderWidth = document.querySelector(".video-slider-container").offsetWidth;
+        videoSlider.style.transform = `translateX(-${currentIndex * sliderWidth}px)`; // 左右滑动
+    }
 
-  // 上一个视频
-  prevButton.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + totalVideos) % totalVideos; // 循环到最后一个
-    updateSlider();
-    playCurrentVideo();
-  });
+    // 上一个视频
+    prevButton.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + totalVideos) % totalVideos; // 循环到最后一个
+        updateSlider();
+        playCurrentVideo();
+    });
 
-  // 下一个视频
-  nextButton.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % totalVideos; // 循环到第一个
-    updateSlider();
-    playCurrentVideo();
-  });
+    // 下一个视频
+    nextButton.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % totalVideos; // 循环到第一个
+        updateSlider();
+        playCurrentVideo();
+    });
 
-  // 播放当前视频
-  function playCurrentVideo() {
+    // 播放当前视频
+    function playCurrentVideo() {
+        videoElements.forEach((video, index) => {
+            video.pause(); // 暂停所有视频
+            video.currentTime = 0; // 重置时间
+        });
+        videoElements[currentIndex].play(); // 播放当前视频
+    }
+
+    // 自动切换到下一个视频
     videoElements.forEach((video, index) => {
-      video.pause(); // 暂停所有视频
-      video.currentTime = 0; // 重置时间
+        video.addEventListener("ended", () => {
+            currentIndex = (currentIndex + 1) % totalVideos; // 自动循环到下一个视频
+            updateSlider();
+            playCurrentVideo();
+        });
     });
-    videoElements[currentIndex].play(); // 播放当前视频
-  }
 
-  // 自动切换到下一个视频
-  videoElements.forEach((video, index) => {
-    video.addEventListener("ended", () => {
-      currentIndex = (currentIndex + 1) % totalVideos; // 自动循环到下一个视频
-      updateSlider();
-      playCurrentVideo();
-    });
-  });
+    // 窗口大小调整时更新滑动
+    window.addEventListener("resize", updateSlider);
 
-  // 窗口大小调整时更新滑动
-  window.addEventListener("resize", updateSlider);
-
-  // 初始化第一个视频的播放
-  playCurrentVideo();
+    // 初始化第一个视频的播放
+    playCurrentVideo();
 </script>
 
 
 <!-- How it works -->
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered ">
+    <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">Abstract</h2>
+        <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
             Visual localization, which estimates a camera's pose within a known scene, is a long-standing challenge in
@@ -450,67 +402,65 @@
 <!-- Method Overview -->
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered">
+    <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <!-- <h2 class="title is-3 has-text-centered">Overview</h2> -->
-        <div style="text-align: center;">
-          <!-- This image is always visible  -->
-          <div id="overview">
-            <img src="static/images/overview.png" alt="Overview Image">
-          </div>
-          <br>
-          <!-- Here, the changeContent's parameter is just the number of the button. Has no intrinsic association with the content -->
-          <button id="method_button1" class="btn" onclick="changeContent(1)">1. Preprocessing Training Dataset</button>
-          <button id="method_button2" class="btn" onclick="changeContent(2)">2. Two-branch Joint Training</button>
-          <!--          <button id="method_button3" class="btn" onclick="changeContent(3)">3. Local Geometric Optimization</button>-->
-          <br>
-          <br>
-          <div class="content has-text-justified">
-            <img id="image-content" src="static/images/3DGS.png" alt="3DGS"/>
-            <p id="text-content">
-              <b>Overall illustration of appearance-varying 3DGS</b>. The framework models varying appearances using 3D
-              Gaussians enhanced with appearance colors. It initializes 3D Gaussians from SfM data, refines their
-              appearance by learnable sampling and blending weights computed via an encoder and MLP, and renders images
-              by a differentiable rasterizer with edge refinement to minimize the rendering loss.
-            </p>
-
-          </div>
+        <!-- <h2 class="title is-3">Overview</h2> -->
+        <!-- This image is always visible  -->
+        <div id="overview">
+          <img src="static/images/overview.png" alt="Overview Image">
         </div>
+        <br>
+        <!-- Here, the changeContent's parameter is just the number of the button. Has no intrinsic association with the content -->
+        <button id="method_button1" class="btn" onclick="changeContent(1)">1. Preprocessing Training Dataset</button>
+        <button id="method_button2" class="btn" onclick="changeContent(2)">2. Two-branch Joint Training</button>
+        <!--          <button id="method_button3" class="btn" onclick="changeContent(3)">3. Local Geometric Optimization</button>-->
+        <br>
+        <br>
+        <div class="content has-text-justified">
+          <img id="image-content" src="static/images/3DGS.png" alt="3DGS"/>
+          <p id="text-content">
+            <b>Overall illustration of appearance-varying 3DGS</b>. The framework models varying appearances using 3D
+            Gaussians enhanced with appearance colors. It initializes 3D Gaussians from SfM data, refines their
+            appearance by learnable sampling and blending weights computed via an encoder and MLP, and renders images
+            by a differentiable rasterizer with edge refinement to minimize the rendering loss.
+          </p>
 
-        <script>
-            document.getElementById('method_button1').classList.add('active');
-
-            function changeContent(buttonNumber) {
-                const textElement = document.getElementById('text-content');
-                const imageElement = document.getElementById('image-content');
-
-                document.getElementById('method_button1').classList.remove('active');
-                document.getElementById('method_button2').classList.remove('active');
-                // document.getElementById('method_button3').classList.remove('active');
-
-                // Add 'active' class to the clicked button so that it will have a different color when its content is present
-                document.getElementById('method_button' + buttonNumber).classList.add('active');
-
-                if (buttonNumber === 1) {
-                    textElement.innerHTML = "<b>Overall illustration of appearance-varying 3DGS</b>. The framework models varying appearances using 3D Gaussians enhanced with appearance colors. It initializes 3D Gaussians from SfM data, refines their appearance by learnable sampling and blending weights computed via an encoder and MLP, and renders images by a differentiable rasterizer with edge refinement to minimize the rendering loss.";
-                    imageElement.classList.remove('hidden');
-                    imageElement.src = "static/images/3DGS.png";
-                    imageElement.alt = "3DGS";
-                } else if (buttonNumber === 2) {
-                    textElement.innerHTML = "<b>Pipeline of the Two-branch Joint Training.</b> We lift multiple RGB video sequences into 3D Gaussian Splats, which serve as our data engine. The branch-1 inputs paired real and synthetic images to regress poses, with a discriminator to bridge the syn-to-real gap. The branch-2 generates views with novel poses and appearances, which are fed into the same pose regressor as additional supervision.";
-                    imageElement.classList.remove('hidden');
-                    imageElement.src = "static/images/main.png";
-                    imageElement.alt = "Main";
-                } else if (buttonNumber === 3) {
-                    textElement.innerHTML = "Under Construction";
-                    imageElement.classList.remove('hidden');
-                    imageElement.src = "static/images/overview.png";
-                    imageElement.alt = "Overview";
-                }
-            }
-        </script>
-
+        </div>
       </div>
+
+      <script>
+          document.getElementById('method_button1').classList.add('active');
+
+          function changeContent(buttonNumber) {
+              const textElement = document.getElementById('text-content');
+              const imageElement = document.getElementById('image-content');
+
+              document.getElementById('method_button1').classList.remove('active');
+              document.getElementById('method_button2').classList.remove('active');
+              // document.getElementById('method_button3').classList.remove('active');
+
+              // Add 'active' class to the clicked button so that it will have a different color when its content is present
+              document.getElementById('method_button' + buttonNumber).classList.add('active');
+
+              if (buttonNumber === 1) {
+                  textElement.innerHTML = "<b>Overall illustration of appearance-varying 3DGS</b>. The framework models varying appearances using 3D Gaussians enhanced with appearance colors. It initializes 3D Gaussians from SfM data, refines their appearance by learnable sampling and blending weights computed via an encoder and MLP, and renders images by a differentiable rasterizer with edge refinement to minimize the rendering loss.";
+                  imageElement.classList.remove('hidden');
+                  imageElement.src = "static/images/3DGS.png";
+                  imageElement.alt = "3DGS";
+              } else if (buttonNumber === 2) {
+                  textElement.innerHTML = "<b>Pipeline of the Two-branch Joint Training.</b> We lift multiple RGB video sequences into 3D Gaussian Splats, which serve as our data engine. The branch-1 inputs paired real and synthetic images to regress poses, with a discriminator to bridge the syn-to-real gap. The branch-2 generates views with novel poses and appearances, which are fed into the same pose regressor as additional supervision.";
+                  imageElement.classList.remove('hidden');
+                  imageElement.src = "static/images/main.png";
+                  imageElement.alt = "Main";
+              } else if (buttonNumber === 3) {
+                  textElement.innerHTML = "Under Construction";
+                  imageElement.classList.remove('hidden');
+                  imageElement.src = "static/images/overview.png";
+                  imageElement.alt = "Overview";
+              }
+          }
+      </script>
+
     </div>
   </div>
 </section>
@@ -521,18 +471,18 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">Post-refinement</h2>
+        <h2 class="title is-3 has-text-centered">Post Refinement</h2>
         <div class="content has-text-justified">
           <p>
             At test time, RAP's initial predicted pose will be used to render an RGB-D image via 3DGS. Together with
-            <a href="https://github.com/naver/mast3r?tab=readme-ov-file" target="_blank" style="color: #007bff">
+            <a href="https://github.com/naver/mast3r" target="_blank" style="color: #007bff">
               MASt3R
             </a>, we can obtain 2D-3D correspondences to perform RANSAC-PnP, resulting in a refined pose.
           </p>
         </div>
 
         <!-- 添加视频居中部分 -->
-        <div class="has-text-centered" style="margin-top: 20px;">
+        <div class="has-text-centered">
           <video muted autoplay loop controls>
             <source src="static/videos/post-refinement.mp4" type="video/mp4">
           </video>
@@ -548,23 +498,24 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-
         <h2 class="title is-3">More Visualizations of Appearance-Varying 3DGS</h2>
-        <div style="text-align: center;">
-          <!-- Here, the argument of the switchSlider function should be the name of the slider block, just without the "_block" part. -->
-          <button class="btn" id="black_5_button" onclick="switchSlider('black_5')">Video</button>
-          <button class="btn" id="black_9_button" onclick="switchSlider('black_9')">Cambridge</button>
-          <!--          <button class="btn" id="reflective_9_button" onclick="switchSlider('reflective_9')">Reflective Bunny (9 Views)</button>-->
-          <!--          <button class="btn" id="reflective_5_button" onclick="switchSlider('reflective_5')">Reflective Bunny (5 Views)</button>-->
-          <!--          <button class="btn" id="transparent_9_button" onclick="switchSlider('transparent_9')">Transparent Bunny (9 Views)</button>-->
-          <!--          <button class="btn" id="transparent_5_button" onclick="switchSlider('transparent_5')">Transparent Bunny (5 Views)</button>-->
-          <!--          <button class="btn" id="coke_9_button" onclick="switchSlider('coke_9')">Coke Bottle (9 Views)</button>-->
-          <!--          <button class="btn" id="coke_5_button" onclick="switchSlider('coke_5')">Coke Bottle (5 Views)</button>-->
-          <br>
-          <br>
+        <!-- Here, the argument of the switchSlider function should be the name of the slider block, just without the "_block" part. -->
+        <button class="btn" id="video_button" onclick="switchSlider('video')">Video</button>
+        <button class="btn" id="cambridge_button" onclick="switchSlider('cambridge')">Cambridge</button>
+        <!--          <button class="btn" id="reflective_9_button" onclick="switchSlider('reflective_9')">Reflective Bunny (9 Views)</button>-->
+        <!--          <button class="btn" id="reflective_5_button" onclick="switchSlider('reflective_5')">Reflective Bunny (5 Views)</button>-->
+        <!--          <button class="btn" id="transparent_9_button" onclick="switchSlider('transparent_9')">Transparent Bunny (9 Views)</button>-->
+        <!--          <button class="btn" id="transparent_5_button" onclick="switchSlider('transparent_5')">Transparent Bunny (5 Views)</button>-->
+        <!--          <button class="btn" id="coke_9_button" onclick="switchSlider('coke_9')">Coke Bottle (9 Views)</button>-->
+        <!--          <button class="btn" id="coke_5_button" onclick="switchSlider('coke_5')">Coke Bottle (5 Views)</button>-->
+        <br>
+        <br>
+        <div class="slider-block" id="video_block">
+          <video muted autoplay loop controls id="videoPlayer3">
+            <source src="static/videos/Appearance-Varying%203DGS.mp4" type="video/mp4">
+          </video>
         </div>
-
-        <div class="slider-block image-grid" id="black_9_block">
+        <div class="slider-block image-grid" id="cambridge_block">
           <!-- insert all gifs here -->
           <img src="static/images/gifs/image125.gif" alt="1">
           <img src="static/images/gifs/image126.gif" alt="2">
@@ -578,12 +529,6 @@
           <img src="static/images/gifs/image134.gif" alt="10">
           <img src="static/images/gifs/image135.gif" alt="11">
           <img src="static/images/gifs/image136.gif" alt="12">
-        </div>
-
-        <div class="slider-block" id="black_5_block">
-          <video muted autoplay loop controls id="videoPlayer3">
-            <source src="static/videos/Appearance-Varying%203DGS.mp4" type="video/mp4">
-          </video>
         </div>
 
         <div class="slider-block" id="transparent_9_block">
@@ -1220,14 +1165,14 @@
 
             // Show black_9_block by default
             document.addEventListener('DOMContentLoaded', () => {
-                switchSlider('black_9');
+                switchSlider('video');
             });
 
             // Function to show the specific div based on button click
             function switchSlider(block_id) {
                 // Remove 'active' class from all buttons to reset color
-                document.getElementById('black_9_button').classList.remove('active');
-                document.getElementById('black_5_button').classList.remove('active');
+                document.getElementById('video_button').classList.remove('active');
+                document.getElementById('cambridge_button').classList.remove('active');
                 // document.getElementById('reflective_9_button').classList.remove('active');
                 // document.getElementById('reflective_5_button').classList.remove('active');
                 // document.getElementById('transparent_9_button').classList.remove('active');
@@ -1263,52 +1208,52 @@
 <!-- MARS visualization -->
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered">
+    <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">RAP Results on MARS</h2>
-        <div style="text-align: center;">
-          <!-- Buttons positioned over the video -->
-          <button id="video_button1" class="btn" onclick="changeVideo(1)">0011</button>
-          <button id="video_button2" class="btn" onclick="changeVideo(2)">0015</button>
-          <button id="video_button3" class="btn" onclick="changeVideo(3)">0037</button>
-          <button id="video_button4" class="btn" onclick="changeVideo(4)">0041</button>
-          <!-- Video Player -->
-          <video muted autoplay loop controls id="videoPlayer4">
-            <source src="./static/videos/0011.mp4" type="video/mp4">
-          </video>
-          <!-- Change Function -->
-          <script>
-              // Map button numbers to video file paths
-              const videoMap = {
-                  1: "./static/videos/0011.mp4",
-                  2: "./static/videos/0015.mp4",
-                  3: "./static/videos/0037.mp4",
-                  4: "./static/videos/0041.mp4"
-              };
+        <h2 class="title is-3">RAP Results on MARS</h2>
+        <!-- Buttons positioned over the video -->
+        <button id="video_button1" class="btn" onclick="changeVideo(1)">0011</button>
+        <button id="video_button2" class="btn" onclick="changeVideo(2)">0015</button>
+        <button id="video_button3" class="btn" onclick="changeVideo(3)">0037</button>
+        <button id="video_button4" class="btn" onclick="changeVideo(4)">0041</button>
+        <br>
+        <br>
+        <!-- Video Player -->
+        <video muted autoplay loop controls id="videoPlayer4">
+          <source src="./static/videos/0011.mp4" type="video/mp4">
+        </video>
+        <!-- Change Function -->
+        <script>
+            // Map button numbers to video file paths
+            const videoMap = {
+                1: "./static/videos/0011.mp4",
+                2: "./static/videos/0015.mp4",
+                3: "./static/videos/0037.mp4",
+                4: "./static/videos/0041.mp4"
+            };
 
-              document.addEventListener('DOMContentLoaded', () => {
-                  changeVideo(1);
-              });
+            document.addEventListener('DOMContentLoaded', () => {
+                changeVideo(1);
+            });
 
-              function changeVideo(buttonNumber) {
-                  const videoPlayer = document.getElementById('videoPlayer4');
-                  // const videoSource = document.getElementById('videoSource');
+            function changeVideo(buttonNumber) {
+                const videoPlayer = document.getElementById('videoPlayer4');
+                // const videoSource = document.getElementById('videoSource');
 
-                  // Update video source
-                  // videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
-                  videoPlayer.src = videoMap[buttonNumber];
-                  //videoPlayer.load();
-                  videoPlayer.play();
+                // Update video source
+                // videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
+                videoPlayer.src = videoMap[buttonNumber];
+                //videoPlayer.load();
+                videoPlayer.play();
 
-                  // Add 'active' class to the clicked button so that it will have a different color when its content is present
-                  document.getElementById('video_button1').classList.remove('active');
-                  document.getElementById('video_button2').classList.remove('active');
-                  document.getElementById('video_button3').classList.remove('active');
-                  document.getElementById('video_button4').classList.remove('active');
-                  document.getElementById('video_button' + buttonNumber).classList.add('active');
-              }
-          </script>
-        </div>
+                // Add 'active' class to the clicked button so that it will have a different color when its content is present
+                document.getElementById('video_button1').classList.remove('active');
+                document.getElementById('video_button2').classList.remove('active');
+                document.getElementById('video_button3').classList.remove('active');
+                document.getElementById('video_button4').classList.remove('active');
+                document.getElementById('video_button' + buttonNumber).classList.add('active');
+            }
+        </script>
       </div>
     </div>
   </div>
@@ -1358,10 +1303,11 @@
           <p>
             This website is licensed under a <a rel="license"
                                                 href="http://creativecommons.org/licenses/by-sa/4.0/"
-           target="_blank">Creative
+                                                target="_blank">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.<br>
             This AI4CE template is created by <a href="https://irvingf7.github.io/" target="_blank">Irving Fang</a>.<br>
-            This webpage template is originally from <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a>.
+            This webpage template is originally from <a href="https://github.com/nerfies/nerfies.github.io"
+                                                        target="_blank">Nerfies</a>.
             We sincerely thank <a href="https://keunhong.com/" target="_blank">Keunhong Park</a> for developing and
             open-sourcing this template.
             This website is then inspired by the project page of <a
