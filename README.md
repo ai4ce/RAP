@@ -1,6 +1,6 @@
 # 
 <p align="center">
-  <h1 align="center"> 😎<ins>RAP</ins> :<br> Unleashing the Power of Data Synthesis <br> in Visual Localization </h1>
+  <h1 align="center"> 😎RAP :<br> Unleashing the Power of Data Synthesis <br> in Visual Localization </h1>
   <p align="center">
     <a href="https://scholar.google.com/citations?user=90IoeJsAAAAJ">Sihang Li*</a>
     ·
@@ -22,6 +22,10 @@
 </p>
 <br/>
 <p align="center">
+    <!-- <video width="100%" controls>
+        <source src="./assets/hospital.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video> -->
     <img src="./assets/image.png" alt="example" width=100%>
     <br>
     <em>TLDR: We make camera localization more generalizable by addressing the data gap via 3DGS and learning gap via a two-branch joint learning with adversarial loss, achieving localization accuracy surpassing 1cm/0.3° in indoor scenarios, 20cm/0.5° in outdoor scenarios, and 10cm/0.2° in driving scenarios.</em>
