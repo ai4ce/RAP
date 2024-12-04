@@ -22,10 +22,7 @@
 </p>
 <br/>
 <p align="center">
-    <video width="100%" controls>
-        <source src="./assets/church.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <img src="./assets/image.png" alt="example" width=100%>
     <br>
     <em>TLDR: We make camera localization more generalizable by addressing the data gap via 3DGS and learning gap via a two-branch joint learning with adversarial loss, achieving localization accuracy surpassing 1cm/0.3° in indoor scenarios, 20cm/0.5° in outdoor scenarios, and 10cm/0.2° in driving scenarios.</em>
 </p>
