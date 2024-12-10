@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Unleashing the Power of Data Synthesis in Visual Localization">
+  <meta name="keywords" content="Visual Localization, 3D Gaussian, Data Synthesis, Adversarial Training">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RAP</title>
+  <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>😎</text></svg>">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/copy2clipboard.js"></script>
+  <script type="text/javascript" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8BM5C13X75"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-8BM5C13X75');
+</script>
+
+<body>
+
+<!-- Navigation bar. -->
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+  <div class="container is-max-desktop">
+
+    <!-- Lab logo. Will stay here even if view from mobile -->
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://ai4ce.github.io/" target="_blank" rel="noopener noreferrer">
+        <img src="./static/images/ai4ce_new_linear_notext.svg" alt="AI4CE Lab" style="height: 2.0rem;">
+      </a>
+      <a role="button"
+         onclick="this.classList.toggle('is-active');document.querySelector('#'+this.dataset.target).classList.toggle('is-active');"
+         class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <!-- Will collapse into a "burger" menu on mobile. -->
+    <div id="navbarBasicExample" class="navbar-menu">
+
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://www.nyu.edu/" target="_blank">
+          <img src="./static/images/NYU_Long_RGB_Color.png" alt="NYU Logo" style="height: 2.0rem;">
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</nav>
+
+<!-- Title and authors -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            😎RAP
+          </h1>
+          <h1 class="title is-2 publication-title">Unleashing the Power of Data Synthesis<br>in Visual
+            Localization</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://Louis-Leee.github.io" target="_blank">Sihang Li*</a>,</span>
+            <span class="author-block">
+              <a href="https://kevintsq.github.io" target="_blank">Siqi Tan*</a>,</span>
+            <span class="author-block">
+              <a href="https://karlcbw.github.io" target="_blank">Bowen Chang</a>,</span>
+            <span class="author-block">
+              <a href="https://jingz6676.github.io" target="_blank">Jing Zhang</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=YeG8ZM0AAAAJ" target="_blank">Chen Feng</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://yimingli-page.github.io/" target="_blank">Yiming Li</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"> New York University</span>
+
+            <br>
+            <span class="author-block"><sup>*</sup> Equal Contribution</span>
+          </div>
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                 <!-- add here later. -->
+                <a href="static/RAP_Paper.pdf" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+              <!-- add here later. -->
+              <a href="https://arxiv.org/abs/2412.00138" target="_blank"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                </span>
+                <span>arXiv</span>
+              </a> 
+              </span>
+              <!-- Video Link. -->
+              <!--              <span class="link-block">-->
+              <!--                <a href="https:"-->
+              <!--                   class="external-link button is-normal is-rounded is-dark">-->
+              <!--                  <span class="icon">-->
+              <!--                      <i class="fab fa-youtube"></i>-->
+              <!--                  </span>-->
+              <!--                  <span>Video</span>-->
+              <!--                </a>-->
+              <!--              </span>-->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/ai4ce/RAP" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https:"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data (Coming Soon)</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width teaser no-margin">
+
+        <h2 class="title is-3">Snapshot</h2>
+        <p style="font-size: 20px; background-color: #8b00e13b; margin-top: 20px; margin-bottom: 20px">
+          <b>TLDR:</b> We make camera localization more generalizable by addressing the <b>data gap</b> via
+          3DGS and <b>learning gap</b> via a two-branch joint learning with adversarial loss, achieving localization
+          accuracy surpassing 1cm/0.3° in indoor scenarios,
+          20cm/0.5° in outdoor scenarios, and 10cm/0.2° in driving scenarios.
+        </p>
+
+        <div class="swiper swiper1">
+          <div class="swiper-wrapper">
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/church.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/college.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/hospital.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/shop.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+
+<!-- How it works -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Visual localization, which estimates a camera's pose within a known scene, is a long-standing challenge in
+            vision and robotics. Recent end-to-end methods that directly regress camera poses from query images have
+            gained attention for fast inference. However, existing methods often struggle to generalize to unseen views.
+            In this work, we aim to unleash the power of data synthesis to promote the generalizability of pose
+            regression. Specifically, we lift real 2D images into 3D Gaussian Splats with varying appearance and
+            deblurring abilities, which are then used as a data engine to synthesize more posed images. To fully
+            leverage the synthetic data, we build a two-branch joint training pipeline, with an adversarial
+            discriminator to bridge the syn-to-real gap. Experiments on established benchmarks show that our method
+            outperforms state-of-the-art end-to-end approaches, reducing translation and rotation errors by 50% and
+            21.6% on indoor datasets, and 35.56% and 38.7% on outdoor datasets. We also validate the effectiveness of
+            our method in dynamic driving scenarios under varying weather conditions. Notably, as data synthesis scales
+            up, the ability to interpolate and extrapolate training data for localizing unseen views emerges.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Method Overview -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <!-- <h2 class="title is-3">Overview</h2> -->
+        <!-- This image is always visible  -->
+        <div id="overview">
+          <img src="static/images/overview.png" alt="Overview Image">
+        </div>
+        <br>
+        <!-- Here, the changeContent's parameter is just the number of the button. Has no intrinsic association with the content -->
+        <button id="method_button1" class="btn" onclick="changeContent(1)">1. Preprocessing Training Dataset</button>
+        <button id="method_button2" class="btn" onclick="changeContent(2)">2. Two-branch Joint Training</button>
+        <!--          <button id="method_button3" class="btn" onclick="changeContent(3)">3. Local Geometric Optimization</button>-->
+        <br>
+        <br>
+        <div class="content has-text-justified">
+          <img id="image-content" src="static/images/3DGS.png" alt="3DGS"/>
+          <p id="text-content">
+            <b>Overall illustration of appearance-varying 3DGS</b>. The framework models varying appearances using 3D
+            Gaussians enhanced with appearance colors. It initializes 3D Gaussians from SfM data, refines their
+            appearance by learnable sampling and blending weights computed via an encoder and MLP, and renders images
+            by a differentiable rasterizer with edge refinement to minimize the rendering loss.
+          </p>
+
+        </div>
+      </div>
+
+      <script>
+          document.getElementById('method_button1').classList.add('active');
+
+          function changeContent(buttonNumber) {
+              const textElement = document.getElementById('text-content');
+              const imageElement = document.getElementById('image-content');
+
+              document.getElementById('method_button1').classList.remove('active');
+              document.getElementById('method_button2').classList.remove('active');
+              // document.getElementById('method_button3').classList.remove('active');
+
+              // Add 'active' class to the clicked button so that it will have a different color when its content is present
+              document.getElementById('method_button' + buttonNumber).classList.add('active');
+
+              if (buttonNumber === 1) {
+                  textElement.innerHTML = "<b>Overall illustration of appearance-varying 3DGS</b>. The framework models varying appearances using 3D Gaussians enhanced with appearance colors. It initializes 3D Gaussians from SfM data, refines their appearance by learnable sampling and blending weights computed via an encoder and MLP, and renders images by a differentiable rasterizer with edge refinement to minimize the rendering loss.";
+                  imageElement.classList.remove('hidden');
+                  imageElement.src = "static/images/3DGS.png";
+                  imageElement.alt = "3DGS";
+              } else if (buttonNumber === 2) {
+                  textElement.innerHTML = "<b>Pipeline of the Two-branch Joint Training.</b> We lift multiple RGB video sequences into 3D Gaussian Splats, which serve as our data engine. The branch-1 inputs paired real and synthetic images to regress poses, with a discriminator to bridge the syn-to-real gap. The branch-2 generates views with novel poses and appearances, which are fed into the same pose regressor as additional supervision.";
+                  imageElement.classList.remove('hidden');
+                  imageElement.src = "static/images/main.png";
+                  imageElement.alt = "Main";
+              } else if (buttonNumber === 3) {
+                  textElement.innerHTML = "Under Construction";
+                  imageElement.classList.remove('hidden');
+                  imageElement.src = "static/images/overview.png";
+                  imageElement.alt = "Overview";
+              }
+          }
+      </script>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Post Refinement</h2>
+        <div class="content has-text-justified">
+          <p>
+            At test time, RAP's initial predicted pose will be used to render an RGB-D image via 3DGS. Together with
+            <a href="https://github.com/naver/mast3r" target="_blank" style="color: #007bff">
+              MASt3R
+            </a>, we can obtain 2D-3D correspondences to perform RANSAC-PnP, resulting in a refined pose.
+          </p>
+        </div>
+
+        <div class="swiper swiper2">
+          <div class="swiper-wrapper">
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/RAPref1.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/RAPref2.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/RAPref3.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/RAPref4.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/RAPref5.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- More Visualization -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">More Visualizations of Appearance-Varying 3DGS</h2>
+        <div class="swiper swiper3">
+          <div class="swiper-wrapper">
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/3DGS_MARS_NVS.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/3DGS_MARS_Test.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/3DGS_MARS_Vary.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/3DGS_Cam_Test.mp4" type="video/mp4">
+            </video>
+            <video muted autoplay loop controls class="swiper-slide">
+              <source src="static/videos/3DGS_Cam_Vary.mp4" type="video/mp4">
+            </video>
+            <div class="swiper-slide image-grid" id="cambridge_block">
+              <!-- insert all gifs here -->
+              <img src="static/images/gifs/image125.gif" alt="1">
+              <img src="static/images/gifs/image126.gif" alt="2">
+              <img src="static/images/gifs/image127.gif" alt="3">
+              <img src="static/images/gifs/image128.gif" alt="4">
+              <img src="static/images/gifs/image129.gif" alt="5">
+              <img src="static/images/gifs/image130.gif" alt="6">
+              <img src="static/images/gifs/image131.gif" alt="7">
+              <img src="static/images/gifs/image132.gif" alt="8">
+              <img src="static/images/gifs/image133.gif" alt="9">
+              <img src="static/images/gifs/image134.gif" alt="10">
+              <img src="static/images/gifs/image135.gif" alt="11">
+              <img src="static/images/gifs/image136.gif" alt="12">
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARS visualization -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">RAP Results on MARS</h2>
+        <!-- Buttons positioned over the video -->
+        <button id="video_button1" class="btn" onclick="changeVideo(1)">0011</button>
+        <button id="video_button2" class="btn" onclick="changeVideo(2)">0015</button>
+        <button id="video_button3" class="btn" onclick="changeVideo(3)">0037</button>
+        <button id="video_button4" class="btn" onclick="changeVideo(4)">0041</button>
+        <br>
+        <br>
+        <!-- Video Player -->
+        <video muted autoplay loop controls id="videoPlayer4">
+          <source src="./static/videos/0011.mp4" type="video/mp4">
+        </video>
+        <!-- Change Function -->
+        <script>
+            // Map button numbers to video file paths
+            const videoMap = {
+                1: "./static/videos/0011.mp4",
+                2: "./static/videos/0015.mp4",
+                3: "./static/videos/0037.mp4",
+                4: "./static/videos/0041.mp4"
+            };
+
+            document.addEventListener('DOMContentLoaded', () => {
+                changeVideo(1);
+            });
+
+            function changeVideo(buttonNumber) {
+                const videoPlayer = document.getElementById('videoPlayer4');
+                // const videoSource = document.getElementById('videoSource');
+
+                // Update video source
+                // videoSource.src = videoMap[buttonNumber] + '?t=' + new Date().getTime(); // Avoid caching
+                videoPlayer.src = videoMap[buttonNumber];
+                //videoPlayer.load();
+                videoPlayer.play();
+
+                // Add 'active' class to the clicked button so that it will have a different color when its content is present
+                document.getElementById('video_button1').classList.remove('active');
+                document.getElementById('video_button2').classList.remove('active');
+                document.getElementById('video_button3').classList.remove('active');
+                document.getElementById('video_button4').classList.remove('active');
+                document.getElementById('video_button' + buttonNumber).classList.add('active');
+            }
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <center>
+      <h2 id="bibtexTitle" class="title">BibTeX</h2>
+      <div style="position: relative;">
+        <button id="copyButton" onclick="copyToClipboard()">
+          <i class="fas fa-copy"></i>
+        </button>
+        <pre style="text-align: left"><code id="bibtexInfo">@article{Li2024unleashing,
+ title={Unleashing the Power of Data Synthesis},
+ author={Sihang Li and Siqi Tan and Bowen Chang and Jing Zhang and Chen Feng and Yiming Li},
+ year={2024},
+ journal={arXiv preprint arXiv:2412.00138},
+}</code></pre>
+      </div>
+    </center>
+  </div>
+</section>
+
+<!-- Acknowledgements   -->
+<section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+    Yiming Li and Chen Feng are the corresponding authors. This work was supported in part through NSF grants 2238968,
+    2121391, and 2024882, and the NYU IT High Performance Computing resources, services, and staff expertise. Yiming Li
+    is supported by NVIDIA Graduate Fellowship.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/"
+                                                target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.<br>
+            This AI4CE template is created by <a href="https://irvingf7.github.io/" target="_blank">Irving Fang</a>.<br>
+            This webpage template is originally from <a href="https://github.com/nerfies/nerfies.github.io"
+                                                        target="_blank">Nerfies</a>.
+            We sincerely thank <a href="https://keunhong.com/" target="_blank">Keunhong Park</a> for developing and
+            open-sourcing this template.
+            This website is then inspired by the project page of <a
+              href="https://cat3d.github.io/" target="_blank">CAT3D</a> and <a
+              href="https://baegwangbin.github.io/DSINE/" target="_blank">DSINE</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
