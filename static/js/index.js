@@ -1,6 +1,6 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     const swiper1 = new Swiper('.swiper1', {
         loop: true,
         autoHeight: true,
