@@ -42,6 +42,7 @@ body {
 
 .link-block {
     margin: 5px;
+    display: inline-block;
 }
 
 .dnerf {

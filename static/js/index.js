@@ -3,6 +3,7 @@ window.HELP_IMPROVE_VIDEOJS = false;
 document.addEventListener('DOMContentLoaded', () => {
     const swiper1 = new Swiper('.swiper1', {
         loop: true,
+        autoHeight: true,
         navigation: {
             nextEl: '.swiper1 .swiper-button-next',
             prevEl: '.swiper1 .swiper-button-prev',
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const swiper2 = new Swiper('.swiper2', {
         loop: true,
+        autoHeight: true,
         navigation: {
             nextEl: '.swiper2 .swiper-button-next',
             prevEl: '.swiper2 .swiper-button-prev',
@@ -25,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const swiper3 = new Swiper('.swiper3', {
         loop: true,
+        autoHeight: true,
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -33,14 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-        on: {
-            init: () => {
-                centerImageGrid();
-            },
-            slideChange: () => {
-                centerImageGrid();
-            },
-        },
+        // on: {
+        //     init: () => {
+        //         centerImageGrid();
+        //     },
+        //     slideChange: () => {
+        //         centerImageGrid();
+        //     },
+        // },
     });
 });
 
