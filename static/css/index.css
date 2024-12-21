@@ -6,6 +6,20 @@ body {
     --swiper-theme-color: #8900e1 !important;
 }
 
+.tldr {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 8px;
+    background: linear-gradient(45deg, #9860ff33, #d2cb0033);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+video {
+    border-radius: 8px;
+}
+
 .image-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -50,19 +64,18 @@ body {
 }
 
 .teaser {
-    font-family: 'Google Sans', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
 }
-
 
 .publication-header .hero-body {
 }
 
 .publication-title {
-    font-family: 'Google Sans', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .publication-authors {
-    font-family: 'Google Sans', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .publication-venue {
