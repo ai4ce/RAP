@@ -190,7 +190,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width teaser no-margin">
 
-        <p>We have further improved our results and paper and will update them soon. Our code and data will also be released soon.</p>
+        <p>We have further improved our results and paper and will update them. Our code and data will also be released soon.</p>
 
         <p>Stay tuned!</p>
 
@@ -237,18 +237,9 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Visual localization, which estimates a camera's pose within a known scene, is a long-standing challenge in
-            vision and robotics. Recent end-to-end methods that directly regress camera poses from query images have
-            gained attention for fast inference. However, existing methods often struggle to generalize to unseen views.
-            In this work, we aim to unleash the power of data synthesis to promote the generalizability of pose
-            regression. Specifically, we lift real 2D images into 3D Gaussian Splats with varying appearance and
-            deblurring abilities, which are then used as a data engine to synthesize more posed images. To fully
-            leverage the synthetic data, we build a two-branch joint training pipeline, with an adversarial
-            discriminator to bridge the syn-to-real gap. Experiments on established benchmarks show that our method
-            outperforms state-of-the-art end-to-end approaches, reducing translation and rotation errors by 50% and
-            22% on indoor datasets, and 34% and 38% on outdoor datasets. We also validate the effectiveness of
-            our method in dynamic driving scenarios under varying weather conditions. Notably, as data synthesis scales
-            up, the ability to interpolate and extrapolate training data for localizing unseen views emerges.
+            Visual localization, which estimates a camera's pose within a known scene, is a fundamental capability for autonomous systems. While absolute pose regression (APR) methods have shown promise for efficient inference, they often struggle with generalization. Recent approaches attempt to address this through data augmentation with varied viewpoints, yet they overlook a critical factor: appearance diversity.
+In this work, we identify appearance variation as the key to robust localization. Specifically, we first lift real 2D images into 3D Gaussian Splats with varying appearance and deblurring ability, enabling the synthesis of diverse training data that varies not just in poses but also in environmental conditions such as lighting and weather. To fully unleash the potential of the appearance-diverse data, we build a two-branch joint training pipeline with an adversarial discriminator to bridge the syn-to-real gap.
+Extensive experiments demonstrate that our approach significantly outperforms state-of-the-art methods, reducing translation and rotation errors by 50% and 22% on indoor datasets, and 37% and 42% on outdoor datasets. Most notably, our method shows remarkable robustness in dynamic driving scenarios under varying weather conditions and in day-to-night scenarios, where previous APR methods fail.
           </p>
         </div>
       </div>
