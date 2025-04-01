@@ -64,6 +64,9 @@
       <a class="navbar-item" href="https://ai4ce.github.io/" target="_blank" rel="noopener noreferrer">
         <img src="./static/images/ai4ce_new_linear_notext.svg" alt="AI4CE Lab" style="height: 2.0rem;">
       </a>
+      <a class="navbar-item" href="https://www.nyu.edu/" target="_blank">
+        <img src="./static/images/NYU_Long_RGB_Color.png" alt="NYU Logo" style="height: 2.0rem;">
+      </a>
       <a role="button"
          onclick="this.classList.toggle('is-active');document.querySelector('#'+this.dataset.target).classList.toggle('is-active');"
          class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -75,11 +78,20 @@
 
     <!-- Will collapse into a "burger" menu on mobile. -->
     <div id="navbarBasicExample" class="navbar-menu">
-
       <div class="navbar-end">
-        <a class="navbar-item" href="https://www.nyu.edu/" target="_blank">
-          <img src="./static/images/NYU_Long_RGB_Color.png" alt="NYU Logo" style="height: 2.0rem;">
-        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://ai4ce.github.io/GARF/" target="_blank">
+              GARF
+            </a>
+            <a class="navbar-item" href="https://ai4ce.github.io/LUWA/" target="_blank">
+              LUWA
+            </a>
+          </div>
+        </div>
       </div>
 
     </div>
