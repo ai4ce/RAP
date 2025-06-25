@@ -1,0 +1,17 @@
+run_name=stairs_sfm
+logbase=ckpts/7Scenes_sfm
+datadir=data/7Scenes_sfm/stairs
+dataset_type=Colmap
+train_skip=5
+test_skip=1
+rap_resolution=2
+epochs=2000
+batch_size=8
+val_batch_size=8
+rvs_refresh_rate=20
+rvs_trans=0.2
+rvs_rotation=10     
+d_max=0.2
+pretrained_model_path=logs/rap_stairs_b0_sfm/RAPNet/checkpoint-0687-0.0015.pt # add your trained model for eval
+#resume=True
+brisque_threshold=0

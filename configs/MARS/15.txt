@@ -1,0 +1,16 @@
+run_name=mars_15
+logbase=ckpts/MARS
+datadir=data/MARS/15
+dataset_type=Colmap
+train_skip=1
+test_skip=1
+rap_resolution=2
+epochs=2000
+batch_size=8
+rvs_refresh_rate=20
+rvs_trans=0.1
+rvs_rotation=1
+d_max=1
+#pretrained_model_path=logs/mars_15/checkpoint-0266-0.0021.pt
+#resume=True
+xz_plane_only=True

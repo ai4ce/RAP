@@ -1,0 +1,8 @@
+This repository contains multiple components with different licenses:
+
+1. Source code (excluding Gaussian Splatting-related code): Licensed under MIT License.
+2. Documentation and other non-code materials: Licensed under CC BY-NC-SA 4.0.
+3. Gaussian Splatting-related components: Licensed under the Gaussian-Splatting License (see LICENSE_GS.md).
+4. Third-party components: See their respective licenses in the corresponding repositories.
+
+Users must comply with the licenses for each component accordingly.

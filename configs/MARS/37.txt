@@ -1,0 +1,16 @@
+run_name=mars_37
+logbase=ckpts/MARS
+datadir=data/MARS/37
+dataset_type=Colmap
+train_skip=1
+test_skip=1
+rap_resolution=4
+epochs=2000
+batch_size=8
+rvs_refresh_rate=20
+rvs_trans=0.1
+rvs_rotation=1
+d_max=1
+#pretrained_model_path=logs/rap_MARS37_test/checkpoint-1092-0.0001.pt
+#resume=True
+xz_plane_only=True

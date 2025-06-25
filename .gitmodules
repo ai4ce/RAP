@@ -1,0 +1,6 @@
+[submodule "submodules/fused-ssim"]
+	path = submodules/fused-ssim
+	url = https://github.com/rahul-goel/fused-ssim.git
+[submodule "submodules/gsplat"]
+	path = submodules/gsplat
+	url = https://github.com/nerfstudio-project/gsplat.git

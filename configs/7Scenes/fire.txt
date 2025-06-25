@@ -1,0 +1,17 @@
+run_name=fire
+logbase=ckpts/7Scenes
+datadir=data/7Scenes/fire
+dataset_type=7Scenes
+train_skip=5
+test_skip=1
+rap_resolution=2
+epochs=2000
+batch_size=8
+val_batch_size=8
+rvs_refresh_rate=20
+rvs_trans=0.2
+rvs_rotation=10     
+d_max=0.2
+#pretrained_model_path=logs/rap_fire_b0/RAPNet/checkpoint-0556-0.0065.pt
+#resume=True
+brisque_threshold=0

@@ -1,0 +1,16 @@
+__pycache__
+.idea
+.vscode
+.DS_Store
+data
+ckpts
+logs*
+out*
+wandb
+build
+*.EGG-INFO
+vis
+*.pt*
+*.np*
+*.jpg
+dfnet

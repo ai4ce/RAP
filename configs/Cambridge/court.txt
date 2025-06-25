@@ -1,0 +1,17 @@
+run_name=court
+logbase=ckpts/Cambridge
+datadir=data/Cambridge/court/colmap/undistorted
+dataset_type=Colmap
+train_skip=2
+test_skip=1
+rap_resolution=2
+epochs=2000
+batch_size=8
+val_batch_size=1
+rvs_refresh_rate=20
+rvs_trans=1.5
+rvs_rotation=4
+d_max=1
+#pretrained_model_path=logs/rap_court_b0/RAPNet/checkpoint-1127-1.3708.pt
+#resume=True
+brisque_threshold=0

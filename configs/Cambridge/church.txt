@@ -1,0 +1,16 @@
+run_name=church
+logbase=ckpts/Cambridge
+datadir=data/Cambridge/church
+dataset_type=Cambridge
+train_skip=2
+test_skip=1
+rap_resolution=2
+epochs=2000
+batch_size=8
+val_batch_size=1
+rvs_refresh_rate=20
+rvs_trans=1.5
+rvs_rotation=4
+d_max=1
+#pretrained_model_path=logs/rap_church_b0/RAPNet/checkpoint-1442-0.0758.pt
+#resume=True

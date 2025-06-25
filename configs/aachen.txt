@@ -1,0 +1,17 @@
+run_name=aachen_360
+logbase=ckpts
+datadir=data/aachen_sub
+dataset_type=Colmap
+train_skip=1
+test_skip=1
+rap_resolution=360
+epochs=2000
+batch_size=8
+val_batch_size=1
+rvs_refresh_rate=20
+rvs_trans=1.5
+rvs_rotation=4
+d_max=1
+#pretrained_model_path=logs/rap_aachen_360/checkpoint-0274-0.2794.pt
+#resume=True
+brisque_threshold=0
