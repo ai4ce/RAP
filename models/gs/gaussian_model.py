@@ -761,7 +761,7 @@ class GaussianModel:
 
         # [1, H, W, 3] -> [3, H, W]
         rendered_image = render_colors[0].permute(2, 0, 1)
-        radii = info["radii"].squeeze(0)  # [N,]
+        radii = info["radii"].squeeze(0).max(dim=1).values  # .max(dim=1).values required if gsplat version >= 1.5
         viewspace_points = info["means2d"]
         if viewspace_points.requires_grad:  # in inference this will always be False
             viewspace_points.retain_grad()  # [1, N, 2]
