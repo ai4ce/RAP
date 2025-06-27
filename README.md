@@ -101,7 +101,7 @@ Post-refinement requires a CUDA-compatible GPU with at least 6GB of VRAM.
 
 ### 🛠️ Custom Datasets
 
-You can build your custom datasets using the COLMAP format. The images should have the same size and should be taken from the same camera with a fixed focal length, and `--ImageReader.single_camera 1` should be set when running `colmap feature_extractor`, otherwise they might cause ambiguities when estimating translation as our model has no information to focal length. We recommend using SfM poses to train 3DGS, otherwise the rendering quality might not be good. If you have GPS/IMU data, you may calculate a multiplier to scale the translations to metric or calculate a matrix to transform the model output to the real-world coordinate system after training, as the COLMAP scale is not metric.
+You can use `utils/run_colmap.sh` or `utils/run_colmap.ps1` to build your custom datasets using the COLMAP format. The images should have the same size and should be taken from the same camera with a fixed focal length, and `--ImageReader.single_camera 1` should be set when running `colmap feature_extractor`, otherwise they might cause ambiguities when estimating translation as our model has no information to focal length. We recommend using SfM poses to train 3DGS, otherwise the rendering quality might not be good. If you have GPS/IMU data, you may calculate a multiplier to scale the translations to metric or calculate a matrix to transform the model output to the real-world coordinate system after training, as the COLMAP scale is not metric.
 
 ## 🎨 Training, Rendering, and Evaluating 3DGS
 
