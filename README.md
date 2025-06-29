@@ -35,7 +35,7 @@
 
 ## 🔊 News
 
-- 2025/6/25: Our paper is accepted to ICCV 2025! 🎉 Code is released! Data and checkpoints will be released as soon as we have access to the server that has been undergoing maintenance. The latest results in the paper will also be updated soon. The project page might not be correctly loaded when viewing from a buggy latest Chromium-based browser.
+- 2025/6/25: Our paper is accepted to ICCV 2025! 🎉 Code is released! Data and checkpoints will be released as soon as we have access to the server that has been undergoing maintenance. The latest results in the paper will also be updated soon.
 - 2024/12/1: Our paper is now available on [arXiv](https://arxiv.org/abs/2412.00138)!
 
 ## ⚙️ Setup
