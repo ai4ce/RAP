@@ -22,13 +22,12 @@ video {
 
 .image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 10px;
 }
 
 .image-grid img {
-    width: 236px; /* Make images responsive */
-    height: auto;
+    display: none;
     border-radius: 8px; /* Optional: Rounded corners */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow */
 }
@@ -178,16 +177,6 @@ video {
 
 #interpolation-image-wrapper img {
     border-radius: 5px;
-}
-
-.slider-block {
-    display: none; /* Hide all divs initially */
-    opacity: 0;
-}
-
-.slider-block.show {
-    display: block;
-    opacity: 1;
 }
 
 .btn {
