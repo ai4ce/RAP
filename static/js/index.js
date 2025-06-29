@@ -1,61 +1,43 @@
-window.HELP_IMPROVE_VIDEOJS = false;
+document.addEventListener('DOMContentLoaded', () => {
+  // 初始化所有轮播
+  const splide1 = new Splide('#video-carousel1', {
+    type: 'loop',
+    perPage: 1,
+    autoplay: false
+  });
+  
+  const splide2 = new Splide('#video-carousel2', {
+    type: 'loop',
+    perPage: 1,
+    autoplay: false
+  });
+  
+  const splide3 = new Splide('#video-carousel3', {
+    type: 'loop',
+    perPage: 1,
+    autoplay: false
+  });
+  
+  splide1.mount();
+  splide2.mount();
+  splide3.mount();
 
-window.addEventListener('load', () => {
-    const swiper1 = new Swiper('.swiper1', {
-        loop: true,
-        autoHeight: true,
-        navigation: {
-            nextEl: '.swiper1 .swiper-button-next',
-            prevEl: '.swiper1 .swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper1 .swiper-pagination',
-            clickable: true,
-        },
-    });
-    const swiper2 = new Swiper('.swiper2', {
-        loop: true,
-        autoHeight: true,
-        navigation: {
-            nextEl: '.swiper2 .swiper-button-next',
-            prevEl: '.swiper2 .swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper2 .swiper-pagination',
-            clickable: true,
-        },
-    });
-    const swiper3 = new Swiper('.swiper3', {
-        loop: true,
-        autoHeight: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        // on: {
-        //     init: () => {
-        //         centerImageGrid();
-        //     },
-        //     slideChange: () => {
-        //         centerImageGrid();
-        //     },
-        // },
-    });
-});
 
-function centerImageGrid() {
-    const imageGrid = document.querySelector('.image-grid');
-    const swiper = document.querySelector('.swiper3');
-
-    if (imageGrid && swiper) {
-        const swiperHeight = swiper.clientHeight;
-        const gridHeight = imageGrid.clientHeight;
-        const marginTop = (swiperHeight - gridHeight) / 2;
-
-        imageGrid.style.marginTop = marginTop > 0 ? `${marginTop}px` : '0px';
+  splide3.on('move', function(newIndex) {
+    if (newIndex === 5) {
+        const imgs = document.querySelectorAll('.image-grid img')
+        imgs.forEach((img, index) => {
+            img.style.display = 'block';
+        });
     }
-}
+  });
+
+  splide3.on('moved', function(newIndex) {
+    if (newIndex !== 5) {
+        const imgs = document.querySelectorAll('.image-grid img')
+        imgs.forEach((img, index) => {
+            img.style.display = 'none';
+        });
+    }
+  });
+});

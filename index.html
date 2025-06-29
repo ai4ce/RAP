@@ -2,42 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="Unleashing the Power of Data Synthesis in Visual Localization">
+  <meta name="description" content="Adversarial Exploitation of Data Diversity Improves Visual Localization">
   <meta name="keywords" content="Visual Localization, 3D Gaussian, Data Synthesis, Adversarial Training">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RAP</title>
   <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>😎</text></svg>">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-
-  <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-  />
-
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/css/splide.min.css">
 
   <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
   <script src="./static/js/index.js"></script>
   <script src="./static/js/copy2clipboard.js"></script>
-  <script type="text/javascript" async
-          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
-
-  <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BM5C13X75"></script>
@@ -104,8 +85,7 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">😎 RAP</h1>
-          <h1 class="title is-2 publication-title">Unleashing the Power of Data Synthesis<br>in Visual
-            Localization</h1>
+          <h1 class="title is-2 publication-title">Adversarial Exploitation of Data Diversity Improves Visual Localization</h1>
           <h2 class="subtitle is-4 publication-subtitle mt-5">ICCV 2025</h2>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -177,12 +157,12 @@
               </span>
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a href="https:"
+                <a href="https://drive.google.com/drive/folders/1OqOlxYggLc_-3K73eZ-uyLiGDJbPCcxj"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
                   </span>
-                  <span>Data (Coming Soon)</span>
+                  <span>Data</span>
                 </a>
               </span>
             </div>
@@ -198,10 +178,6 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width teaser no-margin">
 
-        <p>We have further improved our results and paper and will update them. Our data will also be released soon.</p>
-
-        <p>Stay tuned!</p>
-
         <p class="tldr">
           We make camera localization more generalizable by addressing the <b>data gap</b> via
           3DGS and <b>learning gap</b> via a two-branch joint learning with adversarial loss, achieving localization
@@ -209,29 +185,42 @@
           20cm/0.5° in outdoor scenarios, and 10cm/0.2° in driving scenarios.
         </p>
 
-        <div class="swiper swiper1">
-          <div class="swiper-wrapper">
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/church.mp4" type="video/mp4">
-            </video>
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/college.mp4" type="video/mp4">
-            </video>
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/hospital.mp4" type="video/mp4">
-            </video>
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/shop.mp4" type="video/mp4">
-            </video>
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/court.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+        <div id="video-carousel1" class="splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/church.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </li>
+            <li class="splide__slide">
+              <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/college.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </li>
+            <li class="splide__slide">
+              <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/hospital.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </li>
+            <li class="splide__slide">
+                <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/shop.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+            </li>
+            <li class="splide__slide">
+                <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/court.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+            </li>
+          </ul>
         </div>
-
+      </div>
       </div>
     </div>
   </div>
@@ -333,31 +322,45 @@ Extensive experiments demonstrate that our approach significantly outperforms st
           </p>
         </div>
 
-        <div class="swiper swiper2">
-          <div class="swiper-wrapper">
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/RAPref1.mp4" type="video/mp4">
-            </video>
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/RAPref2.mp4" type="video/mp4">
-            </video>
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/RAPref3.mp4" type="video/mp4">
-            </video>
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/RAPref4.mp4" type="video/mp4">
-            </video>
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/RAPref5.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+        <div id="video-carousel2" class="splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/RAPref1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </li>
+            <li class="splide__slide">
+              <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/RAPref2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </li>
+            <li class="splide__slide">
+              <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/RAPref3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </li>
+            <li class="splide__slide">
+                <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/RAPref4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+            </li>
+            <li class="splide__slide">
+                <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/RAPref5.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+            </li>
+          </ul>
         </div>
       </div>
+
+      </div>
     </div>
-  </div>
   </div>
 </section>
 
@@ -367,43 +370,60 @@ Extensive experiments demonstrate that our approach significantly outperforms st
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">More Visualizations of Appearance-Varying 3DGS</h2>
-        <div class="swiper swiper3">
-          <div class="swiper-wrapper">
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/3DGS_MARS_NVS.mp4" type="video/mp4">
-            </video>
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/3DGS_MARS_Test.mp4" type="video/mp4">
-            </video>
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/3DGS_MARS_Vary.mp4" type="video/mp4">
-            </video>
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/3DGS_Cam_Test.mp4" type="video/mp4">
-            </video>
-            <video muted autoplay loop controls class="swiper-slide">
-              <source src="static/videos/3DGS_Cam_Vary.mp4" type="video/mp4">
-            </video>
-            <div class="swiper-slide image-grid" id="cambridge_block">
-              <!-- insert all gifs here -->
-              <img src="static/images/gifs/image125.gif" alt="1">
-              <img src="static/images/gifs/image126.gif" alt="2">
-              <img src="static/images/gifs/image127.gif" alt="3">
-              <img src="static/images/gifs/image128.gif" alt="4">
-              <img src="static/images/gifs/image129.gif" alt="5">
-              <img src="static/images/gifs/image130.gif" alt="6">
-              <img src="static/images/gifs/image131.gif" alt="7">
-              <img src="static/images/gifs/image132.gif" alt="8">
-              <img src="static/images/gifs/image133.gif" alt="9">
-              <img src="static/images/gifs/image134.gif" alt="10">
-              <img src="static/images/gifs/image135.gif" alt="11">
-              <img src="static/images/gifs/image136.gif" alt="12">
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+        <div id="video-carousel3" class="splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/3DGS_MARS_NVS.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </li>
+            <li class="splide__slide">
+              <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/3DGS_MARS_Test.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </li>
+            <li class="splide__slide">
+              <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/3DGS_MARS_Vary.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </li>
+            <li class="splide__slide">
+                <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/3DGS_Cam_Test.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+            </li>
+            <li class="splide__slide">
+                <video muted autoplay loop controls preload="metadata">
+                <source src="static/videos/3DGS_Cam_Vary.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+            </li>
+            <li class="splide__slide" style="align-self: center;">
+              <div class="image-grid" id="cambridge_block">
+                <!-- insert all gifs here -->
+                <img src="static/images/gifs/image125.gif" alt="1">
+                <img src="static/images/gifs/image126.gif" alt="2">
+                <img src="static/images/gifs/image127.gif" alt="3">
+                <img src="static/images/gifs/image128.gif" alt="4">
+                <img src="static/images/gifs/image129.gif" alt="5">
+                <img src="static/images/gifs/image130.gif" alt="6">
+                <img src="static/images/gifs/image131.gif" alt="7">
+                <img src="static/images/gifs/image132.gif" alt="8">
+                <img src="static/images/gifs/image133.gif" alt="9">
+                <img src="static/images/gifs/image134.gif" alt="10">
+                <img src="static/images/gifs/image135.gif" alt="11">
+                <img src="static/images/gifs/image136.gif" alt="12">
+              </div>
+            </li>
+          </ul>
         </div>
+      </div>
+
       </div>
     </div>
   </div>
@@ -474,7 +494,7 @@ Extensive experiments demonstrate that our approach significantly outperforms st
           <i class="fas fa-copy"></i>
         </button>
         <pre style="text-align: left; border-radius: 8px;"><code id="bibtexInfo">@inproceedings{Li2025unleashing,
- title={Unleashing the Power of Data Synthesis},
+ title={Adversarial Exploitation of Data Diversity Improves Visual Localization},
  author={Sihang Li and Siqi Tan and Bowen Chang and Jing Zhang and Chen Feng and Yiming Li},
  year={2025},
  booktitle={International Conference on Computer Vision (ICCV)}
