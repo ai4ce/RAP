@@ -62,7 +62,7 @@ Post-refinement requires a CUDA-compatible GPU with at least 6GB of VRAM.
 
 3. Make sure PyTorch 2.0 or later is installed in your environment. We recommend PyTorch 2.6+. The CUDA version of PyTorch should match the version used by `nvcc` (check with `nvcc -v`), and should not exceed the version supported by your GPU driver (check with `nvidia-smi`).
 
-   > We use `torch.compile` for accleration and reducing memory and its `triton` backend only supports Linux. When `torch.compile` is enabled for a module, it will seem to stuck for a while during its first and last forward pass in the first epoch of training and validating depending on how high your CPU's single-core performance is. Windows and older PyTorch versions might work if you set `args.compile_model = False` and make sure `args.compile = False` when you run the code, but it might be buggy, slower, and consume more memory, so it is not recommended.
+   > We use `torch.compile` for acceleration and reducing memory and its `triton` backend only supports Linux. When `torch.compile` is enabled for a module, it will seem to stuck for a while during its first and last forward pass in the first epoch of training and validating depending on how high your CPU's single-core performance is. Windows and older PyTorch versions might work if you set `args.compile_model = False` and make sure `args.compile = False` when you run the code, but it might be buggy, slower, and consume more memory, so it is not recommended.
 
 4. Install packages. This might take a while as it involves compiling two CUDA extensions.
 
@@ -101,7 +101,11 @@ Post-refinement requires a CUDA-compatible GPU with at least 6GB of VRAM.
 
 ### 🛠️ Custom Datasets
 
-You can use `utils/run_colmap.sh` or `utils/run_colmap.ps1` to build your custom datasets using the COLMAP format. The images should have the same size and should be taken from the same camera with a fixed focal length, and `--ImageReader.single_camera 1` should be set when running `colmap feature_extractor`, otherwise they might cause ambiguities when estimating translation as our model has no information to focal length. We recommend using SfM poses to train 3DGS, otherwise the rendering quality might not be good. If you have GPS/IMU data, you may calculate a multiplier to scale the translations to metric or calculate a matrix to transform the model output to the real-world coordinate system after training, as the COLMAP scale is not metric.
+You can place all images (including both the training and test sets) in an images folder and use `utils/run_colmap.sh` (Linux) or `utils/run_colmap.ps1` (Windows) to convert them into a COLMAP-format dataset. Ensure that all images are the same size and captured with the same camera using a fixed focal length. When running `colmap feature_extractor`, set `--ImageReader.single_camera 1`; otherwise, ambiguities may arise during translation estimation, since our model does not have access to focal length information.
+
+To specify the test set, create a `list_test.txt` file in the same directory as the `images` and `sparse` folders.
+
+We recommend using SfM poses to train 3DGS, as poor camera poses can significantly degrade rendering quality. If you have GPS/IMU data, you can either compute a scale factor to convert translations to metric units or apply a transformation matrix after training to align the output with the real-world coordinate system, since COLMAP outputs are not in metric scale.
 
 ## 🎨 Training, Rendering, and Evaluating 3DGS
 
