@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">😎 RAP<br>Unleashing the Power of Data Synthesis <br> in Visual Localization </h1>
+  <h1 align="center">😎 RAP<br>Adversarial Exploitation of Data Diversity Improves Visual Localization</h1>
   <h3 align="center">ICCV 2025</h3>
   <p align="center">
     <a href="https://scholar.google.com/citations?user=90IoeJsAAAAJ">Sihang Li*</a>
@@ -35,7 +35,8 @@
 
 ## 🔊 News
 
-- 2025/6/25: Our paper is accepted to ICCV 2025! 🎉 Code is released! Data and checkpoints will be released as soon as we have access to the server that has been undergoing maintenance. The latest results in the paper will also be updated soon.
+- 2025/10/22: We finally have access to the data server and have released the data and checkpoints.
+- 2025/6/25: Our paper is accepted to ICCV 2025! 🎉 Code is released! 
 - 2024/12/1: Our paper is now available on [arXiv](https://arxiv.org/abs/2412.00138)!
 
 ## ⚙️ Setup
@@ -84,14 +85,14 @@ Post-refinement requires a CUDA-compatible GPU with at least 6GB of VRAM.
 
 ## 📦 Data (Coming Soon)
 
-| Name                           | Dataset                                                      | COLMAP                 | 3DGS                       | Weights |
-| ------------------------------ | ------------------------------------------------------------ | ---------------------- | -------------------------- | ------- |
-| Cambridge Landmarks            | `utils/setup_cambridge.py` (In fact, only COLMAP is needed)  | (Undistorted)          |                            |         |
-| 7Scenes (SfM)                  | Only COLMAP is needed                                        |                        |                            |         |
-| 7Scenes (DSLAM, Deprecated)    | [Download](https://www.microsoft.com/en-us/research/project/rgb-d-dataset-7-scenes/) | (Training Set Only)    |                            |         |
-| MARS                           | Only COLMAP is needed                                        | (Not in metric scale*) |                            |         |
-| St. George’s Basilica Building | Only COLMAP is needed                                        |                        | (Trained with testing set) |         |
-| Aachen Subset                  | Only COLMAP is needed                                        | (Not in metric scale)  |                            |         |
+| Name                           | Dataset                                                      | COLMAP                                                       | 3DGS                                                         | Weights                                                      |
+| ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Cambridge Landmarks            | `utils/setup_cambridge.py` (In fact, only COLMAP is needed)  | [Download](https://drive.google.com/file/d/1Ga57aZED9sNdcb3M78ZLpgI9Yijs_H7C/view) (Undistorted) | [Download](https://drive.google.com/file/d/1JcjdKCR1jmLHPNsXKl4-deG-LAbZV-F-/view) | [Download](https://drive.google.com/file/d/1UxZLxagqwDWiKg9BSnG4ugMa9hgTkLCb/view) |
+| 7Scenes (SfM)                  | Only COLMAP is needed                                        | [Download](https://drive.google.com/file/d/1d0GTyl7YMWezeKYSGDG4KGHSKq06jl0t/view) | [Download](https://drive.google.com/file/d/1_OKBzHww-5JnlIo_WegasRO5iyhoILvE/view) | [Download](https://drive.google.com/file/d/1xotAnZZIGmGwGVSysjnJsKcqZRLNo_vr/view) |
+| 7Scenes (DSLAM, Deprecated)    | [Download](https://www.microsoft.com/en-us/research/project/rgb-d-dataset-7-scenes/) | [Download](https://drive.google.com/file/d/1hdQIlvrsuUmhJhRMzOjXNO9mXP9XN2dm/view) (Training Set Only) | [Download](https://drive.google.com/file/d/1BvF0sL7YIgVph4MTBsPQLHg0HjG5yiw9/view) | [Download](https://drive.google.com/file/d/1Nsh0Mozpoxx3Ac_WrPxa0E5c9zCtODg-/view) |
+| MARS                           | Only COLMAP is needed                                        | [Download](https://drive.google.com/file/d/1Dh7npQSn8V-ZpAEf_HP6Og3RQnTjleXT/view) (Not in metric scale*) | [Download](https://drive.google.com/file/d/16gXNCoy_H0IqHLkOHvks1A0XlR7i20jZ/view) | [Download](https://drive.google.com/file/d/12wR65Vg-db242XwnJ1oKteg1gcJJZwzu/view) |
+| St. George’s Basilica Building | Only COLMAP is needed                                        | [Download](https://drive.google.com/file/d/1TjFfV8L2L4fugaaHT8JwhknXmlVbxEer/view) | [Download](https://drive.google.com/file/d/1F2wAapmobzegDAWBvFUCDMcT2FejGLBT/view) (Trained with testing set) | [Download](https://drive.google.com/file/d/18G-3wTg95V9IgctlJ8_dJsvXav7GUyeL/view) |
+| Aachen Subset                  | Only COLMAP is needed                                        | [Download](https://drive.google.com/file/d/1jALpfMtesWYDOxgqeQfRamvZH7Cm3U4N/view) (Not in metric scale) | [Download](https://drive.google.com/file/d/1gM_YeRo_4wNzRrlVkkSRuTyFCi3wU7fA/view) | [Download](https://drive.google.com/file/d/1L7Hs8Dc5wl6hqjSptrmX2bfrE6OOKFm5/view) |
 
 *Scale multipliers for MARS:
 
@@ -146,7 +147,7 @@ This repo is built on [Gaussian-Wild](https://github.com/EastbeanZhang/Gaussian-
 If you find our work helpful, please consider citing our paper!
 ```
 @inproceedings{Li2025unleashing,
- title={Unleashing the Power of Data Synthesis},
+ title={Adversarial Exploitation of Data Diversity Improves Visual Localization},
  author={Sihang Li and Siqi Tan and Bowen Chang and Jing Zhang and Chen Feng and Yiming Li},
  year={2025},
  booktitle={International Conference on Computer Vision (ICCV)}
