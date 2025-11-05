@@ -12,6 +12,6 @@ rvs_refresh_rate=20
 rvs_trans=0.2
 rvs_rotation=10     
 d_max=0.2
-pretrained_model_path=logs/rap_chess_b0_sfm/RAPNet/checkpoint-1946-0.0002.pt # add your trained model for eval
+#pretrained_model_path=logs/rap_chess_b0_sfm/RAPNet/checkpoint-1946-0.0002.pt
 #resume=True
 brisque_threshold=0

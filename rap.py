@@ -10,7 +10,6 @@ from arguments.options import config_parser
 from dataset_loaders.cambridge_scenes import Cambridge
 from dataset_loaders.colmap_dataset import ColmapDataset
 from dataset_loaders.seven_scenes import SevenScenes
-from models.apr.dfnet import DFNet
 from models.apr.discriminator import Discriminator
 from models.apr.rapnet import RAPNet
 from utils.early_stopper import EarlyStopper

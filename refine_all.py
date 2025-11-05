@@ -5,10 +5,10 @@ import sys
 
 
 GPU_CPU_MAP = {
-    0: list(map(str, range(0, 13))) +  list(map(str, range(52, 65))),
-    1: list(map(str, range(13, 26))) + list(map(str, range(65, 78))),
-    2: list(map(str, range(26, 39))) + list(map(str, range(78, 91))),
-    3: list(map(str, range(39, 52))) + list(map(str, range(91, 104)))
+    3: list(map(str, range(0, 13))) +  list(map(str, range(52, 65))),
+    4: list(map(str, range(13, 26))) + list(map(str, range(65, 78))),
+    5: list(map(str, range(26, 39))) + list(map(str, range(78, 91))),
+    6: list(map(str, range(39, 52))) + list(map(str, range(91, 104)))
 }
 
 TASKS = []

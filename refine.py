@@ -161,9 +161,9 @@ class Refiner:
             camera = Camera(None, None, None,
                             world_to_ref_pred[:3, :3], world_to_ref_pred[:3, 3], self.gs_cam_params.K,
                             self.gs_cam_params.FovX, self.gs_cam_params.FovY, img_orig)
-            render_result = self.gaussians.render(camera, args, self.background)
-            reference, depth = render_result['render'], render_result['depth']
             try:
+                render_result = self.gaussians.render(camera, args, self.background)
+                reference, depth = render_result['render'], render_result['depth']
                 matches_im_query, matches_im_reference = self.matcher.match(img_orig, reference, args.confidence_threshold)
                 y = np.rint(matches_im_reference[:, 1]).astype(int)
                 x = np.rint(matches_im_reference[:, 0]).astype(int)
@@ -416,8 +416,9 @@ if __name__ == "__main__":
     parser.add_argument("--pnp_mode", type=str, default="cv2", choices=['cv2', 'poselib', 'pycolmap'],
                         help="pnp lib to use")
     parser.add_argument("--poses_txt", type=str, default=None, help="precomputed poses txt file")
-    parser.add_argument("--cpu_affinity_ids", type=int, default=None, help="CPU affinity ID list in Python list format")
+    parser.add_argument("--cpu_affinity_ids", type=int, nargs="*", default=None, help="CPU affinity ID list in Python list format")
     args = get_combined_args(parser)
+    args.device = args.render_device
     fix_seed(args.seed)
 
     if args.cpu_affinity_ids:

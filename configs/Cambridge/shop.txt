@@ -12,6 +12,6 @@ rvs_refresh_rate=20
 rvs_trans=1.5
 rvs_rotation=4
 d_max=1
-#pretrained_model_path=logs/Cambridge/shop.pth
+#pretrained_model_path=logs/rap_shop_b0/RAPNet/checkpoint-1473-0.0234.pt
 #resume=True
 brisque_threshold=0
