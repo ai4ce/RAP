@@ -18,3 +18,4 @@ kapture_localization
 roma
 submodules/fused-ssim
 submodules/gsplat
+dust3r/croco/models/curope
