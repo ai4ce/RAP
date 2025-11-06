@@ -7,7 +7,7 @@ plyfile
 scikit-learn
 tqdm
 wandb
-kornia
+kornia!=0.8.1
 lpips
 imageio[ffmpeg]
 einops
