@@ -35,7 +35,7 @@
 
 ## 🔊 News
 
-- 2025/10/22: We finally have access to the data server and have released the data and checkpoints.
+- 2025/10/22: We finally have access to the data server and have released the data and checkpoints. Note that we also updated some of the results in our paper, as we have now completed rerunning the experiments that were interrupted before the camera-ready deadline.
 - 2025/6/25: Our paper is accepted to ICCV 2025! 🎉 Code is released! 
 - 2024/12/1: Our paper is now available on [arXiv](https://arxiv.org/abs/2412.00138)!
 
