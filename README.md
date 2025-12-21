@@ -65,7 +65,7 @@ Post-refinement requires a CUDA-compatible GPU with at least 6GB of VRAM.
 
    > We use `torch.compile` for acceleration and reducing memory and its `triton` backend only supports Linux. When `torch.compile` is enabled for a module, it will seem to stuck for a while during its first and last forward pass in the first epoch of training and validating depending on how high your CPU's single-core performance is. Windows and older PyTorch versions might work if you set `args.compile_model = False` and make sure `args.compile = False` when you run the code, but it might be buggy, slower, and consume more memory, so it is not recommended.
 
-4. Install packages. This might take a while as it involves compiling two CUDA extensions.
+4. Install packages. This might take a while as it involves compiling three CUDA extensions.
 
    ```sh
    pip install -r requirements.txt
