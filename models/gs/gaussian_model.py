@@ -392,10 +392,11 @@ class GaussianModel:
 
         self.active_sh_degree = self.max_sh_degree
         other_attributes_dict = torch.load(os.path.join(root_path, "other_attributes_dict.pth"),
-                                           map_location=self.device)
+                                           map_location=self.device, mmap=True)
 
         if self.use_kmap_pjmap or self.use_okmap:
-            map_generator_state_dict = torch.load(os.path.join(root_path, "map_generator.pth"), map_location=self.device)
+            map_generator_state_dict = torch.load(os.path.join(root_path, "map_generator.pth"),
+                                                  map_location=self.device, mmap=True)
             try:
                 self.map_generator.load_state_dict(map_generator_state_dict)
             except RuntimeError:
@@ -408,7 +409,8 @@ class GaussianModel:
                 self.box_coord = other_attributes_dict["box_coord"]
 
         if self.use_color_net:
-            color_net_state_dict = torch.load(os.path.join(root_path, "color_net.pth"), map_location=self.device)
+            color_net_state_dict = torch.load(os.path.join(root_path, "color_net.pth"),
+                                              map_location=self.device, mmap=True)
             try:
                 self.color_net.load_state_dict(color_net_state_dict)
             except RuntimeError:
