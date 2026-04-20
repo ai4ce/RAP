@@ -17,6 +17,7 @@ from utils.eval_utils import eval_model
 from utils.general_utils import fix_seed
 from utils.model_utils import vis_featuremap
 
+torch.backends.cudnn.benchmark = True
 torch.set_float32_matmul_precision("high")
 
 

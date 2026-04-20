@@ -22,6 +22,7 @@ from utils.pose_utils import CameraPoseLoss
 from utils.triplet_losses import TripletLossHardNegMiningPlus
 from utils.vic_reg_loss import VICRegLoss
 
+torch.backends.cudnn.benchmark = True
 torch.set_float32_matmul_precision('high')
 
 
@@ -76,14 +77,17 @@ class BaseTrainer:
         if args.compile_model:
             self.model = torch.compile(self.model)
 
-        # set optimizer
-        self.optimizer_model = optim.Adam(self.model.parameters(), lr=args.learning_rate)
-        self.scheduler = optim.lr_scheduler.ReduceLROnPlateau(self.optimizer_model, factor=0.95, patience=args.patience[1])
-        self.schedulers = [self.scheduler]
-
         # loss functions
         self.pose_loss = CameraPoseLoss(args).to(args.device).train()
         self.mse_loss = nn.MSELoss(reduction='mean')
+
+        # set optimizer
+        self.optimizer_model = optim.Adam([
+            {'params': self.model.parameters()},
+            {'params': self.pose_loss.parameters(), 'weight_decay': 0},
+        ], lr=args.learning_rate)
+        self.scheduler = optim.lr_scheduler.ReduceLROnPlateau(self.optimizer_model, factor=0.95, patience=args.patience[1])
+        self.schedulers = [self.scheduler]
 
         # Initialize GradScaler
         self.scaler_model = GradScaler(args.device, enabled=args.amp)
@@ -135,7 +139,7 @@ class BaseTrainer:
 
             # Use autocast for mixed precision
             with autocast(device, enabled=self.args.amp, dtype=self.args.amp_dtype):
-                # inference feature model for GT and nerf image
+                # inference feature model for GT and GS image
                 _, poses_predicted = self.model(imgs_normed_batch, return_feature=False)
                 loss_pose = self.pose_loss(poses_predicted, poses_batch)
                 total_loss = loss_weights[0] * loss_pose
@@ -274,7 +278,7 @@ class RVSTrainer(BaseTrainer):
 
             # Use autocast for mixed precision
             with autocast(device, enabled=self.args.amp, dtype=self.args.amp_dtype):
-                # inference feature model for GT and nerf image
+                # inference feature model for GT and GS image
                 poses_batch = torch.cat((poses_batch, poses_batch))  # double gt pose tensor
                 (features_target, features_rendered), poses_predicted = (
                     self.model(torch.cat((imgs_normed_batch, imgs_rendered_batch)), return_feature=True))
@@ -348,7 +352,7 @@ class RVSWithDiscriminatorTrainer(RVSTrainer):
 
             # Use autocast for mixed precision
             with autocast(device, enabled=self.args.amp, dtype=self.args.amp_dtype):
-                # inference feature model for GT and nerf image
+                # inference feature model for GT and GS image
                 poses_batch = torch.cat((poses_batch, poses_batch))  # double gt pose tensor
                 (features_target, features_rendered), poses_predicted = (
                     self.model(torch.cat((imgs_normed_batch, imgs_rendered_batch)), return_feature=True))

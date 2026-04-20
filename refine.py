@@ -26,7 +26,7 @@ from matcher import Matcher
 from dust3r_visloc.localization import run_pnp
 # from vis3d import vis3d
 
-
+torch.backends.cudnn.benchmark = True
 torch.set_float32_matmul_precision('high')
 
 
@@ -286,7 +286,7 @@ class VisualizationRefiner(Refiner):
             reference, depth = render_result['render'], render_result['depth']
             ref = reference.mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to("cpu", torch.uint8).numpy()
             ref = cv.cvtColor(ref, cv.COLOR_RGB2BGR)
-            cv.imwrite(safe_path(f"{self.vis_root}/render/{img_name}_before.jpg"), ref, [int(cv.IMWRITE_JPEG_QUALITY), 100])
+            cv.imwrite(safe_path(f"{self.vis_root}/render/{img_name}_before.jpg"), ref, [cv.IMWRITE_JPEG_QUALITY, 100, cv.IMWRITE_JPEG_OPTIMIZE, 1])
             plt.imsave(safe_path(f"{self.vis_root}/depth/{img_name}_before.jpg"), depth.cpu().numpy(), cmap='plasma_r', pil_kwargs={"quality": 100})
             plt.close('all')
             fig, ax = plt.subplots(dpi=200)
@@ -319,7 +319,7 @@ class VisualizationRefiner(Refiner):
                 reference2, depth2 = render_result2['render'], render_result2['depth']
                 ref2 = reference2.mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to("cpu", torch.uint8).numpy()
                 ref2 = cv.cvtColor(ref2, cv.COLOR_RGB2BGR)
-                cv.imwrite(safe_path(f"{self.vis_root}/render/{img_name}_after.jpg"), ref2, [int(cv.IMWRITE_JPEG_QUALITY), 100])
+                cv.imwrite(safe_path(f"{self.vis_root}/render/{img_name}_after.jpg"), ref2, [cv.IMWRITE_JPEG_QUALITY, 100, cv.IMWRITE_JPEG_OPTIMIZE, 1])
                 plt.imsave(safe_path(f"{self.vis_root}/depth/{img_name}_after.jpg"), depth2.cpu().numpy(), cmap='plasma_r', pil_kwargs={"quality": 100})
                 # ax2 = plt.subplot2grid((3, 2), (1, 0), colspan=2)
                 plt.close('all')

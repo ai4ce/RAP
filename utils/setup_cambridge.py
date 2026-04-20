@@ -99,4 +99,4 @@ for scene in scenes:
                 img_w = int(math.ceil(target_height / img_aspect))
                 img_h = target_height
             image = cv.resize(image, (img_w, img_h))
-            cv.imwrite(f"{img_output_folder}/{image_name}", image, [cv.IMWRITE_JPEG_QUALITY, 100])
+            cv.imwrite(f"{img_output_folder}/{image_name}", image, [cv.IMWRITE_JPEG_QUALITY, 100, cv.IMWRITE_JPEG_OPTIMIZE, 1])

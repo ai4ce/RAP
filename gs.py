@@ -26,6 +26,7 @@ from render import *
 from utils import network_gui
 from utils.image_utils import psnr
 
+torch.backends.cudnn.benchmark = True
 torch.set_float32_matmul_precision("high")
 
 try:
@@ -269,13 +270,13 @@ def train(args):
                 cv.imwrite(os.path.join(render_temp_path,
                                         f"iter{iteration:05d}_{viewpoint_cam.image_name.replace('.png', '.jpg')}"),
                            image,
-                           [int(cv.IMWRITE_JPEG_QUALITY), 100])
+                           [cv.IMWRITE_JPEG_QUALITY, 100, cv.IMWRITE_JPEG_OPTIMIZE, 1])
                 gt_image = gt_image.mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to("cpu", torch.uint8).numpy()
                 gt_image = cv.cvtColor(gt_image, cv.COLOR_RGB2BGR)
                 cv.imwrite(os.path.join(gt_temp_path,
                                         f"iter{iteration:05d}_{viewpoint_cam.image_name.replace('.png', '.jpg')}"),
                            gt_image,
-                           [int(cv.IMWRITE_JPEG_QUALITY), 100])
+                           [cv.IMWRITE_JPEG_QUALITY, 100, cv.IMWRITE_JPEG_OPTIMIZE, 1])
                 # torchvision.utils.save_image(image, os.path.join(render_temp_path, f"iter{iteration}_"+viewpoint_cam.image_name + ".png"))
                 # torchvision.utils.save_image(gt_image, os.path.join(gt_temp_path, f"iter{iteration}_"+viewpoint_cam.image_name + ".png"))
                 if args.use_features_mask:

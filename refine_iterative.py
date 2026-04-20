@@ -22,6 +22,7 @@ from utils.eval_utils import get_pose_error, vis_pose
 from utils.general_utils import search_for_max_iteration, fix_seed, safe_path
 from utils.model_utils import freeze_bn_layer
 
+torch.backends.cudnn.benchmark = True
 torch.set_float32_matmul_precision('high')
 
 

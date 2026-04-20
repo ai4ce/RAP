@@ -1,8 +1,6 @@
 import json
 import math
-import os.path
 
-import wandb
 from PIL import Image
 from kornia.geometry import depth_to_3d_v2
 from matplotlib import pyplot as plt
@@ -26,7 +24,7 @@ from matcher import Matcher
 from dust3r_visloc.localization import run_pnp
 # from vis3d import vis3d
 
-
+torch.backends.cudnn.benchmark = True
 torch.set_float32_matmul_precision('high')
 
 

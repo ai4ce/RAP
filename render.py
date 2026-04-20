@@ -25,6 +25,7 @@ from utils.general_utils import *
 from utils.nvs_utils import generate_multi_views
 from utils.scene import Scene
 
+torch.backends.cudnn.benchmark = True
 torch.set_float32_matmul_precision("high")
 
 
@@ -48,7 +49,7 @@ def render_interpolation(args, name, iteration, views, gaussians, background, se
         gt = view.original_image[0:3, :, :].mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to("cpu", torch.uint8).numpy()
         gt = cv.cvtColor(gt, cv.COLOR_RGB2BGR)
         cv.imwrite(os.path.join(render_path_gt, f"{select_idxs[idx]}_{view.colmap_id}.jpg"), gt,
-                   [int(cv.IMWRITE_JPEG_QUALITY), 100])
+                   [cv.IMWRITE_JPEG_QUALITY, 100, cv.IMWRITE_JPEG_OPTIMIZE, 1])
         # torchvision.utils.save_image(view.original_image, os.path.join(render_path_gt, f"{select_idxs[idx]}_{view.colmap_id}" + ".png"))
         sub_s2d_inter_path = os.path.join(render_path, f"{select_idxs[idx]}_{view.colmap_id}")
         makedirs(sub_s2d_inter_path, exist_ok=True)
@@ -58,7 +59,7 @@ def render_interpolation(args, name, iteration, views, gaussians, background, se
             rendering = rendering.mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to("cpu", torch.uint8).numpy()
             rendering = cv.cvtColor(rendering, cv.COLOR_RGB2BGR)
             cv.imwrite(os.path.join(sub_s2d_inter_path, f"{select_idxs[idx]}_{inter_weight:.2f}_{view.colmap_id}.jpg"),
-                       rendering, [int(cv.IMWRITE_JPEG_QUALITY), 100])
+                       rendering, [cv.IMWRITE_JPEG_QUALITY, 100, cv.IMWRITE_JPEG_OPTIMIZE, 1])
     gaussians.colornet_inter_weight = 1.0
 
 
@@ -129,7 +130,7 @@ def render_multiview_video(args, name, train_views, gaussians, background):
             rendering = rendering.mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to("cpu", torch.uint8).numpy()
             render_video_out.append_data(rendering)
             # cv.imwrite(os.path.join(render_path, f"{name}_{appear_idx}_{idx:05d}.jpg"),
-            #            cv.cvtColor(rendering, cv.COLOR_RGB2BGR), [int(cv.IMWRITE_JPEG_QUALITY), 100])
+            #            cv.cvtColor(rendering, cv.COLOR_RGB2BGR), [cv.IMWRITE_JPEG_QUALITY, 100, cv.IMWRITE_JPEG_OPTIMIZE, 1])
 
         render_video_out.close()
 
@@ -188,7 +189,7 @@ def render_intrinsics(model_path, name, iteration, views, gaussians, pipeline, b
         rendering = gaussians.render(view, pipeline, background)["render"]
         rendering = rendering.mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to("cpu", torch.uint8).numpy()
         rendering = cv.cvtColor(rendering, cv.COLOR_RGB2BGR)
-        cv.imwrite(os.path.join(render_path, f'{idx:05d}.jpg'), rendering, [int(cv.IMWRITE_JPEG_QUALITY), 100])
+        cv.imwrite(os.path.join(render_path, f'{idx:05d}.jpg'), rendering, [cv.IMWRITE_JPEG_QUALITY, 100, cv.IMWRITE_JPEG_OPTIMIZE, 1])
         # torchvision.utils.save_image(rendering, os.path.join(render_path, '{0:05d}'.format(idx) + ".png"))
     gaussians.colornet_inter_weight = 1.0
 
@@ -213,11 +214,11 @@ def render_set(model_path, name, iteration, views, gaussians, pipeline, backgrou
         rendering = gaussians.render(view, pipeline, background)["render"]
         rendering = rendering.mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to("cpu", torch.uint8).numpy()
         rendering = cv.cvtColor(rendering, cv.COLOR_RGB2BGR)
-        cv.imwrite(os.path.join(render_path, f'{idx:05d}.jpg'), rendering, [int(cv.IMWRITE_JPEG_QUALITY), 100])
+        cv.imwrite(os.path.join(render_path, f'{idx:05d}.jpg'), rendering, [cv.IMWRITE_JPEG_QUALITY, 100, cv.IMWRITE_JPEG_OPTIMIZE, 1])
 
         gt = view.original_image[0:3, :, :].mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to("cpu", torch.uint8).numpy()
         gt = cv.cvtColor(gt, cv.COLOR_RGB2BGR)
-        cv.imwrite(os.path.join(gts_path, f'{idx:05d}.jpg'), gt, [int(cv.IMWRITE_JPEG_QUALITY), 100])
+        cv.imwrite(os.path.join(gts_path, f'{idx:05d}.jpg'), gt, [cv.IMWRITE_JPEG_QUALITY, 100, cv.IMWRITE_JPEG_OPTIMIZE, 1])
 
         if gaussians.use_features_mask:
             tmask = gaussians.features_mask.repeat(1, 3, 1, 1)
@@ -236,7 +237,7 @@ def render_set(model_path, name, iteration, views, gaussians, pipeline, backgrou
                 rendering = rendering.mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to("cpu", torch.uint8).numpy()
                 rendering = cv.cvtColor(rendering, cv.COLOR_RGB2BGR)
                 cv.imwrite(os.path.join(sub_multi_view_path, f"{idx}_{o_idx}.jpg"), rendering,
-                           [int(cv.IMWRITE_JPEG_QUALITY), 100])
+                           [cv.IMWRITE_JPEG_QUALITY, 100, cv.IMWRITE_JPEG_OPTIMIZE, 1])
 
     if render_s2d_inter and gaussians.color_net_type == "naive":
         views = origin_views
@@ -250,7 +251,7 @@ def render_set(model_path, name, iteration, views, gaussians, pipeline, backgrou
                 rendering = rendering.mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to("cpu", torch.uint8).numpy()
                 rendering = cv.cvtColor(rendering, cv.COLOR_RGB2BGR)
                 cv.imwrite(os.path.join(sub_s2d_inter_path, f"{idx}_{inter_weight:.2f}.jpg"), rendering,
-                           [int(cv.IMWRITE_JPEG_QUALITY), 100])
+                           [cv.IMWRITE_JPEG_QUALITY, 100, cv.IMWRITE_JPEG_OPTIMIZE, 1])
         gaussians.colornet_inter_weight = 1.0
 
 
