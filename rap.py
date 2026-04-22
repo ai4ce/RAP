@@ -15,6 +15,7 @@ from models.apr.rapnet import RAPNet
 from utils.early_stopper import EarlyStopper
 from utils.eval_utils import eval_model
 from utils.general_utils import fix_seed
+from utils.info_nce_loss import InfoNCELoss
 from utils.model_utils import freeze_bn_layer_train, freeze_bn_layer
 from utils.nt_xent_loss import NTXentLoss
 from utils.nvs_utils import *
@@ -246,6 +247,8 @@ class RVSTrainer(BaseTrainer):
             self.feature_loss = VICRegLoss().to(args.device).train()
         elif self.args.feature_loss == "ntxent":
             self.feature_loss = NTXentLoss()
+        elif self.args.feature_loss == "infonce":
+            self.feature_loss = InfoNCELoss(temperature=self.args.infonce_temperature)
         else:
             self.feature_loss = self.mse_loss
 
